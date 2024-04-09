@@ -1,4 +1,4 @@
-package fr.isep.algo.projetjo;
+package fr.isep.algo.projetjo.model;
 
 import java.util.ArrayList;
 import java.util.List;

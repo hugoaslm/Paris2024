@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.util.Objects;
@@ -12,34 +13,24 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Chargement de la vue depuis le fichier FXML
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fr/isep/algo/projetjo/testons.fxml")));
 
-        // Création de la scène avec la vue chargée
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/fr/isep/algo/projetjo/img/logo_gold_paris2024.png")));
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fr/isep/algo/projetjo/view/home.fxml")));
+
         Scene scene = new Scene(root);
 
-        // Configuration de la scène sur la fenêtre principale
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Votre application JavaFX");
+        primaryStage.setTitle("Application des Jeux Olympiques");
+        primaryStage.getIcons().add(icon);
 
-        // Affichage de la fenêtre principale
         primaryStage.show();
 
-        // Insertion de données dans la base de données
-        insertData();
     }
 
     public static void main(String[] args) {
-        // Lancement de l'application JavaFX
         launch(args);
     }
 
-    private static void insertData() {
-        Athlete athlete = new Athlete("Teddy Riner", "France", 33, "M");
-
-        //athleteController.save(athlete.getName(), athlete.getCountry(),
-                //athlete.getAge(), athlete.getSex());
-        athleteController.getAllAthletes();
-    }
 }
 

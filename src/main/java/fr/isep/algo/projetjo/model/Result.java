@@ -1,4 +1,4 @@
-package fr.isep.algo.projetjo;
+package fr.isep.algo.projetjo.model;
 
 public class Result {
     private Event event;

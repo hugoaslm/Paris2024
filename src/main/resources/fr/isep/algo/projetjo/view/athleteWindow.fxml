@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.algo.projetjo.controller.athleteController">
+    <children>
+        <Label layoutX="39.0" layoutY="27.0" text="ATHLÈTES" textFill="#d7c378">
+            <font>
+                <Font name="Eras Bold ITC" size="36.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="56.0" fitWidth="50.0" layoutX="1209.0" layoutY="21.0">
+            <image>
+                <Image url="@../img/logo_gold_paris2024.png" />
+            </image>
+        </ImageView>
+        <ComboBox fx:id="delegationComboBox" layoutX="41.0" layoutY="140.0" onAction="#loadAthletesByDelegation" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: transparent; -fx-border-color: #d7c378; -fx-border-radius: 15;" />
+        <Button layoutX="571.0" layoutY="649.0" onAction="#openAllAthletesWindow" style="-fx-background-color: #d7c378; -fx-background-radius: 15;" text="Afficher tous les athlètes" />
+        <TableView fx:id="athleteTable" layoutX="176.0" layoutY="235.0" prefHeight="378.0" prefWidth="960.0">
+            <columns>
+                <TableColumn fx:id="nomColumn" prefWidth="172.800048828125" text="Nom" />
+                <TableColumn fx:id="prenomColumn" prefWidth="188.26666259765625" text="Prénom" />
+                <TableColumn fx:id="ageColumn" prefWidth="118.933349609375" text="Âge" />
+                <TableColumn fx:id="sexColumn" prefWidth="138.1334228515625" text="Sexe" />
+                <TableColumn fx:id="paysColumn" minWidth="0.0" prefWidth="147.46661376953125" text="Pays" />
+                <TableColumn fx:id="editColumn" minWidth="0.0" prefWidth="189.333251953125" text="Modifier" />
+            </columns>
+        </TableView>
+        <Label layoutX="39.0" layoutY="102.0" text="Sélectionner une délégation :">
+            <font>
+                <Font name="Eras Bold ITC" size="18.0" />
+            </font>
+        </Label>
+        <Button layoutX="626.0" layoutY="188.0" onAction="#refreshTable" style="-fx-background-color: transparent;">
+            <graphic>
+                <FontAwesomeIconView fill="#d7c378" glyphName="REFRESH" size="20" />
+            </graphic>
+        </Button>
+      <AnchorPane layoutX="177.0" layoutY="188.0" prefHeight="42.0" prefWidth="246.0">
+         <children>
+              <Button layoutX="187.0" onAction="#newAthlete" style="-fx-background-color: transparent;">
+                  <graphic>
+                      <FontAwesomeIconView glyphName="PLUS_CIRCLE" size="20" />
+                  </graphic>
+              </Button>
+              <Label layoutY="3.0" text="Ajouter un athlète :">
+                  <font>
+                      <Font name="Eras Bold ITC" size="18.0" />
+                  </font>
+              </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="869.0" layoutY="188.0" prefHeight="28.0" prefWidth="266.0">
+         <children>
+              <TextField fx:id="searchField" prefWidth="200.0" promptText="Rechercher..." />
+              <Button layoutX="219.0" layoutY="-1.0" onAction="#searchInTableView">
+                  <graphic>
+                      <FontAwesomeIconView glyphName="SEARCH" size="18" />
+                  </graphic>
+              </Button>
+         </children>
+      </AnchorPane>
+        <Button layoutX="10.0" layoutY="10.0" onAction="#goBack" style="-fx-background-color: transparent;">
+            <graphic>
+                <FontAwesomeIconView glyphName="ARROW_LEFT" size="20" />
+            </graphic>
+        </Button>
+    </children>
+</AnchorPane>
