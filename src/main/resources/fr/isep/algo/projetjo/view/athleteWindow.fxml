@@ -28,7 +28,7 @@
         <Button layoutX="571.0" layoutY="649.0" onAction="#openAllAthletesWindow" style="-fx-background-color: #d7c378; -fx-background-radius: 15;" text="Afficher tous les athlètes" />
         <TableView fx:id="athleteTable" layoutX="79.0" layoutY="237.0" prefHeight="378.0" prefWidth="1128.0">
             <columns>
-            <TableColumn fx:id="nomColumn1" prefWidth="172.800048828125" text="Sport" />
+                <TableColumn fx:id="sportColumn" prefWidth="172.800048828125" text="Sport" />
                 <TableColumn fx:id="nomColumn" prefWidth="172.800048828125" text="Nom" />
                 <TableColumn fx:id="prenomColumn" prefWidth="188.26666259765625" text="Prénom" />
                 <TableColumn fx:id="ageColumn" prefWidth="118.933349609375" text="Âge" />

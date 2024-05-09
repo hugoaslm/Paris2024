@@ -71,9 +71,11 @@ public class athleteController {
         ageColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
         sexColumn.setCellValueFactory(new PropertyValueFactory<>("sex"));
 
+        // Si l'utilisateur n'est pas admin, il ne peut pas ajouter d'athlètes ou modifier/supprimer
         if (role != 1) {
             addButton.setVisible(false);
             addText.setVisible(false);
+            editColumn.setVisible(false);
         }
 
         // Charger les délégations disponibles depuis la bdd
