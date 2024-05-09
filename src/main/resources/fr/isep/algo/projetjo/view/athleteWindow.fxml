@@ -26,8 +26,9 @@
         </ImageView>
         <ComboBox fx:id="delegationComboBox" layoutX="41.0" layoutY="140.0" onAction="#loadAthletesByDelegation" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: transparent; -fx-border-color: #d7c378; -fx-border-radius: 15;" />
         <Button layoutX="571.0" layoutY="649.0" onAction="#openAllAthletesWindow" style="-fx-background-color: #d7c378; -fx-background-radius: 15;" text="Afficher tous les athlètes" />
-        <TableView fx:id="athleteTable" layoutX="176.0" layoutY="235.0" prefHeight="378.0" prefWidth="960.0">
+        <TableView fx:id="athleteTable" layoutX="79.0" layoutY="237.0" prefHeight="378.0" prefWidth="1128.0">
             <columns>
+            <TableColumn fx:id="nomColumn1" prefWidth="172.800048828125" text="Sport" />
                 <TableColumn fx:id="nomColumn" prefWidth="172.800048828125" text="Nom" />
                 <TableColumn fx:id="prenomColumn" prefWidth="188.26666259765625" text="Prénom" />
                 <TableColumn fx:id="ageColumn" prefWidth="118.933349609375" text="Âge" />
@@ -48,12 +49,12 @@
         </Button>
       <AnchorPane layoutX="177.0" layoutY="188.0" prefHeight="42.0" prefWidth="246.0">
          <children>
-              <Button layoutX="187.0" onAction="#newAthlete" style="-fx-background-color: transparent;">
+              <Button fx:id="addButton" layoutX="187.0" onAction="#newAthlete" style="-fx-background-color: transparent;">
                   <graphic>
                       <FontAwesomeIconView glyphName="PLUS_CIRCLE" size="20" />
                   </graphic>
               </Button>
-              <Label layoutY="3.0" text="Ajouter un athlète :">
+              <Label fx:id="addText" layoutY="3.0" text="Ajouter un athlète :">
                   <font>
                       <Font name="Eras Bold ITC" size="18.0" />
                   </font>

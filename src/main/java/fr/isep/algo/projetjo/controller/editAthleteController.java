@@ -1,9 +1,12 @@
 package fr.isep.algo.projetjo.controller;
 
 import fr.isep.algo.projetjo.dao.athleteDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,12 +21,18 @@ public class editAthleteController {
     private TextField paysField;
     @FXML
     private TextField ageField;
-    @FXML
-    private TextField sexField;
 
     private Stage stage;
 
     private int athleteId;
+    @FXML
+    private ChoiceBox<String> sexField;
+
+    @FXML
+    private void initialize() {
+        ObservableList<String> sexes = FXCollections.observableArrayList("M", "F");
+        sexField.setItems(sexes);
+    }
 
     @FXML
     private void saveChanges(ActionEvent event) {
@@ -32,7 +41,7 @@ public class editAthleteController {
         String prenom = prenomField.getText();
         String pays = paysField.getText();
         int age = Integer.parseInt(ageField.getText());
-        String sex = sexField.getText();
+        String sex = sexField.getValue();
 
         // Appel depuis DAO
         athleteDAO.modifierAthlete(athleteId, nom, prenom, pays, age, sex);
@@ -48,15 +57,14 @@ public class editAthleteController {
 
     }
 
-    // Méthode pour initialiser les champs de saisie avec les données de l'athlète à modifier
-    public void initAthleteData(int id, String nom, String prenom, String pays, int age, String sex) {
+    public void initAthleteData(int id, String nom, String prenom, String pays, int age) {
 
         athleteId = id;
         nomField.setText(nom);
         prenomField.setText(prenom);
         paysField.setText(pays);
         ageField.setText(Integer.toString(age));
-        sexField.setText(sex);
+        sexField.getSelectionModel().clearSelection();
 
     }
 

@@ -2,8 +2,11 @@ package fr.isep.algo.projetjo.controller;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+
 import fr.isep.algo.projetjo.dao.athleteDAO;
 import fr.isep.algo.projetjo.model.Athlete;
+import fr.isep.algo.projetjo.model.SessionManager;
+
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,16 +45,36 @@ public class athleteController {
 
     public TextField searchField;
 
+    @FXML
+    private Button addButton;
+
+    @FXML
+    private Label addText;
+
     Athlete athlete = null;
 
     @FXML
     public void initialize() {
+
+        // Récupérer les informations de l'utilisateur depuis la session
+        String pseudo = (String) SessionManager.getInstance().getAttribute("pseudo");
+        int role = (int) SessionManager.getInstance().getAttribute("role");
+
+        // Utiliser les informations récupérées
+        System.out.println("Utilisateur connecté : " + pseudo);
+        System.out.println("Rôle de l'utilisateur : " + role);
+
         // Configurer les colonnes de la table
         nomColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenomColumn.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         paysColumn.setCellValueFactory(new PropertyValueFactory<>("pays"));
         ageColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
         sexColumn.setCellValueFactory(new PropertyValueFactory<>("sex"));
+
+        if (role != 1) {
+            addButton.setVisible(false);
+            addText.setVisible(false);
+        }
 
         // Charger les délégations disponibles depuis la bdd
         List<String> delegations = athleteDAO.getAllDelegations();
@@ -107,7 +130,7 @@ public class athleteController {
                             try {
                                 Parent root = loader.load();
                                 editAthleteController controller = loader.getController();
-                                controller.initAthleteData(athlete.getId(), athlete.getNom(), athlete.getPrenom(), athlete.getPays(), athlete.getAge(), athlete.getSex());
+                                controller.initAthleteData(athlete.getId(), athlete.getNom(), athlete.getPrenom(), athlete.getPays(), athlete.getAge());
                                 Stage stage = new Stage();
                                 stage.setScene(new Scene(root));
                                 stage.show();

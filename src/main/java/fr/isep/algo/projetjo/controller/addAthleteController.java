@@ -1,8 +1,11 @@
 package fr.isep.algo.projetjo.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -19,9 +22,15 @@ public class addAthleteController {
     @FXML
     private TextField ageField;
     @FXML
-    private TextField sexField;
+    private ChoiceBox<String> sexField;
 
     private Stage stage;
+
+    @FXML
+    private void initialize() {
+        ObservableList<String> sexes = FXCollections.observableArrayList("M", "F");
+        sexField.setItems(sexes);
+    }
 
     @FXML
     private void saveAthlete(ActionEvent event) {
@@ -30,7 +39,7 @@ public class addAthleteController {
         String prenom = prenomField.getText();
         String pays = paysField.getText();
         int age = Integer.parseInt(ageField.getText());
-        String sex = sexField.getText();
+        String sex = sexField.getValue();
 
         // Appel depuis DAO
         athleteDAO.addAthlete(nom, prenom, pays, age, sex);
@@ -52,7 +61,7 @@ public class addAthleteController {
         prenomField.setText("");
         paysField.setText("");
         ageField.setText("");
-        sexField.setText("");
+        sexField.getSelectionModel().clearSelection();
 
     }
 
