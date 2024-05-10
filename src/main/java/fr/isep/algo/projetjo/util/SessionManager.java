@@ -1,4 +1,4 @@
-package fr.isep.algo.projetjo.model;
+package fr.isep.algo.projetjo.util;
 
 import java.util.HashMap;
 import java.util.Map;

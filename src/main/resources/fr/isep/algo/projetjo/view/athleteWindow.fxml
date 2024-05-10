@@ -10,60 +10,59 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.algo.projetjo.controller.athleteController">
     <children>
-        <Label layoutX="39.0" layoutY="27.0" text="ATHLÈTES" textFill="#d7c378">
+        <Label layoutX="275.0" layoutY="27.0" text="ATHLÈTES" textFill="#d7c378">
             <font>
-                <Font name="Eras Bold ITC" size="36.0" />
+                <Font name="Paris2024-Variable Regular" size="36.0" />
             </font>
         </Label>
-        <ImageView fitHeight="56.0" fitWidth="50.0" layoutX="1209.0" layoutY="21.0">
-            <image>
-                <Image url="@../img/logo_gold_paris2024.png" />
-            </image>
-        </ImageView>
-        <ComboBox fx:id="delegationComboBox" layoutX="41.0" layoutY="140.0" onAction="#loadAthletesByDelegation" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: transparent; -fx-border-color: #d7c378; -fx-border-radius: 15;" />
-        <Button layoutX="571.0" layoutY="649.0" onAction="#openAllAthletesWindow" style="-fx-background-color: #d7c378; -fx-background-radius: 15;" text="Afficher tous les athlètes" />
-        <TableView fx:id="athleteTable" layoutX="79.0" layoutY="237.0" prefHeight="378.0" prefWidth="1128.0">
+        <ComboBox fx:id="delegationComboBox" layoutX="275.0" layoutY="140.0" onAction="#loadAthletesByDelegation" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: transparent; -fx-border-color: #d7c378; -fx-border-radius: 15;" />
+        <Button layoutX="714.0" layoutY="650.0" onAction="#openAllAthletesWindow" style="-fx-background-color: #d7c378; -fx-background-radius: 15;" text="Afficher tous les athlètes">
+         <font>
+            <Font name="Paris2024-Variable Regular" size="12.0" />
+         </font></Button>
+        <TableView fx:id="athleteTable" layoutX="280.0" layoutY="236.0" prefHeight="378.0" prefWidth="972.0">
             <columns>
                 <TableColumn fx:id="sportColumn" prefWidth="172.800048828125" text="Sport" />
                 <TableColumn fx:id="nomColumn" prefWidth="172.800048828125" text="Nom" />
                 <TableColumn fx:id="prenomColumn" prefWidth="188.26666259765625" text="Prénom" />
                 <TableColumn fx:id="ageColumn" prefWidth="118.933349609375" text="Âge" />
-                <TableColumn fx:id="sexColumn" prefWidth="138.1334228515625" text="Sexe" />
-                <TableColumn fx:id="paysColumn" minWidth="0.0" prefWidth="147.46661376953125" text="Pays" />
-                <TableColumn fx:id="editColumn" minWidth="0.0" prefWidth="189.333251953125" text="Modifier" />
+                <TableColumn fx:id="sexColumn" prefWidth="62.66668701171875" text="Sexe" />
+                <TableColumn fx:id="paysColumn" minWidth="0.0" prefWidth="100.53338623046875" text="Pays" />
+                <TableColumn fx:id="editColumn" minWidth="0.0" prefWidth="150.0" text="Modifier" />
             </columns>
         </TableView>
-        <Label layoutX="39.0" layoutY="102.0" text="Sélectionner une délégation :">
+        <Label layoutX="275.0" layoutY="102.0" text="Sélectionner une délégation :">
             <font>
-                <Font name="Eras Bold ITC" size="18.0" />
+                <Font name="Paris2024-Variable Regular" size="18.0" />
             </font>
         </Label>
-        <Button layoutX="626.0" layoutY="188.0" onAction="#refreshTable" style="-fx-background-color: transparent;">
+        <Button layoutX="749.0" layoutY="188.0" onAction="#refreshTable" style="-fx-background-color: transparent;">
             <graphic>
                 <FontAwesomeIconView fill="#d7c378" glyphName="REFRESH" size="20" />
             </graphic>
         </Button>
-      <AnchorPane layoutX="177.0" layoutY="188.0" prefHeight="42.0" prefWidth="246.0">
+      <AnchorPane layoutX="275.0" layoutY="183.0" prefHeight="42.0" prefWidth="246.0">
          <children>
-              <Button fx:id="addButton" layoutX="187.0" onAction="#newAthlete" style="-fx-background-color: transparent;">
-                  <graphic>
-                      <FontAwesomeIconView glyphName="PLUS_CIRCLE" size="20" />
-                  </graphic>
-              </Button>
+              <Button fx:id="addButton" layoutX="187.0" onAction="#newAthlete" style="-fx-background-color: transparent;" />
               <Label fx:id="addText" layoutY="3.0" text="Ajouter un athlète :">
                   <font>
-                      <Font name="Eras Bold ITC" size="18.0" />
+                      <Font name="Paris2024-Variable Regular" size="18.0" />
                   </font>
               </Label>
+                <FontAwesomeIconView glyphName="PLUS_CIRCLE" layoutX="160.0" layoutY="21.0" size="20" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="869.0" layoutY="188.0" prefHeight="28.0" prefWidth="266.0">
+      <AnchorPane layoutX="985.0" layoutY="188.0" prefHeight="28.0" prefWidth="266.0">
          <children>
-              <TextField fx:id="searchField" prefWidth="200.0" promptText="Rechercher..." />
+              <TextField fx:id="searchField" prefWidth="200.0" promptText="Rechercher...">
+               <font>
+                  <Font name="Paris2024-Variable Regular" size="12.0" />
+               </font></TextField>
               <Button layoutX="219.0" layoutY="-1.0" onAction="#searchInTableView">
                   <graphic>
                       <FontAwesomeIconView glyphName="SEARCH" size="18" />
@@ -76,5 +75,50 @@
                 <FontAwesomeIconView glyphName="ARROW_LEFT" size="20" />
             </graphic>
         </Button>
+      <Line endX="-108.33334350585938" endY="643.0" layoutX="323.0" layoutY="77.0" startX="-108.33334350585938" startY="-77.00000762939453" />
+      <AnchorPane layoutX="15.0" layoutY="96.0" prefHeight="441.0" prefWidth="186.0" >
+         <children>
+            <Button fx:id="dashboardButton" layoutX="24.0" layoutY="10.0" onAction="#redirectToDashboard" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Dashboard">
+               <font>
+                  <Font name="Paris2024-Variable Regular" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="athletesButton" layoutX="24.0" layoutY="70.0" onAction="#redirectToAthletes" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Athlètes">
+               <font>
+                  <Font name="Paris2024-Variable Regular" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="disciplinesButton" layoutX="24.0" layoutY="130.0" onAction="#redirectToDisciplines" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Disciplines">
+               <font>
+                  <Font name="Paris2024-Variable Regular" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="eventsButton" layoutX="24.0" layoutY="190.0" onAction="#redirectToEvents" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Évènements">
+               <font>
+                  <Font name="Paris2024-Variable Regular" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="resultsButton" layoutX="24.0" layoutY="250.0" onAction="#redirectToResults" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Résultats">
+               <font>
+                  <Font name="Paris2024-Variable Regular" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="analyseButton" layoutX="24.0" layoutY="310.0" onAction="#redirectToAnalyses" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Analyses">
+               <font>
+                  <Font name="Paris2024-Variable Regular" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="calendarButton" layoutX="24.0" layoutY="370.0" onAction="#redirectToCalendar" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Calendrier">
+               <font>
+                  <Font name="Paris2024-Variable Regular" size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="94.0" fitWidth="87.0" layoutX="56.0" layoutY="597.0">
+         <image>
+            <Image url="@../img/logo_paris_2024.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

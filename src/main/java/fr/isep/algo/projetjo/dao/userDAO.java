@@ -3,6 +3,8 @@ package fr.isep.algo.projetjo.dao;
 import fr.isep.algo.projetjo.model.DatabaseManager;
 import fr.isep.algo.projetjo.model.User;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +24,7 @@ public class userDAO {
             String query = "SELECT * FROM users WHERE pseudo = ? AND MotDePasse = ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
+            preparedStatement.setString(2, hashPassword(password)); // Hash du mot de passe avant vérification
             resultSet = preparedStatement.executeQuery();
             success = resultSet.next(); // Vérifie s'il y a un résultat
 
@@ -63,5 +65,46 @@ public class userDAO {
         DatabaseManager.closeConnection(connection);
 
         return user;
+    }
+
+    // Méthode pour inscrire un utilisateur
+    public static boolean inscription(String username, String password) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        boolean success = false;
+
+        try {
+            connection = DatabaseManager.getConnection();
+            String query = "INSERT INTO users (pseudo, MotDePasse) VALUES (?, ?)";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, hashPassword(password)); // Hash du mot de passe avant insertion
+            int rowsAffected = preparedStatement.executeUpdate();
+            success = rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DatabaseManager.closeConnection(connection);
+        }
+
+        return success;
+    }
+
+    // Méthode pour hacher le mot de passe
+    private static String hashPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes());
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

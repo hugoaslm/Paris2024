@@ -5,7 +5,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 
 import fr.isep.algo.projetjo.dao.athleteDAO;
 import fr.isep.algo.projetjo.model.Athlete;
-import fr.isep.algo.projetjo.model.SessionManager;
+import fr.isep.algo.projetjo.util.SessionManager;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -25,9 +25,23 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-public class athleteController {
+public class athleteController extends dashboardController {
 
     public TableColumn<Athlete, String> editColumn;
+    @FXML
+    public Button dashboardButton;
+    @FXML
+    public Button athletesButton;
+    @FXML
+    public Button disciplinesButton;
+    @FXML
+    public Button eventsButton;
+    @FXML
+    public Button resultsButton;
+    @FXML
+    public Button analyseButton;
+    @FXML
+    public Button calendarButton;
     @FXML
     private ComboBox<String> delegationComboBox;
     @FXML
@@ -55,6 +69,7 @@ public class athleteController {
 
     @FXML
     public void initialize() {
+
 
         // Récupérer les informations de l'utilisateur depuis la session
         String pseudo = (String) SessionManager.getInstance().getAttribute("pseudo");

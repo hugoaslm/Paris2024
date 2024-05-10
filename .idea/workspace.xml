@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="956ea7f6-8349-4eef-8d02-035e9368ff68" name="Changes" comment="Ajout connexion et session">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/dashboardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/inscriptionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/inscription.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/PrimaryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/athleteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/athleteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/userDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/userDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/SessionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/util/SessionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/athleteWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/athleteWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/home.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +165,10 @@
       <workItem from="1714035169525" duration="1164000" />
       <workItem from="1714117119777" duration="4319000" />
       <workItem from="1714722688768" duration="23000" />
-      <workItem from="1715255405437" duration="4521000" />
+      <workItem from="1715255405437" duration="5183000" />
+      <workItem from="1715274520839" duration="474000" />
+      <workItem from="1715275014992" duration="34000" />
+      <workItem from="1715333379433" duration="3991000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -191,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715259282601</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Ajout connexion et session">
+      <option name="closed" value="true" />
+      <created>1715260069508</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715260069508</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
