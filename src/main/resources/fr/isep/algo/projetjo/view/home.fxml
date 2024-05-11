@@ -93,9 +93,9 @@
                   <Font name="Paris2024-Variable Regular" size="64.0" />
                </font>
             </Text>
-            <Button fx:id="inscriptionButton" layoutX="218.0" layoutY="435.0" mnemonicParsing="false" onAction="#redirectInscription" style="-fx-background-color: transparent;" text="S'inscrire" underline="true">
+            <Button fx:id="inscriptionButton" layoutX="209.0" layoutY="435.0" mnemonicParsing="false" onAction="#redirectInscription" style="-fx-background-color: transparent;" text="S'inscrire" underline="true">
                <font>
-                  <Font name="Paris2024-Variable Regular" size="12.0" />
+                  <Font name="Paris2024-Variable Regular" size="14.0" />
                </font>
             </Button>
          </children>

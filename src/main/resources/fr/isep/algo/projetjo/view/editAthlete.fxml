@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="300" prefWidth="400" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.algo.projetjo.controller.editAthleteController">
+<VBox alignment="CENTER" prefHeight="348.0" prefWidth="400" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.algo.projetjo.controller.editAthleteController">
 
     <Label style="-fx-font-size: 20px;" text="Modifier Athlète" />
 
@@ -33,12 +33,17 @@
         <TextField fx:id="paysField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
         <Label text="Sexe :" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-      <ChoiceBox fx:id="sexField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <ChoiceBox fx:id="sexField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+        <Label text="Sport :" GridPane.rowIndex="5" />
+        <ChoiceBox fx:id="editSportField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
       <columnConstraints>
          <ColumnConstraints />
          <ColumnConstraints />
       </columnConstraints>
       <rowConstraints>
+         <RowConstraints />
          <RowConstraints />
          <RowConstraints />
          <RowConstraints />

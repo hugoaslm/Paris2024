@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.beans.property.SimpleStringProperty;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,7 +28,6 @@ import java.util.Optional;
 
 public class athleteController extends dashboardController {
 
-    public TableColumn<Athlete, String> editColumn;
     @FXML
     public Button dashboardButton;
     @FXML
@@ -43,9 +43,15 @@ public class athleteController extends dashboardController {
     @FXML
     public Button calendarButton;
     @FXML
+    public FontAwesomeIconView iconAdd;
+
+    @FXML
     private ComboBox<String> delegationComboBox;
     @FXML
     private TableView<Athlete> athleteTable;
+
+    @FXML
+    public TableColumn<Athlete, String> editColumn;
     @FXML
     private TableColumn<Athlete, String> nomColumn;
     @FXML
@@ -56,20 +62,18 @@ public class athleteController extends dashboardController {
     private TableColumn<Athlete, Integer> ageColumn;
     @FXML
     private TableColumn<Athlete, String> sexColumn;
+    @FXML
+    private TableColumn<Athlete, String> sportColumn;
 
     public TextField searchField;
 
     @FXML
     private Button addButton;
 
-    @FXML
-    private Label addText;
-
     Athlete athlete = null;
 
     @FXML
     public void initialize() {
-
 
         // Récupérer les informations de l'utilisateur depuis la session
         String pseudo = (String) SessionManager.getInstance().getAttribute("pseudo");
@@ -79,19 +83,26 @@ public class athleteController extends dashboardController {
         System.out.println("Utilisateur connecté : " + pseudo);
         System.out.println("Rôle de l'utilisateur : " + role);
 
+        // Si l'utilisateur n'est pas admin, il ne peut pas ajouter d'athlètes ou modifier/supprimer
+        if (role != 1) {
+            addButton.setVisible(false);
+            editColumn.setVisible(false);
+            iconAdd.setVisible(false);
+        }
+
         // Configurer les colonnes de la table
         nomColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenomColumn.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         paysColumn.setCellValueFactory(new PropertyValueFactory<>("pays"));
         ageColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
         sexColumn.setCellValueFactory(new PropertyValueFactory<>("sex"));
+        sportColumn.setCellValueFactory(new PropertyValueFactory<>("sport"));
 
-        // Si l'utilisateur n'est pas admin, il ne peut pas ajouter d'athlètes ou modifier/supprimer
-        if (role != 1) {
-            addButton.setVisible(false);
-            addText.setVisible(false);
-            editColumn.setVisible(false);
-        }
+        sportColumn.setCellValueFactory(cellData -> {
+            int sportId = cellData.getValue().getSport();
+            String sportName = athleteDAO.getSportNameById(sportId);
+            return new SimpleStringProperty(sportName);
+        });
 
         // Charger les délégations disponibles depuis la bdd
         List<String> delegations = athleteDAO.getAllDelegations();
@@ -147,7 +158,9 @@ public class athleteController extends dashboardController {
                             try {
                                 Parent root = loader.load();
                                 editAthleteController controller = loader.getController();
-                                controller.initAthleteData(athlete.getId(), athlete.getNom(), athlete.getPrenom(), athlete.getPays(), athlete.getAge());
+                                String nom_sport = athleteDAO.getSportNameById(athlete.getSport());
+                                controller.initAthleteData(athlete.getId(), athlete.getNom(), athlete.getPrenom(), athlete.getPays(),
+                                        athlete.getAge(), athlete.getSex(), nom_sport);
                                 Stage stage = new Stage();
                                 stage.setScene(new Scene(root));
                                 stage.show();
@@ -242,6 +255,7 @@ public class athleteController extends dashboardController {
     @FXML
     private void newAthlete() {
 
+        System.out.println("Ajout d'un nouvel athlète");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/addAthlete.fxml"));
         try {
             Parent root = loader.load();

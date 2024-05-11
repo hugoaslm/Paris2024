@@ -7,14 +7,16 @@ public class Athlete {
     private String pays;
     private int age;
     private String sex;
+    private int sport;
 
-    public Athlete(String nom, String prenom, String pays, int age, String sex, int id) {
+    public Athlete(String nom, String prenom, String pays, int age, String sex, int id, int sport) {
         this.nom = nom;
         this.prenom = prenom;
         this.pays = pays;
         this.age = age;
         this.sex = sex;
         this.id = id;
+        this.sport = sport;
     }
 
     // Getters et setters
@@ -64,6 +66,14 @@ public class Athlete {
 
     public String getPays() {
         return pays;
+    }
+
+    public int getSport() {
+        return sport;
+    }
+
+    public void setSport(int sport) {
+        this.sport = sport;
     }
 
 }

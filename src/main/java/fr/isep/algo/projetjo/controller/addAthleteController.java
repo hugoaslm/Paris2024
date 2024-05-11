@@ -14,6 +14,8 @@ import fr.isep.algo.projetjo.dao.athleteDAO;
 public class addAthleteController {
 
     @FXML
+    public ChoiceBox<String> sportField;
+    @FXML
     private TextField nomField;
     @FXML
     private TextField prenomField;
@@ -30,6 +32,9 @@ public class addAthleteController {
     private void initialize() {
         ObservableList<String> sexes = FXCollections.observableArrayList("M", "F");
         sexField.setItems(sexes);
+
+        ObservableList<String> sports = FXCollections.observableArrayList(athleteDAO.getAllSports());
+        sportField.setItems(sports);
     }
 
     @FXML
@@ -40,9 +45,10 @@ public class addAthleteController {
         String pays = paysField.getText();
         int age = Integer.parseInt(ageField.getText());
         String sex = sexField.getValue();
+        int sportId = getSportId();
 
-        // Appel depuis DAO
-        athleteDAO.addAthlete(nom, prenom, pays, age, sex);
+        // Appel à partir de DAO
+        athleteDAO.addAthlete(nom, prenom, pays, age, sex, sportId);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Ajout réussi");
@@ -67,7 +73,16 @@ public class addAthleteController {
 
     @FXML
     private void cancel(ActionEvent event) {
+        Stage stage = (Stage) nomField.getScene().getWindow();
         stage.close();
+    }
+
+    private int getSportId() {
+        String selectionSport = sportField.getValue();
+        int sportId = 0;
+        sportId = athleteDAO.getSportIdByName(selectionSport);
+
+        return sportId;
     }
 
 }
