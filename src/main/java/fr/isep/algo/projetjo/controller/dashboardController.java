@@ -6,12 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 
 public abstract class dashboardController {
+
+    protected String selectedCategory;
 
     public static void redirectToPage(String fxmlFilePath, ActionEvent event) {
         try {
@@ -20,14 +22,14 @@ public abstract class dashboardController {
 
             // Fichier FXML de la page actuelle
             Scene currentScene = ((Node) event.getSource()).getScene();
-            if (currentScene == null) {
-                System.err.println("Current scene is null");
-                return;
-            }
-            URL currentFXML = currentScene.getUserData() != null ? dashboardController.class.getResource(currentScene.getUserData().toString()) : null;
 
-            if (Objects.equals(destinationFXML, currentFXML)) {
-                return;
+            // Récupérer l'URL du fichier FXML de la scène actuelle
+            URL currentFXML = null;
+            if (currentScene.getWindow() instanceof Stage) {
+                FXMLLoader loader = (FXMLLoader) ((Stage) currentScene.getWindow()).getProperties().get("FXMLLoader");
+                if (loader != null) {
+                    currentFXML = loader.getLocation();
+                }
             }
 
             FXMLLoader loader = new FXMLLoader(destinationFXML);
@@ -50,12 +52,12 @@ public abstract class dashboardController {
 
     @FXML
     protected void redirectToAthletes(ActionEvent event) {
-        redirectToPage("/fr/isep/algo/projetjo/view/athletesWindow.fxml", event);
+        redirectToPage("/fr/isep/algo/projetjo/view/athleteWindow.fxml", event);
     }
 
     @FXML
     protected void redirectToDisciplines(ActionEvent event) {
-        redirectToPage("/fr/isep/algo/projetjo/view/discplines.fxml", event);
+        redirectToPage("/fr/isep/algo/projetjo/view/disciplines.fxml", event);
     }
 
     @FXML
@@ -77,4 +79,10 @@ public abstract class dashboardController {
     protected void redirectToCalendar(ActionEvent event) {
         redirectToPage("/fr/isep/algo/projetjo/view/calendar.fxml", event);
     }
+
+    public void setSelectedCategory(String category) {
+        this.selectedCategory = category;
+        System.out.println("Catégorie sélectionnée : " + category);
+    }
+
 }
