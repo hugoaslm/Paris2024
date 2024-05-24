@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="956ea7f6-8349-4eef-8d02-035e9368ff68" name="Changes" comment="Modifs athlètes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/eventController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/eventDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/events.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/eventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/eventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/eventDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/eventDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/events.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/events.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -91,7 +92,6 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="fr.isep.algo.projetjo.controller" />
       <recent name="fr.isep.algo.projetjo.model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -134,8 +134,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
       </set>
     </attachedChunks>
   </component>
