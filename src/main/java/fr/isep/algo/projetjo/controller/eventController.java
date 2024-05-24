@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import java.util.List;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -36,19 +37,21 @@ public class eventController extends dashboardController {
     private eventDAO eventDAO;
     private ObservableList<Event> eventList;
 
-    public void initialize(Connection connection) {
-        eventDAO = new eventDAO(); // Assuming the eventDAO methods are static as in athleteDAO
+    public void initialize() throws SQLException {
+        eventDAO = new eventDAO();
         loadEvents();
     }
 
-    private void loadEvents() {
-        try {
-            eventList = FXCollections.observableArrayList(eventDAO.getAllEvents());
-            eventListView.setItems(eventList);
-        } catch (Exception e) {
-            e.printStackTrace();
-            showAlert("Database Error", "Unable to load events from the database.");
+    private void loadEvents() throws SQLException {
+        List<Event> events = eventDAO.getAllEvents();
+        for (Event event : events) {
+            // Récupérer le nom du sport à partir de son ID
+            String sportName = eventDAO.getSportNameById(event.getSport());
+            // Mettre à jour l'événement avec le nom du sport
+            event.setSportName(sportName);
         }
+        eventList = FXCollections.observableArrayList(events);
+        eventListView.setItems(eventList);
     }
 
     @FXML

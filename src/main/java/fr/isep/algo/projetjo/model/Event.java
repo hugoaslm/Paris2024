@@ -10,6 +10,7 @@ public class Event {
     private String location;
     private Date date;
     private int sport;
+    private String sportName; // Nouvelle propriété pour stocker le nom du sport
     private List<Athlete> athletes;
 
     // Constructor
@@ -19,15 +20,6 @@ public class Event {
         this.location = location;
         this.date = date;
         this.sport = sport;
-        this.athletes = new ArrayList<>();
-    }
-
-    // Additional constructor for compatibility with the DAO
-    public Event(int id, String name, String location, Date date) {
-        this.id = id;
-        this.name = name;
-        this.location = location;
-        this.date = date;
         this.athletes = new ArrayList<>();
     }
 
@@ -72,6 +64,14 @@ public class Event {
         this.sport = sport;
     }
 
+    public String getSportName() {
+        return sportName;
+    }
+
+    public void setSportName(String sportName) {
+        this.sportName = sportName;
+    }
+
     public List<Athlete> getAthletes() {
         return athletes;
     }
@@ -82,5 +82,13 @@ public class Event {
 
     public void removeAthlete(Athlete athlete) {
         athletes.remove(athlete);
+    }
+
+    @Override
+    public String toString() {
+        return "Nom du sport : " + sportName + ", " +
+                "Nom de l'évènement : " + name + ", " +
+                "Lieu : " + location + ", " +
+                "Date : " + date.toString();
     }
 }

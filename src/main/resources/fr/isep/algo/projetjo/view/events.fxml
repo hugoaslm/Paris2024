@@ -73,7 +73,7 @@
                         <ListView fx:id="eventListView" prefHeight="200.0" prefWidth="972.0" />
                         <HBox spacing="10.0" alignment="CENTER_LEFT">
                             <children>
-                                <Label text="Nom du port :" textFill="#d7c378">
+                                <Label text="Nom du sport :" textFill="#d7c378">
                                     <font>
                                         <Font name="Paris2024-Variable Regular" size="18.0" />
                                     </font>

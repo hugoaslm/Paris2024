@@ -110,6 +110,40 @@ public class eventDAO {
         return event;
     }
 
+    public String getSportNameById(int sportId) throws SQLException {
+        String sportName = null;
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DatabaseManager.getConnection();
+
+            String query = "SELECT nom_sport FROM sports WHERE sport_id = ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, sportId);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                sportName = resultSet.getString("nom_sport");
+            }
+        } finally {
+            // Fermez les ressources (ResultSet, PreparedStatement, Connection)
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+
+        return sportName;
+    }
+
+
     public static int getSportIdByName(String sportName) {
         int sportId = -1; // Par défaut, si aucun ID n'est trouvé, retournez -1
         try {
