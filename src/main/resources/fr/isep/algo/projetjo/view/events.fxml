@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.algo.projetjo.controller.eventController">
+    <children>
+        <ListView fx:id="eventListView" />
+        <HBox>
+            <Label text="Name:" />
+            <TextField fx:id="nameField" />
+        </HBox>
+        <HBox>
+            <Label text="Location:" />
+            <TextField fx:id="locationField" />
+        </HBox>
+        <HBox>
+            <Label text="Date:" />
+            <TextField fx:id="dateField" />
+        </HBox>
+        <HBox>
+            <Button text="Add" onAction="#handleAddEvent" />
+            <Button text="Update" onAction="#handleUpdateEvent" />
+            <Button text="Delete" onAction="#handleDeleteEvent" />
+        </HBox>
+    </children>
+</VBox>
+
