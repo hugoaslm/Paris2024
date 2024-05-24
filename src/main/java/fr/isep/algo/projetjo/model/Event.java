@@ -9,11 +9,11 @@ public class Event {
     private String name;
     private String location;
     private Date date;
-    private Sport sport;
+    private int sport;
     private List<Athlete> athletes;
 
     // Constructor
-    public Event(int id, String name, String location, Date date, Sport sport) {
+    public Event(int id, int sport, String name, String location, Date date) {
         this.id = id;
         this.name = name;
         this.location = location;
@@ -56,19 +56,19 @@ public class Event {
         this.location = location;
     }
 
-    public Date getDate() {
-        return date;
+    public java.sql.Date getDate() {
+        return (java.sql.Date) date;
     }
 
     public void setDate(Date date) {
         this.date = date;
     }
 
-    public Sport getSport() {
+    public int getSport() {
         return sport;
     }
 
-    public void setSport(Sport sport) {
+    public void setSport(int sport) {
         this.sport = sport;
     }
 

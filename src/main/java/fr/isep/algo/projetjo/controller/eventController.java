@@ -15,7 +15,7 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class eventController {
+public class eventController extends dashboardController {
     @FXML
     private ListView<Event> eventListView;
     @FXML
@@ -24,12 +24,14 @@ public class eventController {
     private TextField locationField;
     @FXML
     private TextField dateField;
+    @FXML
+    private TextField sportNameField;
 
     private eventDAO eventDAO;
     private ObservableList<Event> eventList;
 
     public void initialize(Connection connection) {
-        eventDAO = new eventDAO(connection);
+        eventDAO = new eventDAO(); // Assuming the eventDAO methods are static as in athleteDAO
         loadEvents();
     }
 
@@ -37,50 +39,71 @@ public class eventController {
         try {
             eventList = FXCollections.observableArrayList(eventDAO.getAllEvents());
             eventListView.setItems(eventList);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            showAlert("Database Error", "Unable to load events from the database.");
         }
     }
 
     @FXML
     private void handleAddEvent() {
         String dateString = dateField.getText();
+        String sportName = sportNameField.getText(); // Assurez-vous de changer sportIdField en sportNameField
         if (isValidDate(dateString)) {
             try {
-                Event event = new Event(
-                        0,
-                        nameField.getText(),
-                        locationField.getText(),
-                        Date.valueOf(dateString)
-                );
-                eventDAO.addEvent(event);
-                loadEvents();
-            } catch (SQLException e) {
+                int sportId = eventDAO.getSportIdByName(sportName); // Utilisez la méthode pour obtenir l'ID du sport
+                if (sportId != -1) { // Vérifiez si l'ID du sport est valide (-1 indique une absence de correspondance)
+                    Event event = new Event(
+                            0,
+                            sportId, // Utilisez l'ID du sport obtenu
+                            nameField.getText(),
+                            locationField.getText(),
+                            Date.valueOf(dateString)
+                    );
+                    eventDAO.addEvent(event);
+                    loadEvents();
+                    nameField.clear();
+                    locationField.clear();
+                    dateField.clear();
+                    sportNameField.clear();
+                } else {
+                    showAlert("Invalid Sport Name", "Please enter a valid sport name.");
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
+                showAlert("Database Error", "Unable to add the event to the database.");
             }
         } else {
             showAlert("Invalid Date Format", "Please enter the date in the format yyyy-MM-dd.");
         }
     }
 
+
     @FXML
     private void handleUpdateEvent() {
         String dateString = dateField.getText();
+        String sportName = sportNameField.getText(); // Assurez-vous de changer sportIdField en sportNameField
         if (isValidDate(dateString)) {
             try {
                 Event selectedEvent = eventListView.getSelectionModel().getSelectedItem();
                 if (selectedEvent != null) {
-                    selectedEvent.setName(nameField.getText());
-                    selectedEvent.setLocation(locationField.getText());
-                    selectedEvent.setDate(Date.valueOf(dateString));
-                    eventDAO.updateEvent(selectedEvent);
-                    loadEvents();
+                    int sportId = eventDAO.getSportIdByName(sportName); // Utilisez la méthode pour obtenir l'ID du sport
+                    if (sportId != -1) { // Vérifiez si l'ID du sport est valide (-1 indique une absence de correspondance)
+                        selectedEvent.setSport(sportId);
+                        selectedEvent.setName(nameField.getText());
+                        selectedEvent.setLocation(locationField.getText());
+                        selectedEvent.setDate(Date.valueOf(dateString));
+                        eventDAO.updateEvent(selectedEvent);
+                        loadEvents();
+                        showAlert("Evènement ajouté avec succès", "Evènement ajouté avec succès !");
+                    } else {
+                        showAlert("Invalid Sport Name", "Please enter a valid sport name.");
+                    }
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
+                showAlert("Erreur BDD", "Unable to update the event in the database.");
             }
-        } else {
-            showAlert("Invalid Date Format", "Please enter the date in the format yyyy-MM-dd.");
         }
     }
 
@@ -91,9 +114,12 @@ public class eventController {
             if (selectedEvent != null) {
                 eventDAO.deleteEvent(selectedEvent.getId());
                 loadEvents();
+            } else {
+                showAlert("No Selection", "Please select an event to delete.");
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            showAlert("Database Error", "Unable to delete the event from the database.");
         }
     }
 
