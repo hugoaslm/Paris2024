@@ -72,6 +72,30 @@ public class event_athletesDAO {
         return athletes;
     }
 
+    public static List<Athlete> getAthletesByEventId(int eventId) throws SQLException {
+        List<Athlete> athletes = new ArrayList<>();
+        String query = "SELECT a.* FROM athletes a JOIN event_athletes ea ON a.athlete_id = ea.athlete_id WHERE ea.event_id = ?";
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, eventId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Athlete athlete = new Athlete(
+                            resultSet.getString("nom"),
+                            resultSet.getString("prenom"),
+                            resultSet.getString("pays"),
+                            resultSet.getInt("age"),
+                            resultSet.getString("sex"),
+                            resultSet.getInt("athlete_id"),
+                            resultSet.getInt("sport_id")
+                    );
+                    athletes.add(athlete);
+                }
+            }
+        }
+        return athletes;
+    }
+
     public static List<Event> getEventsByAthlete(int athleteId) {
         List<Event> events = new ArrayList<>();
         try {

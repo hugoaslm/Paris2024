@@ -1,0 +1,30 @@
+.table-view {
+    -fx-background-color: #333333;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #d7c378;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 30px;
+    -fx-padding: 5px;
+    -fx-background-color: #d7c378;
+    -fx-border-color: transparent;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #555555;
+}
+
+.table-view .table-row-cell:even {
+    -fx-background-color: #444444;
+}
+
+.table-view .table-cell {
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: transparent;
+}

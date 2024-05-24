@@ -35,15 +35,15 @@ public class eventDAO {
         return events;
     }
 
-    public static void addEvent(Event event) {
+    public static void addEvent(int sportId, String nom, String lieu, Date date) {
         try {
             Connection connection = DatabaseManager.getConnection();
             String query = "INSERT INTO events (sport_id, event_name, event_location, event_date) VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, event.getSport());
-            preparedStatement.setString(2, event.getName());
-            preparedStatement.setString(3, event.getLocation());
-            preparedStatement.setDate(4, event.getDate());
+            preparedStatement.setInt(1, sportId);
+            preparedStatement.setString(2, nom);
+            preparedStatement.setString(3, lieu);
+            preparedStatement.setDate(4, date);
             preparedStatement.executeUpdate();
             preparedStatement.close();
             connection.close();
@@ -164,5 +164,25 @@ public class eventDAO {
         return sportId;
     }
 
+    public static int getEventIdBySportName(int sportId, String eventName) {
+        int eventId = 0;
+        try {
+            Connection connection = DatabaseManager.getConnection();
+            String query = "SELECT event_id FROM events WHERE sport_id = ? AND event_name = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, sportId);
+            preparedStatement.setString(2, eventName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                eventId = resultSet.getInt("event_id");
+            }
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return eventId;
+    }
 
 }

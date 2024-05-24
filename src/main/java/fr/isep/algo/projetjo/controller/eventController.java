@@ -5,6 +5,7 @@ import fr.isep.algo.projetjo.dao.eventDAO;
 import fr.isep.algo.projetjo.dao.event_athletesDAO;
 import fr.isep.algo.projetjo.model.Athlete;
 import fr.isep.algo.projetjo.model.Event;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,18 +14,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.time.LocalDate;
 import java.util.List;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.stream.Collectors;
 
 public class eventController extends dashboardController {
     @FXML
@@ -43,10 +44,48 @@ public class eventController extends dashboardController {
     private eventDAO eventDAO;
     private ObservableList<Event> eventList;
 
-    public void initialize() throws SQLException {
+    @FXML
+    private TableView<Event> eventTableView;
+    @FXML
+    private TableColumn<Event, Integer> eventIdColumn;
+    @FXML
+    private TableColumn<Event, String> sportNameColumn;
+    @FXML
+    private TableColumn<Event, String> eventNameColumn;
+    @FXML
+    private TableColumn<Event, String> eventLocationColumn;
+    @FXML
+    private TableColumn<Event, LocalDate> eventDateColumn;
+    @FXML
+    private TableColumn<Event, String> athletesColumn;
+
+    @FXML
+    private void initialize() {
+        // Initialisez les colonnes
+        eventIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        sportNameColumn.setCellValueFactory(new PropertyValueFactory<>("sportName"));
+        eventNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        eventLocationColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
+        eventDateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        // Custom cell factory to display the list of athletes
+        athletesColumn.setCellValueFactory(cellData -> {
+            Event event = cellData.getValue();
+            List<Athlete> athletes = event.getAthletes();
+            String athleteNames = athletes.stream()
+                    .map(Athlete::getNom) // Assurez-vous que votre classe Athlete a un getter getName
+                    .collect(Collectors.joining(", "));
+            return new SimpleStringProperty(athleteNames);
+        });
+
         eventDAO = new eventDAO();
-        loadEvents();
-        loadAthletes();
+        // Appelez loadEvents pour remplir le tableau
+        try {
+            loadEvents();
+            loadAthletes();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadEvents() throws SQLException {
@@ -55,9 +94,15 @@ public class eventController extends dashboardController {
             // Récupérer le nom du sport à partir de son ID
             String sportName = eventDAO.getSportNameById(event.getSport());
             event.setSportName(sportName);
+
+            // Récupérer les athlètes associés
+            List<Athlete> athletes = event_athletesDAO.getAthletesByEventId(event.getId());
+            event.setAthletes(athletes); // Assurez-vous d'avoir un attribut `athletes` dans votre classe Event
         }
         eventList = FXCollections.observableArrayList(events);
-        eventListView.setItems(eventList);
+
+        // Remplacez eventListView par un TableView
+        eventTableView.setItems(eventList);
     }
 
     private void loadAthletes() {
@@ -67,6 +112,9 @@ public class eventController extends dashboardController {
             athleteNames.add(athlete.getNom());
         }
         athleteListView.setItems(athleteNames);
+
+        // Configurez la sélection multiple
+        athleteListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     @FXML
@@ -76,33 +124,22 @@ public class eventController extends dashboardController {
         if (isValidDate(dateString)) {
             try {
                 int sportId = eventDAO.getSportIdByName(sportName);
-                if (sportId != -1) {
-                    // Vérifiez si l'ID du sport est valide (-1 indique une absence de correspondance)
-                    Event event = new Event(
-                            0,
-                            sportId,
-                            nameField.getText(),
-                            locationField.getText(),
-                            Date.valueOf(dateString)
-                    );
-                    eventDAO.addEvent(event); // Ajouter l'événement à la base de données
-                    int eventId = event.getId(); // Récupérer l'ID de l'événement ajouté
+                eventDAO.addEvent(sportId, nameField.getText(), locationField.getText(), Date.valueOf(dateString)); // Ajouter l'événement à la base de données
+                int eventId = eventDAO.getEventIdBySportName(sportId, nameField.getText()); // Récupérer l'ID de l'événement ajouté
 
-                    // Ajouter les athlètes sélectionnés à cet événement
-                    ObservableList<String> selectedAthletes = athleteListView.getSelectionModel().getSelectedItems();
-                    for (String selectedAthlete : selectedAthletes) {
-                        int athleteId = athleteDAO.getAthleteIdByName(selectedAthlete); // Récupérer l'ID de l'athlète
-                        event_athletesDAO.addAthleteToEvent(athleteId, eventId); // Ajouter l'athlète à l'événement
-                    }
-
-                    loadEvents();
-                    nameField.clear();
-                    locationField.clear();
-                    dateField.clear();
-                    sportNameField.clear();
-                } else {
-                    showAlert("Invalid Sport Name", "Please enter a valid sport name.");
+                // Ajouter les athlètes sélectionnés à cet événement
+                ObservableList<String> selectedAthletes = athleteListView.getSelectionModel().getSelectedItems();
+                System.out.println(selectedAthletes);
+                for (String selectedAthlete : selectedAthletes) {
+                    int athleteId = athleteDAO.getAthleteIdByName(selectedAthlete); // Récupérer l'ID de l'athlète
+                    event_athletesDAO.addAthleteToEvent(eventId, athleteId); // Ajouter l'athlète à l'événement
                 }
+
+                loadEvents();
+                nameField.clear();
+                locationField.clear();
+                dateField.clear();
+                sportNameField.clear();
             } catch (Exception e) {
                 e.printStackTrace();
                 showAlert("Database Error", "Unable to add the event to the database.");
@@ -111,10 +148,6 @@ public class eventController extends dashboardController {
             showAlert("Invalid Date Format", "Please enter the date in the format yyyy-MM-dd.");
         }
     }
-
-
-
-
 
     @FXML
     private void handleUpdateEvent() {
@@ -147,7 +180,7 @@ public class eventController extends dashboardController {
     @FXML
     private void handleDeleteEvent() {
         try {
-            Event selectedEvent = eventListView.getSelectionModel().getSelectedItem();
+            Event selectedEvent = eventTableView.getSelectionModel().getSelectedItem();
             if (selectedEvent != null) {
                 eventDAO.deleteEvent(selectedEvent.getId());
                 loadEvents();

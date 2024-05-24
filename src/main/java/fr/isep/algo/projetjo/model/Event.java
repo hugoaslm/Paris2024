@@ -76,6 +76,10 @@ public class Event {
         return athletes;
     }
 
+    public void setAthletes(List<Athlete> athletes) {
+        this.athletes = athletes;
+    }
+
     public void addAthlete(Athlete athlete) {
         athletes.add(athlete);
     }
@@ -91,4 +95,5 @@ public class Event {
                 "Lieu : " + location + ", " +
                 "Date : " + date.toString();
     }
+
 }
