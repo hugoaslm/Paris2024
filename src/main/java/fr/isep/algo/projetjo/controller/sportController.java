@@ -19,6 +19,8 @@ public class sportController extends dashboardController {
     @FXML
     private FlowPane sportButtonsContainer; // Container où seront ajoutés les boutons
 
+
+
     public void initialize() {
 
         // Récupérer la liste des sports depuis la bdd
@@ -55,7 +57,23 @@ public class sportController extends dashboardController {
         }
     }
 
+    @FXML
+    private void goBack(ActionEvent event) {
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/athleteWindow.fxml"));
+            Parent root = loader.load();
+
+            Scene currentScene = ((Node) event.getSource()).getScene();
+
+            currentScene.setRoot(root);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
 }
