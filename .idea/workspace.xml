@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="956ea7f6-8349-4eef-8d02-035e9368ff68" name="Changes" comment="Modifs athlètes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/eventController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/eventDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/events.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/CalendarController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/calendar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_05_2024_09_20__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_05_2024_09_20__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/events.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/events.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +243,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715425639044</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Modifs athlètes">
+      <option name="closed" value="true" />
+      <created>1716534795774</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1716534795774</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Modifs athlètes">
+      <option name="closed" value="true" />
+      <created>1716537525157</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1716537525157</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
