@@ -1,6 +1,9 @@
 package fr.isep.algo.projetjo.controller;
 
+import fr.isep.algo.projetjo.dao.athleteDAO;
 import fr.isep.algo.projetjo.dao.eventDAO;
+import fr.isep.algo.projetjo.dao.event_athletesDAO;
+import fr.isep.algo.projetjo.model.Athlete;
 import fr.isep.algo.projetjo.model.Event;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import java.util.List;
@@ -23,6 +27,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class eventController extends dashboardController {
+    @FXML
+    private ListView<String> athleteListView;
     @FXML
     private ListView<Event> eventListView;
     @FXML
@@ -40,6 +46,7 @@ public class eventController extends dashboardController {
     public void initialize() throws SQLException {
         eventDAO = new eventDAO();
         loadEvents();
+        loadAthletes();
     }
 
     private void loadEvents() throws SQLException {
@@ -47,29 +54,47 @@ public class eventController extends dashboardController {
         for (Event event : events) {
             // Récupérer le nom du sport à partir de son ID
             String sportName = eventDAO.getSportNameById(event.getSport());
-            // Mettre à jour l'événement avec le nom du sport
             event.setSportName(sportName);
         }
         eventList = FXCollections.observableArrayList(events);
         eventListView.setItems(eventList);
     }
 
+    private void loadAthletes() {
+        List<Athlete> athletes = athleteDAO.getAllAthletes();
+        ObservableList<String> athleteNames = FXCollections.observableArrayList();
+        for (Athlete athlete : athletes) {
+            athleteNames.add(athlete.getNom());
+        }
+        athleteListView.setItems(athleteNames);
+    }
+
     @FXML
     private void handleAddEvent() {
         String dateString = dateField.getText();
-        String sportName = sportNameField.getText(); // Assurez-vous de changer sportIdField en sportNameField
+        String sportName = sportNameField.getText();
         if (isValidDate(dateString)) {
             try {
-                int sportId = eventDAO.getSportIdByName(sportName); // Utilisez la méthode pour obtenir l'ID du sport
-                if (sportId != -1) { // Vérifiez si l'ID du sport est valide (-1 indique une absence de correspondance)
+                int sportId = eventDAO.getSportIdByName(sportName);
+                if (sportId != -1) {
+                    // Vérifiez si l'ID du sport est valide (-1 indique une absence de correspondance)
                     Event event = new Event(
                             0,
-                            sportId, // Utilisez l'ID du sport obtenu
+                            sportId,
                             nameField.getText(),
                             locationField.getText(),
                             Date.valueOf(dateString)
                     );
-                    eventDAO.addEvent(event);
+                    eventDAO.addEvent(event); // Ajouter l'événement à la base de données
+                    int eventId = event.getId(); // Récupérer l'ID de l'événement ajouté
+
+                    // Ajouter les athlètes sélectionnés à cet événement
+                    ObservableList<String> selectedAthletes = athleteListView.getSelectionModel().getSelectedItems();
+                    for (String selectedAthlete : selectedAthletes) {
+                        int athleteId = athleteDAO.getAthleteIdByName(selectedAthlete); // Récupérer l'ID de l'athlète
+                        event_athletesDAO.addAthleteToEvent(athleteId, eventId); // Ajouter l'athlète à l'événement
+                    }
+
                     loadEvents();
                     nameField.clear();
                     locationField.clear();
@@ -88,16 +113,19 @@ public class eventController extends dashboardController {
     }
 
 
+
+
+
     @FXML
     private void handleUpdateEvent() {
         String dateString = dateField.getText();
-        String sportName = sportNameField.getText(); // Assurez-vous de changer sportIdField en sportNameField
+        String sportName = sportNameField.getText();
         if (isValidDate(dateString)) {
             try {
                 Event selectedEvent = eventListView.getSelectionModel().getSelectedItem();
                 if (selectedEvent != null) {
-                    int sportId = eventDAO.getSportIdByName(sportName); // Utilisez la méthode pour obtenir l'ID du sport
-                    if (sportId != -1) { // Vérifiez si l'ID du sport est valide (-1 indique une absence de correspondance)
+                    int sportId = eventDAO.getSportIdByName(sportName);
+                    if (sportId != -1) { // Vérifier si l'ID du sport est valide (-1 indique une absence de correspondance)
                         selectedEvent.setSport(sportId);
                         selectedEvent.setName(nameField.getText());
                         selectedEvent.setLocation(locationField.getText());

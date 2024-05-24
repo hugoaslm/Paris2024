@@ -205,4 +205,22 @@ public class athleteDAO {
         }
         return sportName;
     }
+
+    public static int getAthleteIdByName(String athleteName) {
+        int athleteId = 0;
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT athlete_id FROM athletes WHERE nom = ?")) {
+
+            statement.setString(1, athleteName);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    athleteId = resultSet.getInt("athlete_id");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return athleteId;
+    }
+
 }

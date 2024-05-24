@@ -14,6 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ChoiceBox?>
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.algo.projetjo.controller.eventController">
     <children>
         <Label layoutX="275.0" layoutY="27.0" text="ÉVÈNEMENTS" textFill="#d7c378">
@@ -110,6 +111,16 @@
                                     </font>
                                 </Label>
                                 <TextField fx:id="dateField" />
+                            </children>
+                        </HBox>
+                        <HBox spacing="10.0" alignment="CENTER_LEFT">
+                            <children>
+                                <Label text="Athlètes :" textFill="#d7c378">
+                                    <font>
+                                        <Font name="Paris2024-Variable Regular" size="18.0" />
+                                    </font>
+                                </Label>
+                                <ListView fx:id="athleteListView" prefHeight="100.0" prefWidth="150.0" />
                             </children>
                         </HBox>
                         <HBox spacing="20.0" alignment="CENTER">
