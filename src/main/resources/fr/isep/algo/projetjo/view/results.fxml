@@ -14,11 +14,18 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.algo.projetjo.controller.resultController">
     <stylesheets>
         <URL value="@styles.css" />
     </stylesheets>
     <children>
+
+        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: transparent;">
+            <graphic>
+                <FontAwesomeIconView glyphName="ARROW_LEFT" size="20.0"/>
+            </graphic>
+        </Button>
         <Label layoutX="275.0" layoutY="27.0" text="RÉSULTATS" textFill="#d7c378">
             <font>
                 <Font name="Paris2024-Variable Regular" size="36.0" />
