@@ -77,19 +77,20 @@
         <AnchorPane fx:id="rankingPlace" layoutX="241.0" layoutY="74.0" prefHeight="624.0" prefWidth="1014.0">
             <TableView fx:id="athleteTableView" layoutX="14.0" layoutY="14.0" prefHeight="300.0" prefWidth="993.0">
                 <columns>
-                    <TableColumn fx:id="athleteColumn" prefWidth="216.53341674804688" text="Athlète" />
-                    <TableColumn fx:id="goldMedalColumn" prefWidth="269.0666198730469" text="Médaille d'or" />
-                    <TableColumn fx:id="silverMedalColumn" prefWidth="254.933349609375" text="Médaille d'argent" />
-                    <TableColumn fx:id="bronzeMedalColumn" prefWidth="254.93341064453125" text="Médaille de bronze" />
+                    <TableColumn fx:id="athleteColumn" prefWidth="200" text="Athlète" />
+                    <TableColumn fx:id="totalMedalColumn" prefWidth="200.0" text="Total médailles" />
+                    <TableColumn fx:id="goldMedalColumn" prefWidth="200" text="Médaille d'or" />
+                    <TableColumn fx:id="silverMedalColumn" prefWidth="200" text="Médaille d'argent" />
+                    <TableColumn fx:id="bronzeMedalColumn" prefWidth="200" text="Médaille de bronze" />
                 </columns>
             </TableView>
             <TableView fx:id="countryTableView" layoutX="14.0" layoutY="324.0" prefHeight="300.0" prefWidth="993.0">
                 <columns>
                     <TableColumn fx:id="countryColumn" prefWidth="200.0" text="Pays" />
-                    <TableColumn fx:id="totalMedalsColumn" prefWidth="200.0" text="Total médailles" />
-                    <TableColumn fx:id="goldMedalsColumn" prefWidth="200.0" text="Médailles d'or" />
-                    <TableColumn fx:id="silverMedalsColumn" prefWidth="200.0" text="Médailles d'argent" />
-                    <TableColumn fx:id="bronzeMedalsColumn" prefWidth="200.0" text="Médailles de bronze" />
+                    <TableColumn fx:id="totalMedalCountryColumn" prefWidth="200.0" text="Total médailles" />
+                    <TableColumn fx:id="goldMedalCountryColumn" prefWidth="200.0" text="Médailles d'or" />
+                    <TableColumn fx:id="silverMedalCountryColumn" prefWidth="200.0" text="Médailles d'argent" />
+                    <TableColumn fx:id="bronzeMedalCountryColumn" prefWidth="200.0" text="Médailles de bronze" />
                 </columns>
             </TableView>
         </AnchorPane>
