@@ -88,11 +88,9 @@ public class Event {
         athletes.remove(athlete);
     }
 
-
     @Override
     public String toString() {
         return sportName + " : " +
                 name + " - " + location + " - " + date;
     }
-
 }
