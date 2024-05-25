@@ -62,4 +62,30 @@ public class sportDAO {
 
         return sports;
     }
+
+    public static String getTypeResultFromSport(int sportId) {
+        String type_resultat = null;
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DatabaseManager.getConnection();
+            String query = "SELECT type_resultat FROM sports WHERE sport_id = ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, sportId);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                type_resultat = resultSet.getString("type_resultat");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DatabaseManager.closeConnection(connection);
+        }
+
+        return type_resultat;
+    }
+
 }

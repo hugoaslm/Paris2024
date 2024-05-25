@@ -84,22 +84,16 @@ public class eventDAO {
         }
     }
 
-    public static Event getEventById(int eventId) {
-        Event event = null;
+    public static String getEventById(int eventId) {
+        String eventName = null;
         try {
             Connection connection = DatabaseManager.getConnection();
-            String query = "SELECT * FROM events WHERE event_id = ?";
+            String query = "SELECT event_name FROM events WHERE event_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, eventId);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                event = new Event(
-                        resultSet.getInt("event_id"),
-                        resultSet.getInt("sport_id"),
-                        resultSet.getString("event_name"),
-                        resultSet.getString("event_location"),
-                        resultSet.getDate("event_date")
-                );
+                eventName = resultSet.getString("event_name");
             }
             resultSet.close();
             preparedStatement.close();
@@ -107,10 +101,10 @@ public class eventDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return event;
+        return eventName;
     }
 
-    public String getSportNameById(int sportId) throws SQLException {
+    public static String getSportNameById(int sportId) throws SQLException {
         String sportName = null;
         Connection connection = null;
         PreparedStatement preparedStatement = null;

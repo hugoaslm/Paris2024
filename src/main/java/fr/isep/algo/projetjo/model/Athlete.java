@@ -9,6 +9,10 @@ public class Athlete {
     private String sex;
     private int sport;
 
+    private int goldMedals;
+    private int silverMedals;
+    private int bronzeMedals;
+
     public Athlete(String nom, String prenom, String pays, int age, String sex, int id, int sport) {
         this.nom = nom;
         this.prenom = prenom;
@@ -74,6 +78,35 @@ public class Athlete {
 
     public void setSport(int sport) {
         this.sport = sport;
+    }
+
+    public void setGoldMedals(int goldMedals) {
+        this.goldMedals = goldMedals;
+    }
+
+    public void setSilverMedals(int silverMedals) {
+        this.silverMedals = silverMedals;
+    }
+
+    public void setBronzeMedals(int bronzeMedals) {
+        this.bronzeMedals = bronzeMedals;
+    }
+
+    public int getBronzeMedals() {
+        return bronzeMedals;
+    }
+
+    public int getGoldMedals() {
+        return goldMedals;
+    }
+
+    public int getSilverMedals() {
+        return silverMedals;
+    }
+
+    @Override
+    public String toString() {
+        return nom + " " + prenom;
     }
 
 }

@@ -16,7 +16,7 @@ public class Main extends Application {
 
         Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/fr/isep/algo/projetjo/img/logo_gold_paris2024.png")));
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fr/isep/algo/projetjo/view/home.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fr/isep/algo/projetjo/view/homeStart.fxml")));
 
         Scene scene = new Scene(root);
 

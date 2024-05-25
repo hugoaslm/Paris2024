@@ -10,8 +10,8 @@ public class Event {
     private String location;
     private Date date;
     private int sport;
-    private String sportName; // Nouvelle propriété pour stocker le nom du sport
     private List<Athlete> athletes;
+    private String sportName;
 
     // Constructor
     public Event(int id, int sport, String name, String location, Date date) {
@@ -90,10 +90,8 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Nom du sport : " + sportName + ", " +
-                "Nom de l'évènement : " + name + ", " +
-                "Lieu : " + location + ", " +
-                "Date : " + date.toString();
+        return sportName + " : " +
+                name + " - " + location + " - " + date;
     }
 
 }

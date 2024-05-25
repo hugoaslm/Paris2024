@@ -96,32 +96,4 @@ public class event_athletesDAO {
         return athletes;
     }
 
-    public static List<Event> getEventsByAthlete(int athleteId) {
-        List<Event> events = new ArrayList<>();
-        try {
-            Connection connection = DatabaseManager.getConnection();
-            String query = "SELECT events.* FROM events INNER JOIN event_athletes " +
-                    "ON events.event_id = event_athletes.event_id " +
-                    "WHERE event_athletes.athlete_id = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, athleteId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                Event event = new Event(
-                        resultSet.getInt("event_id"),
-                        resultSet.getInt("sport_id"),
-                        resultSet.getString("event_name"),
-                        resultSet.getString("event_location"),
-                        resultSet.getDate("event_date")
-                );
-                events.add(event);
-            }
-            resultSet.close();
-            preparedStatement.close();
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return events;
-    }
 }

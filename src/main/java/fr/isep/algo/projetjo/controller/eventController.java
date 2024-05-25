@@ -61,25 +61,23 @@ public class eventController extends dashboardController {
 
     @FXML
     private void initialize() {
-        // Initialisez les colonnes
+
         eventIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         sportNameColumn.setCellValueFactory(new PropertyValueFactory<>("sportName"));
         eventNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         eventLocationColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
         eventDateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        // Custom cell factory to display the list of athletes
         athletesColumn.setCellValueFactory(cellData -> {
             Event event = cellData.getValue();
             List<Athlete> athletes = event.getAthletes();
             String athleteNames = athletes.stream()
-                    .map(Athlete::getNom) // Assurez-vous que votre classe Athlete a un getter getName
+                    .map(Athlete::getNom)
                     .collect(Collectors.joining(", "));
             return new SimpleStringProperty(athleteNames);
         });
 
         eventDAO = new eventDAO();
-        // Appelez loadEvents pour remplir le tableau
         try {
             loadEvents();
             loadAthletes();
@@ -158,7 +156,7 @@ public class eventController extends dashboardController {
                 Event selectedEvent = eventListView.getSelectionModel().getSelectedItem();
                 if (selectedEvent != null) {
                     int sportId = eventDAO.getSportIdByName(sportName);
-                    if (sportId != -1) { // Vérifier si l'ID du sport est valide (-1 indique une absence de correspondance)
+                    if (sportId != -1) {
                         selectedEvent.setSport(sportId);
                         selectedEvent.setName(nameField.getText());
                         selectedEvent.setLocation(locationField.getText());

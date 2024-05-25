@@ -3,6 +3,10 @@
     -fx-table-cell-border-color: transparent;
 }
 
+.table-cell {
+    -fx-alignment: CENTER;
+}
+
 .table-view .column-header-background {
     -fx-background-color: #d7c378;
 }
