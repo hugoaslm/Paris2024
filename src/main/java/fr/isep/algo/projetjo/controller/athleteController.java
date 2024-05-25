@@ -239,7 +239,7 @@ public class athleteController extends dashboardController {
     private void goBack(ActionEvent event) {
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/home.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/homeStart.fxml"));
             Parent root = loader.load();
 
             Scene currentScene = ((Node) event.getSource()).getScene();
