@@ -9,8 +9,6 @@ import javafx.scene.layout.GridPane;
 import java.time.LocalDate;
 import java.time.YearMonth;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -19,9 +17,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-
-
-import static fr.isep.algo.projetjo.controller.dashboardController.redirectToPage;
 
 public class CalendarController {
 
@@ -64,44 +59,12 @@ public class CalendarController {
 
         for (int day = 1; day <= currentMonth.lengthOfMonth(); day++) {
             Label dayLabel = new Label(String.valueOf(day));
+            dayLabel.setStyle("-fx-font-size: 18px;"); // Increase font size of day numbers
             int row = (day + dayOfWeek - 2) / 7 + 1;
             int col = (day + dayOfWeek - 2) % 7;
             calendarGrid.add(dayLabel, col, row);
         }
     }
-
-
-    public static void redirectToPage(String fxmlFilePath, ActionEvent event) {
-        try {
-            // Chemin du fichier FXML de destination
-            URL destinationFXML = dashboardController.class.getResource(fxmlFilePath);
-
-            // Fichier FXML de la page actuelle
-            Scene currentScene = ((Node) event.getSource()).getScene();
-
-            // Récupérer l'URL du fichier FXML de la scène actuelle
-            URL currentFXML = null;
-            if (currentScene.getWindow() instanceof Stage) {
-                FXMLLoader loader = (FXMLLoader) ((Stage) currentScene.getWindow()).getProperties().get("FXMLLoader");
-                if (loader != null) {
-                    currentFXML = loader.getLocation();
-                }
-            }
-
-            FXMLLoader loader = new FXMLLoader(destinationFXML);
-            Parent root = loader.load();
-
-            // Obtenez le contrôleur de la nouvelle vue chargée
-            Object controller = loader.getController();
-
-            // Remplacez le contenu de la scène actuelle par la nouvelle racine chargée à partir du FXML
-            currentScene.setRoot(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 
     @FXML
     protected void redirectToDashboard(ActionEvent event) {
@@ -138,13 +101,8 @@ public class CalendarController {
         redirectToPage("/fr/isep/algo/projetjo/view/calendar.fxml", event);
     }
 
-
-
-
-
     @FXML
     private void goBack(ActionEvent event) {
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/athleteWindow.fxml"));
             Parent root = loader.load();
@@ -152,16 +110,38 @@ public class CalendarController {
             Scene currentScene = ((Node) event.getSource()).getScene();
 
             currentScene.setRoot(root);
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
+    public static void redirectToPage(String fxmlFilePath, ActionEvent event) {
+        try {
+            // Chemin du fichier FXML de destination
+            URL destinationFXML = dashboardController.class.getResource(fxmlFilePath);
 
+            // Fichier FXML de la page actuelle
+            Scene currentScene = ((Node) event.getSource()).getScene();
 
+            // Récupérer l'URL du fichier FXML de la scène actuelle
+            URL currentFXML = null;
+            if (currentScene.getWindow() instanceof Stage) {
+                FXMLLoader loader = (FXMLLoader) ((Stage) currentScene.getWindow()).getProperties().get("FXMLLoader");
+                if (loader != null) {
+                    currentFXML = loader.getLocation();
+                }
+            }
 
+            FXMLLoader loader = new FXMLLoader(destinationFXML);
+            Parent root = loader.load();
 
+            // Obtenez le contrôleur de la nouvelle vue chargée
+            Object controller = loader.getController();
+
+            // Remplacez le contenu de la scène actuelle par la nouvelle racine chargée à partir du FXML
+            currentScene.setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
