@@ -59,7 +59,8 @@ public class CalendarController {
 
         for (int day = 1; day <= currentMonth.lengthOfMonth(); day++) {
             Label dayLabel = new Label(String.valueOf(day));
-            dayLabel.setStyle("-fx-font-size: 18px;"); // Increase font size of day numbers
+            dayLabel.setStyle("-fx-font-size: 18px; -fx-border-color: #d7c378; -fx-border-width: 1px; -fx-alignment: center; -fx-padding: 10px;"); // Increase font size of day numbers and add borders
+            dayLabel.setMinSize(80, 80); // Set minimum size for the labels to create a grid effect
             int row = (day + dayOfWeek - 2) / 7 + 1;
             int col = (day + dayOfWeek - 2) % 7;
             calendarGrid.add(dayLabel, col, row);
