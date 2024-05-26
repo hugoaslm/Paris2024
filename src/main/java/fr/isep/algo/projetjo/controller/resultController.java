@@ -260,4 +260,9 @@ public class resultController extends dashboardController {
     private void openRanking(ActionEvent event) {
         redirectToPage("/fr/isep/algo/projetjo/view/ranking.fxml", event);
     }
+
+    @FXML
+    private void goBack(ActionEvent event) {
+        redirectToPage("/fr/isep/algo/projetjo/view/homeStart.fxml", event);
+    }
 }
