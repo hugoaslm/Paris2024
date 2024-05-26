@@ -70,17 +70,18 @@
       </ImageView>
       <AnchorPane layoutX="241.0" layoutY="76.0" prefHeight="623.0" prefWidth="1014.0">
          <children>
-            <Label layoutX="42.0" layoutY="41.0" text="Athlètes inscrits :">
+            <Label fx:id="nbAthletesLabel" layoutX="42.0" layoutY="41.0" text="Athlètes inscrits :">
                <font>
                   <Font name="Paris2024-Variable Regular" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="42.0" layoutY="92.0" text="Nombre d'évènements :">
+
+            <Label fx:id="nbEventsLabel" layoutX="42.0" layoutY="92.0" text="Nombre d'évènements :">
                <font>
                   <Font name="Paris2024-Variable Regular" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="42.0" layoutY="142.0" text="Nombre de médailles décernées :">
+            <Label fx:id="nbMedalsLabel" layoutX="42.0" layoutY="142.0" text="Nombre de médailles décernées :">
                <font>
                   <Font name="Paris2024-Variable Regular" size="22.0" />
                </font>

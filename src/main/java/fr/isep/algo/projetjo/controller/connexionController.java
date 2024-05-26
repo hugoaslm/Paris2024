@@ -16,7 +16,7 @@ import java.io.IOException;
 
 import fr.isep.algo.projetjo.dao.userDAO;
 
-public class PrimaryController {
+public class connexionController {
 
     @FXML
     private TextField pseudoField;
@@ -39,7 +39,7 @@ public class PrimaryController {
             SessionManager.getInstance().setAttribute("pseudo", pseudo);
             SessionManager.getInstance().setAttribute("role", user.getRole());
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/athleteWindow.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/dashboard.fxml"));
             Parent root = loader.load();
             athleteController controller = loader.getController();
 
