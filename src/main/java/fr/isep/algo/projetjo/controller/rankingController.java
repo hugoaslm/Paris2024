@@ -3,6 +3,7 @@ package fr.isep.algo.projetjo.controller;
 import fr.isep.algo.projetjo.dao.athleteDAO;
 import fr.isep.algo.projetjo.dao.medalDAO;
 import fr.isep.algo.projetjo.model.Athlete;
+import fr.isep.algo.projetjo.model.Country;
 import fr.isep.algo.projetjo.model.Medal;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +20,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class rankingController extends dashboardController {
 
@@ -33,19 +36,22 @@ public class rankingController extends dashboardController {
     private TableColumn<Athlete, String> silverMedalColumn;
     @FXML
     private TableColumn<Athlete, String> bronzeMedalColumn;
+    @FXML
+    private TableColumn<Athlete, Integer> totalMedalColumn;
+
 
     @FXML
-    private TableView<?> countryTableView;
+    private TableView<Country> countryTableView;
     @FXML
-    private TableColumn<?, String> countryColumn;
+    private TableColumn<Country, String> countryColumn;
     @FXML
-    private TableColumn<?, String> totalMedalsColumn;
+    private TableColumn<Country, Integer> goldMedalCountryColumn;
     @FXML
-    private TableColumn<?, String> goldMedalsColumn;
+    private TableColumn<Country, Integer> silverMedalCountryColumn;
     @FXML
-    private TableColumn<?, String> silverMedalsColumn;
+    private TableColumn<Country, Integer> bronzeMedalCountryColumn;
     @FXML
-    private TableColumn<?, String> bronzeMedalsColumn;
+    private TableColumn<Country, Integer> totalMedalCountryColumn;
 
     private ObservableList<Athlete> athleteList = FXCollections.observableArrayList();
 
@@ -55,11 +61,65 @@ public class rankingController extends dashboardController {
         initializeCountryTable();
     }
 
+    private void initializeCountryTable() {
+        countryColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        goldMedalCountryColumn.setCellValueFactory(new PropertyValueFactory<>("goldMedals"));
+        silverMedalCountryColumn.setCellValueFactory(new PropertyValueFactory<>("silverMedals"));
+        bronzeMedalCountryColumn.setCellValueFactory(new PropertyValueFactory<>("bronzeMedals"));
+        totalMedalCountryColumn.setCellValueFactory(new PropertyValueFactory<>("totalMedals"));
+
+        List<Athlete> athletes = athleteDAO.getAllAthletes();
+        Map<String, Country> countryMedalMap = new HashMap<>();
+
+        for (Athlete athlete : athletes) {
+            String countryName = athlete.getPays();
+            List<Medal> medals = medalDAO.getAthleteMedals(athlete.getId());
+            int goldCount = 0;
+            int silverCount = 0;
+            int bronzeCount = 0;
+            for (Medal medal : medals) {
+                switch (medal.getMedalType()) {
+                    case "Or":
+                        goldCount++;
+                        break;
+                    case "Argent":
+                        silverCount++;
+                        break;
+                    case "Bronze":
+                        bronzeCount++;
+                        break;
+                }
+            }
+
+            if (!countryMedalMap.containsKey(countryName)) {
+                countryMedalMap.put(countryName, new Country(countryName));
+            }
+
+            Country country = countryMedalMap.get(countryName);
+            country.addGoldMedals(goldCount);
+            country.addSilverMedals(silverCount);
+            country.addBronzeMedals(bronzeCount);
+        }
+
+        ObservableList<Country> countryList = FXCollections.observableArrayList(countryMedalMap.values());
+
+        // Sort the list of countries based on the total medals
+        countryList.sort((c1, c2) -> {
+            int totalMedals1 = c1.getGoldMedals() + c1.getSilverMedals() + c1.getBronzeMedals();
+            int totalMedals2 = c2.getGoldMedals() + c2.getSilverMedals() + c2.getBronzeMedals();
+            return Integer.compare(totalMedals2, totalMedals1);
+        });
+
+        countryTableView.setItems(countryList);
+    }
+
+
     private void initializeAthleteTable() {
         athleteColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
         goldMedalColumn.setCellValueFactory(new PropertyValueFactory<>("goldMedals"));
         silverMedalColumn.setCellValueFactory(new PropertyValueFactory<>("silverMedals"));
         bronzeMedalColumn.setCellValueFactory(new PropertyValueFactory<>("bronzeMedals"));
+        totalMedalColumn.setCellValueFactory(new PropertyValueFactory<>("totalMedals"));
 
         List<Athlete> athletes = athleteDAO.getAllAthletes();
         ObservableList<Athlete> athleteList = FXCollections.observableArrayList();
@@ -96,12 +156,6 @@ public class rankingController extends dashboardController {
         });
 
         athleteTableView.setItems(athleteList);
-    }
-
-
-    private void initializeCountryTable() {
-        // Initialisation du tableau pour le classement par pays
-        // Vous devrez implémenter la logique pour afficher le classement par pays avec les médailles correspondantes
     }
 
     @FXML

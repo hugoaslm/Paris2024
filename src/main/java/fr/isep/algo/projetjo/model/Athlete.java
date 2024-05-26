@@ -12,6 +12,7 @@ public class Athlete {
     private int goldMedals;
     private int silverMedals;
     private int bronzeMedals;
+    private int totalMedals;
 
     public Athlete(String nom, String prenom, String pays, int age, String sex, int id, int sport) {
         this.nom = nom;
@@ -102,6 +103,10 @@ public class Athlete {
 
     public int getSilverMedals() {
         return silverMedals;
+    }
+
+    public int getTotalMedals() {
+        return goldMedals + silverMedals + bronzeMedals;
     }
 
     @Override

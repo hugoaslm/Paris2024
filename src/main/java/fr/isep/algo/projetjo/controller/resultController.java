@@ -9,14 +9,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -259,25 +254,6 @@ public class resultController extends dashboardController {
             alert.setContentText("Veuillez sélectionner un athlète dans la liste.");
             alert.showAndWait();
         }
-    }
-
-
-    @FXML
-    private void goBack(ActionEvent event) {
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/athleteWindow.fxml"));
-            Parent root = loader.load();
-
-            Scene currentScene = ((Node) event.getSource()).getScene();
-
-            currentScene.setRoot(root);
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
     @FXML
