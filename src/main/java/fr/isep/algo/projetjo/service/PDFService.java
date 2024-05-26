@@ -2,13 +2,12 @@ package fr.isep.algo.projetjo.service;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
-import fr.isep.algo.projetjo.controller.dashboardController;
+import fr.isep.algo.projetjo.controller.navigationController;
 import fr.isep.algo.projetjo.dao.eventDAO;
 import fr.isep.algo.projetjo.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -19,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class PDFService extends dashboardController {
+public class PDFService extends navigationController {
 
     private static final String LOGO_PATH = "src/main/resources/fr/isep/algo/projetjo/img/logo_paris_2024.png";
 

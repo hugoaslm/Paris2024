@@ -4,6 +4,7 @@ module fr.isep.algo.projetjo {
     requires java.sql;
     requires de.jensd.fx.glyphs.fontawesome;
     requires itextpdf;
+    requires java.desktop;
 
 
     opens fr.isep.algo.projetjo to javafx.fxml;

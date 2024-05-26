@@ -12,7 +12,7 @@ import javafx.scene.layout.FlowPane;
 import java.io.IOException;
 import java.util.List;
 
-public class sportController extends dashboardController {
+public class sportController extends navigationController {
 
     @FXML
     private FlowPane sportButtonsContainer; // Container où seront ajoutés les boutons

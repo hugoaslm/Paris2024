@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-public class athleteController extends dashboardController {
+public class athleteController extends navigationController {
 
     @FXML
     public Button dashboardButton;

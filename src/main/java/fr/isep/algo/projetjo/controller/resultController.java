@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class resultController extends dashboardController {
+public class resultController extends navigationController {
 
     @FXML
     private ListView<Athlete> athleteListView2;

@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class sportDetailController extends dashboardController {
+public class sportDetailController extends navigationController {
 
     @FXML
     private Label sportTitle;

@@ -28,7 +28,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.stream.Collectors;
 
-public class eventController extends dashboardController {
+public class eventController extends navigationController {
 
     @FXML
     private ListView<String> athleteListView;
