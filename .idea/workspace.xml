@@ -4,20 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="956ea7f6-8349-4eef-8d02-035e9368ff68" name="Changes" comment="Ajout des classements">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/EventController.java" afterDir="false" />
+    <list default="true" id="956ea7f6-8349-4eef-8d02-035e9368ff68" name="Changes" comment="Merge">
+      <change afterPath="$PROJECT_DIR$/lib/itextpdf-5.5.13.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/service/PDFService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/CalendarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/athleteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/athleteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/eventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/eventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/dashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/dashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/resultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/resultController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/eventDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/eventDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/userDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/userDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/calendar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/calendar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/events.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/events.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/results.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/results.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,35 +70,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AthleteTableView.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "JUnit.athleteDAOTest.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "backup2",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/hugo2/AppData/Local/SceneBuilder/SceneBuilder.exe",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4827586",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AthleteTableView.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.itextpdf-5.5.13.jar.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.athleteDAOTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;backup2&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-21&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/hugo2/OneDrive/Documents/GitHub/Paris2024/lib/itextpdf-5.5.13.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4827586&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mariadb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="fr.isep.algo.projetjo.model" />
@@ -111,6 +109,7 @@
       <recent name="C:\Users\hugo2\IdeaProjects\projetJO\src\main\resources\fr\isep\algo\projetjo\view" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\hugo2\OneDrive\Documents\GitHub\Paris2024\lib" />
       <recent name="C:\Users\hugo2\IdeaProjects\projetJO\src\main\resources\fr\isep\algo\projetjo\view" />
     </key>
   </component>
@@ -137,9 +136,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="itextpdf-5.5.13.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/../itextpdf-5.5.13.jar!/" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JAR Application.itextpdf-5.5.13.jar" />
         <item itemvalue="JUnit.athleteDAOTest" />
       </list>
     </recent_temporary>
@@ -205,6 +209,9 @@
       <workItem from="1716577351190" duration="6637000" />
       <workItem from="1716584055032" duration="34000" />
       <workItem from="1716627654522" duration="15271000" />
+      <workItem from="1716716548035" duration="749000" />
+      <workItem from="1716717370909" duration="369000" />
+      <workItem from="1716717756125" duration="6267000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -311,6 +318,7 @@
     <MESSAGE value="Modifs athlètes" />
     <MESSAGE value="Ajout des events" />
     <MESSAGE value="Ajout des classements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout des classements" />
+    <MESSAGE value="Merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge" />
   </component>
 </project>

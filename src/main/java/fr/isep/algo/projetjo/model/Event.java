@@ -12,6 +12,7 @@ public class Event {
     private int sport;
     private List<Athlete> athletes;
     private String sportName;
+    private List<Result> results;
 
     // Constructor
     public Event(int id, int sport, String name, String location, Date date) {
@@ -92,5 +93,13 @@ public class Event {
     public String toString() {
         return sportName + " : " +
                 name + " - " + location + " - " + date;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
+    }
+
+    public List<Result> getResults() {
+        return results;
     }
 }

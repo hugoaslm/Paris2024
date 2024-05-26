@@ -72,7 +72,7 @@ public abstract class dashboardController {
 
     @FXML
     protected void redirectToAnalyses(ActionEvent event) {
-        redirectToPage("/fr/isep/algo/projetjo/view/analyses.fxml", event);
+        redirectToPage("/fr/isep/algo/projetjo/view/pdf.fxml", event);
     }
 
     @FXML
