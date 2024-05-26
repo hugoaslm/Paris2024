@@ -41,7 +41,7 @@ public class connexionController {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/dashboard.fxml"));
             Parent root = loader.load();
-            athleteController controller = loader.getController();
+            dashboardController controller = loader.getController();
 
             // Obtenir la scène actuelle à partir de n'importe quel nœud de la scène actuelle
             Scene currentScene = ((Node) event.getSource()).getScene();
