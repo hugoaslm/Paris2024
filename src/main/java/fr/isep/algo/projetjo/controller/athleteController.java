@@ -76,12 +76,7 @@ public class athleteController extends dashboardController {
     public void initialize() {
 
         // Récupérer les informations de l'utilisateur depuis la session
-        String pseudo = (String) SessionManager.getInstance().getAttribute("pseudo");
         int role = (int) SessionManager.getInstance().getAttribute("role");
-
-        // Utiliser les informations récupérées
-        System.out.println("Utilisateur connecté : " + pseudo);
-        System.out.println("Rôle de l'utilisateur : " + role);
 
         // Si l'utilisateur n'est pas admin, il ne peut pas ajouter d'athlètes ou modifier/supprimer
         if (role != 1) {

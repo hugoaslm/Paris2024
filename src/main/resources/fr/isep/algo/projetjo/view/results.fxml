@@ -95,41 +95,41 @@
                 </Label>
                 <TextField fx:id="resultField" layoutX="200.0" layoutY="400.0" prefHeight="26.0" prefWidth="230.0" />
 
-                <Label layoutX="14.0" layoutY="234.0" prefHeight="24.0" prefWidth="101.0" text="Évènement :" textFill="#d7c378">
+                <Label fx:id="eventLabel" layoutX="14.0" layoutY="234.0" prefHeight="24.0" prefWidth="101.0" text="Évènement :" textFill="#d7c378">
                     <font>
                         <Font name="Paris2024-Variable Regular" size="18.0" />
                     </font>
                 </Label>
                 <ListView fx:id="eventListView2" layoutX="200.0" layoutY="234.0" prefHeight="100.0" prefWidth="230.0" />
 
-                <Button layoutX="65.0" layoutY="495.0" onAction="#addResult" style="-fx-background-color: #d7c378;" text="Ajouter">
+                <Button fx:id="addResultButton" layoutX="65.0" layoutY="495.0" onAction="#addResult" style="-fx-background-color: #d7c378;" text="Ajouter">
                     <font>
                         <Font name="Paris2024-Variable Regular" size="18.0" />
                     </font>
                 </Button>
-                <Button layoutX="205.0" layoutY="495.0" onAction="#deleteResult" style="-fx-background-color: #d7c378;" text="Supprimer">
+                <Button fx:id="deleteResultButton" layoutX="205.0" layoutY="495.0" onAction="#deleteResult" style="-fx-background-color: #d7c378;" text="Supprimer">
                     <font>
                         <Font name="Paris2024-Variable Regular" size="18.0" />
                     </font>
                 </Button>
-            <Label layoutX="661.0" layoutY="350.0" text="Médaille :" textFill="#d7c378">
+            <Label fx:id="medalLabel" layoutX="661.0" layoutY="350.0" text="Médaille :" textFill="#d7c378">
                <font>
                   <Font name="Paris2024-Variable Regular" size="18.0" />
                </font>
             </Label>
             <ChoiceBox fx:id="medalBox" layoutX="847.0" layoutY="350.0" />
-            <Label layoutX="661.0" layoutY="234.0" prefHeight="24.0" prefWidth="101.0" text="Athlète :" textFill="#d7c378">
+            <Label fx:id="athleteLabel" layoutX="661.0" layoutY="234.0" prefHeight="24.0" prefWidth="101.0" text="Athlète :" textFill="#d7c378">
                <font>
                   <Font name="Paris2024-Variable Regular" size="18.0" />
                </font>
             </Label>
             <ListView fx:id="athleteListView2" layoutX="847.0" layoutY="234.0" prefHeight="100.0" prefWidth="150.0" />
-            <Button layoutX="712.0" layoutY="427.0" onAction="#addMedal" style="-fx-background-color: #d7c378;" text="Ajouter">
+            <Button fx:id="addMedalButton" layoutX="712.0" layoutY="427.0" onAction="#addMedal" style="-fx-background-color: #d7c378;" text="Ajouter">
                <font>
                   <Font name="Paris2024-Variable Regular" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="852.0" layoutY="427.0" onAction="#deleteMedal" style="-fx-background-color: #d7c378;" text="Supprimer">
+            <Button fx:id="deleteMedalButton" layoutX="852.0" layoutY="427.0" onAction="#deleteMedal" style="-fx-background-color: #d7c378;" text="Supprimer">
                <font>
                   <Font name="Paris2024-Variable Regular" size="18.0" />
                </font>

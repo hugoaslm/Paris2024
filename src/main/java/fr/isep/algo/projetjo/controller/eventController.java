@@ -5,6 +5,7 @@ import fr.isep.algo.projetjo.dao.eventDAO;
 import fr.isep.algo.projetjo.dao.event_athletesDAO;
 import fr.isep.algo.projetjo.model.Athlete;
 import fr.isep.algo.projetjo.model.Event;
+import fr.isep.algo.projetjo.util.SessionManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.stream.Collectors;
 
 public class eventController extends dashboardController {
+
     @FXML
     private ListView<String> athleteListView;
     @FXML
@@ -60,7 +62,45 @@ public class eventController extends dashboardController {
     private TableColumn<Event, String> athletesColumn;
 
     @FXML
+    private Button addEvent;
+    @FXML
+    private Button updateEvent;
+    @FXML
+    private Button deleteEvent;
+
+    @FXML
+    private Label eventLabel;
+    @FXML
+    private Label sportLabel;
+    @FXML
+    private Label nomLabel;
+    @FXML
+    private Label lieuLabel;
+    @FXML
+    private Label dateLabel;
+    @FXML
+    private Label athleteLabel;
+
+    @FXML
     private void initialize() {
+
+        int role = (int) SessionManager.getInstance().getAttribute("role");
+        // Si l'utilisateur n'est pas admin, il ne peut pas ajouter d'évènement ou modifier/supprimer
+        if (role != 1) {
+            nameField.setVisible(false);
+            locationField.setVisible(false);
+            dateField.setVisible(false);
+            sportNameField.setVisible(false);
+            athleteListView.setVisible(false);
+            addEvent.setVisible(false);
+            deleteEvent.setVisible(false);
+            updateEvent.setVisible(false);
+            sportLabel.setVisible(false);
+            nomLabel.setVisible(false);
+            lieuLabel.setVisible(false);
+            dateLabel.setVisible(false);
+            athleteLabel.setVisible(false);
+        }
 
         eventIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         sportNameColumn.setCellValueFactory(new PropertyValueFactory<>("sportName"));

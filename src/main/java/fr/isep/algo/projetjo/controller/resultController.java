@@ -4,6 +4,7 @@ import fr.isep.algo.projetjo.dao.*;
 import fr.isep.algo.projetjo.model.Athlete;
 import fr.isep.algo.projetjo.model.Event;
 import fr.isep.algo.projetjo.model.Result;
+import fr.isep.algo.projetjo.util.SessionManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -44,15 +45,54 @@ public class resultController extends dashboardController {
     @FXML
     private ChoiceBox medalBox;
 
+    @FXML
+    private Label resultLabel;
+    @FXML
+    private Label eventLabel;
+    @FXML
+    private Label resultLabel1;
+    @FXML
+    private Label athleteLabel;
+    @FXML
+    private Button addResultButton;
+    @FXML
+    private Button deleteResultButton;
+    @FXML
+    private Button addMedalButton;
+    @FXML
+    private Button deleteMedalButton;
+    @FXML
+    private Button ranking;
+    @FXML
+    private Label medalLabel;
+
     private ObservableList<Result> resultList = FXCollections.observableArrayList();
 
     private ObservableList<Event> eventList = FXCollections.observableArrayList();
 
     @FXML
-    private Label resultLabel;
-
-    @FXML
     public void initialize() throws SQLException {
+
+        int role = (int) SessionManager.getInstance().getAttribute("role");
+        // Si l'utilisateur n'est pas admin, il ne peut pas ajouter de résultats ou modifier/supprimer
+        if (role != 1) {
+            resultLabel.setVisible(false);
+            eventLabel.setVisible(false);
+            resultLabel1.setVisible(false);
+            addResultButton.setVisible(false);
+            deleteResultButton.setVisible(false);
+            addMedalButton.setVisible(false);
+            deleteMedalButton.setVisible(false);
+            ranking.setVisible(false);
+            athleteLabel.setVisible(false);
+            medalLabel.setVisible(false);
+            athleteChoiceBox.setVisible(false);
+            medalBox.setVisible(false);
+            athleteListView2.setVisible(false);
+            eventListView2.setVisible(false);
+            resultField.setVisible(false);
+        }
+
         resultIdColumn.setCellValueFactory(new PropertyValueFactory<>("resultId"));
         eventNameColumn.setCellValueFactory(new PropertyValueFactory<>("eventName"));
         vainqueurColumn.setCellValueFactory(new PropertyValueFactory<>("vainqueur"));
