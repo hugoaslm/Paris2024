@@ -11,10 +11,10 @@ public class eventDAO {
 
     public static List<Event> getAllEvents() {
         List<Event> events = new ArrayList<>();
-        try {
-            Connection connection = DatabaseManager.getConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM events");
+        String query = "SELECT e.*, s.nom_sport FROM events e JOIN sports s ON e.sport_id = s.sport_id";
+        try (Connection connection = DatabaseManager.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
 
             while (resultSet.next()) {
                 Event event = new Event(
@@ -24,11 +24,9 @@ public class eventDAO {
                         resultSet.getString("event_location"),
                         resultSet.getDate("event_date")
                 );
+                event.setSportName(resultSet.getString("nom_sport"));
                 events.add(event);
             }
-            resultSet.close();
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
