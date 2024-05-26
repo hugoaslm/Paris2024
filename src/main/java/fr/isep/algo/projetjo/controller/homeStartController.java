@@ -32,7 +32,7 @@ public class homeStartController {
     private void visiteur(ActionEvent event) throws IOException {
 
         SessionManager.getInstance().setAttribute("role", 0);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/athleteWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/dashboard.fxml"));
         Parent root = loader.load();
 
         Scene currentScene = ((Node) event.getSource()).getScene();

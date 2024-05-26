@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-public class sportByCategoryController extends dashboardController {
+public class sportByCategoryController extends navigationController {
 
     @FXML
     private Label categoryForSports;

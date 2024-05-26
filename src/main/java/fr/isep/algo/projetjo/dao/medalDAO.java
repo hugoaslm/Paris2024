@@ -3,10 +3,7 @@ package fr.isep.algo.projetjo.dao;
 import fr.isep.algo.projetjo.model.DatabaseManager;
 import fr.isep.algo.projetjo.model.Medal;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +58,25 @@ public class medalDAO {
             e.printStackTrace();
         }
         return medals;
+    }
+
+    public static int countMedals() {
+        int count = 0;
+        try {
+            Connection connection = DatabaseManager.getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM medals");
+
+            if (resultSet.next()) {
+                count = resultSet.getInt(1);
+            }
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 
 }
