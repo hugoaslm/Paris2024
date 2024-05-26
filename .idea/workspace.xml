@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="956ea7f6-8349-4eef-8d02-035e9368ff68" name="Changes" comment="Modifs athlètes">
+    <list default="true" id="956ea7f6-8349-4eef-8d02-035e9368ff68" name="Changes" comment="Merge">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_05_2024_10_44__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_05_2024_10_44__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/EventController.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,11 +24,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="TEST" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -62,41 +60,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AthleteTableView.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "JUnit.athleteDAOTest.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/louis/OneDrive/Documents/GitHub/Paris2024/src/main/resources/fr/isep/algo/projetjo/img",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4827586",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AthleteTableView.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.athleteDAOTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/hugo2/AppData/Local/SceneBuilder/SceneBuilder.exe&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4827586&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mariadb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="fr.isep.algo.projetjo.model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\louis\OneDrive\Documents\GitHub\Paris2024\src\main\resources\fr\isep\algo\projetjo\img" />
       <recent name="C:\Users\hugo2\IdeaProjects\projetJO\src\main\resources\fr\isep\algo\projetjo\view" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -130,15 +127,14 @@
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.athleteDAOTest" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.athleteDAOTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
       </set>
     </attachedChunks>
   </component>
@@ -195,6 +191,7 @@
       <workItem from="1716577351190" duration="6637000" />
       <workItem from="1716584055032" duration="34000" />
       <workItem from="1716627654522" duration="15271000" />
+      <workItem from="1716727082659" duration="106000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -276,71 +273,7 @@
       <option name="project" value="LOCAL" />
       <updated>1716584078135</updated>
     </task>
-    <task id="LOCAL-00011" summary="Modifs athlètes">
-      <option name="closed" value="true" />
-      <created>1716659686416</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1716659686416</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Modifs athlètes">
-      <option name="closed" value="true" />
-      <created>1716664217141</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1716664217141</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Modifs athlètes">
-      <option name="closed" value="true" />
-      <created>1716668942099</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1716668942099</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Modifs athlètes">
-      <option name="closed" value="true" />
-      <created>1716670564095</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1716670564095</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Modifs athlètes">
-      <option name="closed" value="true" />
-      <created>1716675825000</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1716675825001</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Modifs athlètes">
-      <option name="closed" value="true" />
-      <created>1716707278484</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1716707278484</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Modifs athlètes">
-      <option name="closed" value="true" />
-      <created>1716716554207</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1716716554207</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Modifs athlètes">
-      <option name="closed" value="true" />
-      <created>1716719214762</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1716719214762</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +284,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/backup2" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -362,8 +307,8 @@
     <MESSAGE value="SQL Communication" />
     <MESSAGE value="initial commit" />
     <MESSAGE value="Ajout connexion et session" />
-    <MESSAGE value="Ajout des events" />
     <MESSAGE value="Modifs athlètes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modifs athlètes" />
+    <MESSAGE value="Ajout des events" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout des events" />
   </component>
 </project>

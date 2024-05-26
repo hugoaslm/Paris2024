@@ -1,0 +1,127 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"956ea7f6-8349-4eef-8d02-035e9368ff68\" name=\"Changes\" comment=\"Ajout des résultats\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Country.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/rankingController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/rankingController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/athleteDAO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/athleteDAO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Athlete.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Athlete.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/ranking.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/ranking.fxml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;hugoaslm&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/hugoaslm/Paris2024.git&quot;,\r\n    &quot;accountId&quot;: &quot;39f32ad3-1b92-49d7-9080-b50ab6430ff9&quot;\r\n  }\r\n}</component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/athleteController.java\" root0=\"SKIP_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2efl0Svi5BsCfkDYXMUnRvmyt5R\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.AthleteTableView.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;JUnit.athleteDAOTest.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;backup&quot;,\r\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/hugo2/AppData/Local/SceneBuilder/SceneBuilder.exe&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.4827586&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  },\r\n  &quot;keyToStringList&quot;: {\r\n    &quot;DatabaseDriversLRU&quot;: [\r\n      &quot;mariadb&quot;\r\n    ]\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"fr.isep.algo.projetjo.model\" />\r\n    </key>\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\hugo2\\IdeaProjects\\projetJO\\src\\main\\resources\\fr\\isep\\algo\\projetjo\\view\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\hugo2\\IdeaProjects\\projetJO\\src\\main\\resources\\fr\\isep\\algo\\projetjo\\view\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"fr.isep.algo.projetjo.Main\" />\r\n      <module name=\"projetJO\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"fr.isep.algo.projetjo.controller.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"athleteDAOTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"projetJO\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"athleteDAOTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"JUnit.athleteDAOTest\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150\" />\r\n        <option value=\"bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"956ea7f6-8349-4eef-8d02-035e9368ff68\" name=\"Changes\" comment=\"\" />\r\n      <created>1712303291411</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1712303291411</updated>\r\n      <workItem from=\"1712303292480\" duration=\"3003000\" />\r\n      <workItem from=\"1712309999015\" duration=\"685000\" />\r\n      <workItem from=\"1712416389764\" duration=\"1633000\" />\r\n      <workItem from=\"1712418037418\" duration=\"54000\" />\r\n      <workItem from=\"1712418124973\" duration=\"37000\" />\r\n      <workItem from=\"1712486328129\" duration=\"2840000\" />\r\n      <workItem from=\"1712497560042\" duration=\"4281000\" />\r\n      <workItem from=\"1712503331599\" duration=\"397000\" />\r\n      <workItem from=\"1712514378317\" duration=\"575000\" />\r\n      <workItem from=\"1712518543204\" duration=\"261000\" />\r\n      <workItem from=\"1712571612511\" duration=\"2327000\" />\r\n      <workItem from=\"1712575569546\" duration=\"8356000\" />\r\n      <workItem from=\"1712601853062\" duration=\"3217000\" />\r\n      <workItem from=\"1712655754455\" duration=\"4575000\" />\r\n      <workItem from=\"1712661927850\" duration=\"5252000\" />\r\n      <workItem from=\"1712672052782\" duration=\"2477000\" />\r\n      <workItem from=\"1712831060394\" duration=\"17000\" />\r\n      <workItem from=\"1713349356445\" duration=\"847000\" />\r\n      <workItem from=\"1713449163263\" duration=\"1034000\" />\r\n      <workItem from=\"1713884522103\" duration=\"162000\" />\r\n      <workItem from=\"1713969853814\" duration=\"86000\" />\r\n      <workItem from=\"1714035169525\" duration=\"1164000\" />\r\n      <workItem from=\"1714117119777\" duration=\"4319000\" />\r\n      <workItem from=\"1714722688768\" duration=\"23000\" />\r\n      <workItem from=\"1715255405437\" duration=\"5183000\" />\r\n      <workItem from=\"1715274520839\" duration=\"474000\" />\r\n      <workItem from=\"1715275014992\" duration=\"34000\" />\r\n      <workItem from=\"1715333379433\" duration=\"4279000\" />\r\n      <workItem from=\"1715342584018\" duration=\"40000\" />\r\n      <workItem from=\"1715342729690\" duration=\"1663000\" />\r\n      <workItem from=\"1715344424323\" duration=\"5462000\" />\r\n      <workItem from=\"1715423189601\" duration=\"1053000\" />\r\n      <workItem from=\"1715425608995\" duration=\"39000\" />\r\n      <workItem from=\"1715444789576\" duration=\"696000\" />\r\n      <workItem from=\"1715506918531\" duration=\"5793000\" />\r\n      <workItem from=\"1715512846521\" duration=\"12000\" />\r\n      <workItem from=\"1715515338334\" duration=\"1708000\" />\r\n      <workItem from=\"1715585569561\" duration=\"678000\" />\r\n      <workItem from=\"1715609643982\" duration=\"633000\" />\r\n      <workItem from=\"1715927848441\" duration=\"1689000\" />\r\n      <workItem from=\"1716570279875\" duration=\"819000\" />\r\n      <workItem from=\"1716573195629\" duration=\"381000\" />\r\n      <workItem from=\"1716577351190\" duration=\"6637000\" />\r\n      <workItem from=\"1716584055032\" duration=\"34000\" />\r\n      <workItem from=\"1716627654522\" duration=\"17139000\" />\r\n      <workItem from=\"1716652298988\" duration=\"956000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initial commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712304360201</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712304360202</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"SQL Communication\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712310083915</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712310083915</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"initial commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712674311165</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712674311165</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Ajout connexion et session\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715259282601</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715259282601</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Ajout connexion et session\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715260069508</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715260069508</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Ajout connexion et session\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715337570121</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715337570121</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Modifs athlètes\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715425639044</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715425639044</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Ajout des events\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716542392473</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716542392473</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Ajout des events\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716546515304</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716546515304</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Ajout des events\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716584078135</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716584078135</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"Ajout des résultats\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716644772427</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716644772427</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"12\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initial commit\" />\r\n    <MESSAGE value=\"SQL Communication\" />\r\n    <MESSAGE value=\"initial commit\" />\r\n    <MESSAGE value=\"Ajout connexion et session\" />\r\n    <MESSAGE value=\"Modifs athlètes\" />\r\n    <MESSAGE value=\"Ajout des events\" />\r\n    <MESSAGE value=\"Ajout des résultats\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Ajout des résultats\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 1c48d685878a51d03cb0eefc5809e51e585097b6)
++++ b/.idea/workspace.xml	(date 1716726706527)
+@@ -4,13 +4,16 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="956ea7f6-8349-4eef-8d02-035e9368ff68" name="Changes" comment="Ajout des résultats">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Country.java" afterDir="false" />
++    <list default="true" id="956ea7f6-8349-4eef-8d02-035e9368ff68" name="Changes" comment="Merge">
++      <change afterPath="$PROJECT_DIR$/lib/itextpdf-5.5.13.jar" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/service/PDFService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/rankingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/rankingController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/athleteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/athleteDAO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Athlete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Athlete.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/ranking.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/algo/projetjo/view/ranking.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/dashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/dashboardController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/resultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/resultController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Event.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -28,7 +31,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="master" />
++        <entry key="$PROJECT_DIR$" value="backup" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -72,14 +75,16 @@
+     &quot;Application.AthleteTableView.executor&quot;: &quot;Run&quot;,
+     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
++    &quot;JAR Application.itextpdf-5.5.13.jar.executor&quot;: &quot;Run&quot;,
+     &quot;JUnit.athleteDAOTest.executor&quot;: &quot;Run&quot;,
+     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;backup&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;backup2&quot;,
+     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-21&quot;,
+     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/hugo2/AppData/Local/SceneBuilder/SceneBuilder.exe&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/hugo2/OneDrive/Documents/GitHub/Paris2024/lib/itextpdf-5.5.13.jar&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+@@ -104,6 +109,7 @@
+       <recent name="C:\Users\hugo2\IdeaProjects\projetJO\src\main\resources\fr\isep\algo\projetjo\view" />
+     </key>
+     <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\hugo2\OneDrive\Documents\GitHub\Paris2024\lib" />
+       <recent name="C:\Users\hugo2\IdeaProjects\projetJO\src\main\resources\fr\isep\algo\projetjo\view" />
+     </key>
+   </component>
+@@ -129,10 +135,15 @@
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
++    </configuration>
++    <configuration name="itextpdf-5.5.13.jar" type="JarApplication" temporary="true">
++      <option name="JAR_PATH" value="$PROJECT_DIR$/../itextpdf-5.5.13.jar!/" />
++      <method v="2" />
+     </configuration>
+     <recent_temporary>
+       <list>
+         <item itemvalue="Application.Main" />
++        <item itemvalue="JAR Application.itextpdf-5.5.13.jar" />
+         <item itemvalue="JUnit.athleteDAOTest" />
+       </list>
+     </recent_temporary>
+@@ -197,8 +208,10 @@
+       <workItem from="1716573195629" duration="381000" />
+       <workItem from="1716577351190" duration="6637000" />
+       <workItem from="1716584055032" duration="34000" />
+-      <workItem from="1716627654522" duration="17139000" />
+-      <workItem from="1716652298988" duration="956000" />
++      <workItem from="1716627654522" duration="15271000" />
++      <workItem from="1716716548035" duration="749000" />
++      <workItem from="1716717370909" duration="369000" />
++      <workItem from="1716717756125" duration="6267000" />
+     </task>
+     <task id="LOCAL-00001" summary="Initial commit">
+       <option name="closed" value="true" />
+@@ -280,15 +293,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1716584078135</updated>
+     </task>
+-    <task id="LOCAL-00011" summary="Ajout des résultats">
+-      <option name="closed" value="true" />
+-      <created>1716644772427</created>
+-      <option name="number" value="00011" />
+-      <option name="presentableId" value="LOCAL-00011" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1716644772427</updated>
+-    </task>
+-    <option name="localTasksCounter" value="12" />
++    <option name="localTasksCounter" value="11" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -312,7 +317,8 @@
+     <MESSAGE value="Ajout connexion et session" />
+     <MESSAGE value="Modifs athlètes" />
+     <MESSAGE value="Ajout des events" />
+-    <MESSAGE value="Ajout des résultats" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Ajout des résultats" />
++    <MESSAGE value="Ajout des classements" />
++    <MESSAGE value="Merge" />
++    <option name="LAST_COMMIT_MESSAGE" value="Merge" />
+   </component>
+ </project>
+\ No newline at end of file
