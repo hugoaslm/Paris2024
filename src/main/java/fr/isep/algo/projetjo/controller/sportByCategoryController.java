@@ -2,11 +2,17 @@ package fr.isep.algo.projetjo.controller;
 
 import fr.isep.algo.projetjo.dao.sportDAO;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 
+import java.io.IOException;
 import java.util.List;
 
 public class sportByCategoryController extends dashboardController {
@@ -42,6 +48,20 @@ public class sportByCategoryController extends dashboardController {
 
     private void sportButtonClick(String sport) {
         System.out.println("Sport sélectionné : " + sport);
+    }
+
+    @FXML
+    private void goBack(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/disciplines.fxml"));
+            Parent root = loader.load();
+
+            Scene currentScene = ((Node) event.getSource()).getScene();
+
+            currentScene.setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
