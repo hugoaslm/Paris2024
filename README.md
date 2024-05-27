@@ -22,3 +22,40 @@ Ce projet Java est conçu pour gérer les événements et les athlètes des Jeux
 - **<span style="color:#d7c378">Interface utilisateur :</span>**
   - Interface intuitive pour naviguer entre les différentes sections
   - Tableaux de bord pour les résumés des données
+
+## Structure du projet
+
+java/
+|-- fr/isep/algo/projetjo/
+| |-- controller/
+| | |-- addAthleteController.java
+| | |-- allAthletesController.java
+| | |-- ...
+| |-- dao/
+| | |-- athleteDAO.java
+| | |-- eventDAO.java
+| | |-- ...
+| |-- model/
+| | |-- Athlete.java
+| | |-- Event.java
+| | |-- ...
+| |-- service/
+| | |-- PDFService.java
+| |-- util/
+| |-- SessionManager.java
+resources/
+|-- fr/isep/algo/projetjo/
+| |-- img/
+| | |-- Basketball.png
+| | |-- cover_ath.png
+| | |-- logo_gold_paris2024.png
+| |-- view/
+| |-- addAthlete.fxml
+| |-- allAthletes.fxml
+| |-- ...
+ 
+## Utilisation
+
+1. **Clonez le dépôt :**
+   ```bash
+   git clone https://github.com/votre-utilisateur/projet-java-jo.git
