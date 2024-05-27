@@ -55,4 +55,15 @@ public class inscriptionController {
         currentScene.setRoot(root);
 
     }
+
+
+
+    @FXML
+    private void goBack(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/home.fxml"));
+        Parent root = loader.load();
+
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        currentScene.setRoot(root);
+    }
 }

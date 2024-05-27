@@ -41,7 +41,6 @@ public class connexionController {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/dashboard.fxml"));
             Parent root = loader.load();
-            dashboardController controller = loader.getController();
 
             // Obtenir la scène actuelle à partir de n'importe quel nœud de la scène actuelle
             Scene currentScene = ((Node) event.getSource()).getScene();
@@ -73,4 +72,12 @@ public class connexionController {
         currentScene.setRoot(root);
     }
 
+    @FXML
+    private void goBack(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/homeStart.fxml"));
+        Parent root = loader.load();
+
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        currentScene.setRoot(root);
+    }
 }
