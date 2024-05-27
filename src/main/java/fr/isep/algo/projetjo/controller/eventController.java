@@ -60,7 +60,7 @@ public class eventController extends dashboardController {
     private TableColumn<Event, String> athletesColumn;
 
     @FXML
-    private void initialize() {
+    public void initialize() {
 
         eventIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         sportNameColumn.setCellValueFactory(new PropertyValueFactory<>("sportName"));
