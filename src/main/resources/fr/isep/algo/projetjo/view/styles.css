@@ -34,3 +34,21 @@
 }
 
 
+
+.button {
+    -fx-background-color: #d7c378;
+
+
+    -fx-cursor: hand;
+}
+
+
+.button:hover {
+
+    -fx-background-color: #ffd700; /* Golden color */
+
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-scale-z: 1.1;
+
+}

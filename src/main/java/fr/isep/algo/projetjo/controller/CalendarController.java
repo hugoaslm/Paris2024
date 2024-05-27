@@ -110,7 +110,6 @@ public class CalendarController extends navigationController {
             }
         }
     }
-
     @FXML
     private void goBack(ActionEvent event) {
         try {
