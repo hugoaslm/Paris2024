@@ -1,6 +1,6 @@
 # Projet Java JO
 
-![Logo Paris 2024](resources/fr/isep/algo/projetjo/img/logo_paris_2024.png)
+![Logo Paris 2024](src/main/resources/fr/isep/algo/projetjo/img/logo_paris_2024.png)
 
 **<span style="color:#d7c378">Description :</span>**
 Ce projet Java est conçu pour gérer les événements et les athlètes des Jeux Olympiques. Il comprend plusieurs fonctionnalités telles que l'ajout d'athlètes, la gestion des événements, l'inscription des athlètes aux événements et bien plus encore.
