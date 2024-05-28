@@ -88,4 +88,29 @@ public class sportDAO {
         return type_resultat;
     }
 
+    public static String getSportNameFromId(int sportId) {
+        String sportName = null;
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DatabaseManager.getConnection();
+            String query = "SELECT nom_sport FROM sports WHERE sport_id = ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, sportId);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                sportName = resultSet.getString("nom_sport");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DatabaseManager.closeConnection(connection);
+        }
+
+        return sportName;
+    }
+
 }

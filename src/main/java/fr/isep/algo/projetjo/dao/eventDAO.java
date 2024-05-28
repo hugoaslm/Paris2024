@@ -2,6 +2,7 @@ package fr.isep.algo.projetjo.dao;
 
 import fr.isep.algo.projetjo.model.DatabaseManager;
 import fr.isep.algo.projetjo.model.Event;
+import fr.isep.algo.projetjo.model.Result;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -194,6 +195,86 @@ public class eventDAO {
             e.printStackTrace();
         }
         return count;
+    }
+
+    public static List<Event> getEventsFromResults() {
+        List<Event> events = new ArrayList<>();
+
+        try (Connection conn = DatabaseManager.getConnection()) {
+            String query = "SELECT events.event_id, events.event_name, events.event_location, events.event_date, events.sport_id, results.result_data, results.vainqueur " +
+                    "FROM results " +
+                    "INNER JOIN events ON results.event_id = events.event_id";
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                try (ResultSet rs = stmt.executeQuery()) {
+                    while (rs.next()) {
+                        int eventId = rs.getInt("event_id");
+                        String eventName = rs.getString("event_name");
+                        String eventLocation = rs.getString("event_location");
+                        java.util.Date eventDate = rs.getDate("event_date");
+                        int sport = rs.getInt("sport_id");
+
+                        String sportName = eventDAO.getSportNameById(sport);
+
+                        Event event = new Event(eventId, sport, eventName, eventLocation, eventDate);
+                        event.setSportName(sportName);
+
+                        String resultData = rs.getString("result_data");
+                        String vainqueur = rs.getString("vainqueur");
+
+                        List<Result> results = new ArrayList<>();
+                        results.add(new Result(0, eventId, resultData, vainqueur));
+
+                        event.setResults(results);
+                        events.add(event);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return events;
+    }
+
+    public static List<Event> getEventFromResult(int eventId) {
+        List<Event> events = new ArrayList<>();
+
+        try (Connection conn = DatabaseManager.getConnection()) {
+            String query = "SELECT events.event_name, events.event_location, events.event_date, events.sport_id, results.result_data, results.vainqueur " +
+                    "FROM results " +
+                    "INNER JOIN events ON results.event_id = events.event_id WHERE events.event_id = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {
+
+                stmt.setInt(1, eventId);
+
+                try (ResultSet rs = stmt.executeQuery()) {
+                    while (rs.next()) {
+                        String eventName = rs.getString("event_name");
+                        String eventLocation = rs.getString("event_location");
+                        java.util.Date eventDate = rs.getDate("event_date");
+                        int sport = rs.getInt("sport_id");
+
+                        String sportName = eventDAO.getSportNameById(sport);
+
+                        Event event = new Event(eventId, sport, eventName, eventLocation, eventDate);
+                        event.setSportName(sportName);
+
+                        String resultData = rs.getString("result_data");
+                        String vainqueur = rs.getString("vainqueur");
+
+                        List<Result> results = new ArrayList<>();
+                        results.add(new Result(0, eventId, resultData, vainqueur));
+
+                        event.setResults(results);
+                        events.add(event);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return events;
     }
 
 }

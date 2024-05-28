@@ -64,4 +64,5 @@ public class Result {
     public List<Athlete> getAthletesName() {
         return athletesName;
     }
+
 }

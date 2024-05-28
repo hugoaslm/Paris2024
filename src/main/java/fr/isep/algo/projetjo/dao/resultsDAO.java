@@ -157,4 +157,37 @@ public class resultsDAO {
         }
         return results;
     }
+
+    public static List<Result> getAllResultsAthlete(int athleteId) {
+        List<Result> results = new ArrayList<>();
+        try {
+            Connection connection = DatabaseManager.getConnection();
+            String query = "SELECT r.result_id, e.event_id, e.event_name, e.event_location, e.event_date, s.nom_sport, r.result_data, r.vainqueur " +
+                    "FROM events e " +
+                    "JOIN event_athletes ea ON e.event_id = ea.event_id " +
+                    "JOIN athletes a ON ea.athlete_id = a.athlete_id " +
+                    "JOIN sports s ON e.sport_id = s.sport_id " +
+                    "LEFT JOIN results r ON e.event_id = r.event_id " +
+                    "WHERE a.athlete_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, athleteId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Result result = new Result(
+                        resultSet.getInt("result_id"),
+                        resultSet.getInt("event_id"),
+                        resultSet.getString("vainqueur"),
+                        resultSet.getString("result_data")
+                );
+                results.add(result);
+            }
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return results;
+    }
+
 }
