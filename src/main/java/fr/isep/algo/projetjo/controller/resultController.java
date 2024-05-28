@@ -83,7 +83,6 @@ public class resultController extends navigationController {
             deleteResultButton.setVisible(false);
             addMedalButton.setVisible(false);
             deleteMedalButton.setVisible(false);
-            ranking.setVisible(false);
             athleteLabel.setVisible(false);
             medalLabel.setVisible(false);
             athleteChoiceBox.setVisible(false);
