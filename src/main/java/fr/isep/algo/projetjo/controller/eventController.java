@@ -3,6 +3,7 @@ package fr.isep.algo.projetjo.controller;
 import fr.isep.algo.projetjo.dao.athleteDAO;
 import fr.isep.algo.projetjo.dao.eventDAO;
 import fr.isep.algo.projetjo.dao.event_athletesDAO;
+import fr.isep.algo.projetjo.dao.sportDAO;
 import fr.isep.algo.projetjo.model.Athlete;
 import fr.isep.algo.projetjo.model.Event;
 import fr.isep.algo.projetjo.util.SessionManager;
@@ -40,7 +41,7 @@ public class eventController extends dashboardController {
     @FXML
     private TextField dateField;
     @FXML
-    private TextField sportNameField;
+    private ChoiceBox<String> sportNameChoiceBox;
 
     private eventDAO eventDAO;
     private ObservableList<Event> eventList;
@@ -88,7 +89,7 @@ public class eventController extends dashboardController {
             nameField.setVisible(false);
             locationField.setVisible(false);
             dateField.setVisible(false);
-            sportNameField.setVisible(false);
+            sportNameChoiceBox.setVisible(false);
             athleteListView.setVisible(false);
             lieuLabel.setVisible(false);
             dateLabel.setVisible(false);
@@ -119,6 +120,7 @@ public class eventController extends dashboardController {
         try {
             loadEvents();
             loadAthletes();
+            loadSportNames();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -153,10 +155,17 @@ public class eventController extends dashboardController {
         athleteListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
+    private void loadSportNames() {
+        // Récupère la liste des noms de sports depuis le DAO
+        List<String> sportNames = sportDAO.getAllSport();
+        ObservableList<String> observableSportNames = FXCollections.observableArrayList(sportNames);
+        sportNameChoiceBox.setItems(observableSportNames);
+    }
+
     @FXML
     private void handleAddEvent() {
         String dateString = dateField.getText();
-        String sportName = sportNameField.getText();
+        String sportName = (String) sportNameChoiceBox.getValue();
         if (isValidDate(dateString)) {
             try {
                 int sportId = eventDAO.getSportIdByName(sportName);
@@ -175,7 +184,6 @@ public class eventController extends dashboardController {
                 nameField.clear();
                 locationField.clear();
                 dateField.clear();
-                sportNameField.clear();
             } catch (Exception e) {
                 e.printStackTrace();
                 showAlert("Database Error", "Unable to add the event to the database.");
@@ -188,7 +196,7 @@ public class eventController extends dashboardController {
     @FXML
     private void handleUpdateEvent() {
         String dateString = dateField.getText();
-        String sportName = sportNameField.getText();
+        String sportName = (String) sportNameChoiceBox.getValue();
         if (isValidDate(dateString)) {
             try {
                 Event selectedEvent = eventListView.getSelectionModel().getSelectedItem();

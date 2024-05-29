@@ -113,4 +113,29 @@ public class sportDAO {
         return sportName;
     }
 
+    public static List<String> getAllSport() {
+        List<String> nom_sport = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DatabaseManager.getConnection();
+            String query = "SELECT DISTINCT nom_sport FROM sports";
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String sportName = resultSet.getString("nom_sport");
+                nom_sport.add(sportName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DatabaseManager.closeConnection(connection);
+        }
+
+        return nom_sport;
+    }
+
 }

@@ -14,6 +14,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -170,11 +172,17 @@ public class resultController extends navigationController {
     }
 
     private void loadAthletes() {
-
-        List<Athlete> athletes = athleteDAO.getAllAthletes();
-        ObservableList<Athlete> athleteObservableList = FXCollections.observableArrayList(athletes);
-        athleteListView2.setItems(athleteObservableList);
-
+        eventListView2.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                try {
+                    List<Athlete> athletes = event_athletesDAO.getAthletesByEventId(newValue.getId());
+                    ObservableList<Athlete> athleteObservableList = FXCollections.observableArrayList(athletes);
+                    athleteListView2.setItems(athleteObservableList);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @FXML
