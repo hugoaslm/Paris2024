@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/addAthleteController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/athleteController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/editAthleteController.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/controller/pdfController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/athleteDAO.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/eventDAO.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/event_athletesDAO.java" dialect="GenericSQL" />
@@ -12,6 +13,5 @@
     <file url="file://$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/sportDAO.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/dao/userDAO.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/model/Athlete.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/fr/isep/algo/projetjo/service/PDFService.java" dialect="GenericSQL" />
   </component>
 </project>

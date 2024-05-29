@@ -1,5 +1,8 @@
 package fr.isep.algo.projetjo.controller;
 
+import fr.isep.algo.projetjo.dao.athleteDAO;
+import fr.isep.algo.projetjo.model.Athlete;
+import fr.isep.algo.projetjo.model.Country;
 import fr.isep.algo.projetjo.model.Medal;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,9 +10,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 
 import java.sql.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.time.LocalDate;
 
@@ -19,6 +20,8 @@ public class chartsController extends navigationController {
 
     @FXML
     private LineChart<String, Number> medalEvolutionChart;
+    @FXML
+    private LineChart<String, Number> medalCountryChart;
 
     @FXML
     public void initialize() {
@@ -26,19 +29,19 @@ public class chartsController extends navigationController {
         // Charger et traiter les données
         Map<LocalDate, Map<String, Integer>> medalDataByDate = loadMedalDataByDate();
         populateChart(medalDataByDate);
+
+        Map<LocalDate, Map<String, Integer>> medalDataByCountry = loadMedalDataByCountry();
+        populateChartByCountry(medalDataByCountry);
     }
 
     private Map<LocalDate, Map<String, Integer>> loadMedalDataByDate() {
-        // Suppose that medalDAO.getAllMedals() returns a list of medals with date and type
         List<Medal> medals = medalDAO.getAllMedals();
 
         Map<LocalDate, Map<String, Integer>> medalDataByDate = new HashMap<>();
         for (Medal medal : medals) {
-            System.out.println(medal.getMedalId());
             int eventId = medalDAO.getEventIdForMedal(medal.getMedalId());
             Date dateSql = medalDAO.getDateForMedal(eventId);
             LocalDate date = dateSql.toLocalDate();
-            System.out.println(date);
             String type = medal.getMedalType();
 
             medalDataByDate.putIfAbsent(date, new HashMap<>());
@@ -78,6 +81,81 @@ public class chartsController extends navigationController {
 
         medalEvolutionChart.getData().addAll(goldSeries, silverSeries, bronzeSeries);
     }
+
+    private Map<LocalDate, Map<String, Integer>> loadMedalDataByCountry() {
+        List<Medal> medals = medalDAO.getAllMedals();
+        List<Athlete> athletes = athleteDAO.getAllAthletes();
+        Map<LocalDate, Map<String, Integer>> countryMedalMap = new HashMap<>();
+
+        for (Medal medal : medals) {
+
+            Athlete athlete = athletes.stream()
+                    .filter(a -> a.getId() == medal.getAthleteId())
+                    .findFirst()
+                    .orElse(null);
+
+            if (athlete != null) {
+                int eventId = medalDAO.getEventIdForMedal(medal.getMedalId());
+                Date dateSql = medalDAO.getDateForMedal(eventId);
+                LocalDate date = dateSql.toLocalDate();
+                String countryName = athlete.getPays();
+
+                countryMedalMap.putIfAbsent(date, new HashMap<>());
+                Map<String, Integer> dailyMedalCount = countryMedalMap.get(date);
+
+                dailyMedalCount.put(countryName, dailyMedalCount.getOrDefault(countryName, 0) + 1);
+            }
+
+        }
+
+        return countryMedalMap;
+    }
+
+    private void populateChartByCountry(Map<LocalDate, Map<String, Integer>> countryMedalMap) {
+        // Map to hold series for each country
+        Map<String, XYChart.Series<String, Number>> countrySeriesMap = new HashMap<>();
+
+        // Aggregate medal counts by date and country
+        Map<String, Map<LocalDate, Integer>> medalsByCountryAndDate = new HashMap<>();
+
+        for (Map.Entry<LocalDate, Map<String, Integer>> entry : countryMedalMap.entrySet()) {
+            LocalDate date = entry.getKey();
+            Map<String, Integer> dailyMedalCounts = entry.getValue();
+
+            for (Map.Entry<String, Integer> countryEntry : dailyMedalCounts.entrySet()) {
+                String country = countryEntry.getKey();
+                int count = countryEntry.getValue();
+
+                medalsByCountryAndDate.putIfAbsent(country, new TreeMap<>()); // TreeMap to keep dates sorted
+                Map<LocalDate, Integer> dateMedals = medalsByCountryAndDate.get(country);
+                dateMedals.put(date, dateMedals.getOrDefault(date, 0) + count);
+            }
+        }
+
+        // Create series for each country
+        for (Map.Entry<String, Map<LocalDate, Integer>> countryEntry : medalsByCountryAndDate.entrySet()) {
+            String country = countryEntry.getKey();
+            Map<LocalDate, Integer> dateMedals = countryEntry.getValue();
+
+            XYChart.Series<String, Number> series = new XYChart.Series<>();
+            series.setName(country);
+
+            for (Map.Entry<LocalDate, Integer> dateEntry : dateMedals.entrySet()) {
+                LocalDate date = dateEntry.getKey();
+                int totalMedals = dateEntry.getValue();
+                series.getData().add(new XYChart.Data<>(date.toString(), totalMedals));
+            }
+
+            countrySeriesMap.put(country, series);
+        }
+
+        // Clear any existing data and add the new series to the chart
+        medalCountryChart.getData().clear();
+        medalCountryChart.getData().addAll(countrySeriesMap.values());
+    }
+
+
+
 
     @FXML
     public void goBack(ActionEvent event) {

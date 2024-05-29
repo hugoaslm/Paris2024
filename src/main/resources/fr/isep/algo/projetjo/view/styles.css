@@ -49,3 +49,43 @@
     -fx-scale-z: 1.1;
 
 }
+
+.chart {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #d7c378;
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
+}
+
+.chart-title {
+    -fx-text-fill: #333;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.axis-label {
+    -fx-text-fill: #666;
+    -fx-font-size: 14px;
+}
+
+.chart-legend {
+    -fx-text-fill: #333;
+    -fx-font-size: 14px;
+}
+
+.chart .axis .axis-label {
+    -fx-text-fill: #666;
+    -fx-font-size: 14px;
+}
+
+.chart .axis .tick-mark {
+    -fx-stroke: #666;
+}
+
+.chart .axis .tick-label {
+    -fx-text-fill: #666;
+}
+
+.chart .chart-plot-background {
+    -fx-background-color: #f9f9f9;
+}

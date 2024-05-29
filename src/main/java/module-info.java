@@ -16,6 +16,4 @@ module fr.isep.algo.projetjo {
     exports fr.isep.algo.projetjo.util;
     opens fr.isep.algo.projetjo.util to javafx.fxml;
 
-    exports fr.isep.algo.projetjo.service;
-    opens fr.isep.algo.projetjo.service to javafx.fxml;
 }

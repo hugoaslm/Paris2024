@@ -1,8 +1,7 @@
-package fr.isep.algo.projetjo.service;
+package fr.isep.algo.projetjo.controller;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
-import fr.isep.algo.projetjo.controller.navigationController;
 import fr.isep.algo.projetjo.dao.*;
 import fr.isep.algo.projetjo.model.*;
 import javafx.collections.FXCollections;
@@ -11,18 +10,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.*;
 import java.util.List;
 
-public class PDFService extends navigationController {
+public class pdfController extends navigationController {
 
     private static final String LOGO_PATH = "src/main/resources/fr/isep/algo/projetjo/img/logo_paris_2024.png";
 

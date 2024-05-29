@@ -18,7 +18,6 @@
         <URL value="@styles.css" />
     </stylesheets>
     <children>
-
         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: transparent;">
             <graphic>
                 <FontAwesomeIconView glyphName="ARROW_LEFT" size="20.0" />
@@ -30,67 +29,85 @@
                 <Font name="Paris2024-Variable Regular" size="36.0" />
             </font>
         </Label>
-      <Line endX="-108.33334350585938" endY="643.0" layoutX="323.0" layoutY="77.0" startX="-108.33334350585938" startY="-77.00000762939453" />
-      <AnchorPane layoutX="15.0" layoutY="96.0" prefHeight="441.0" prefWidth="186.0">
-         <children>
-            <Button fx:id="dashboardButton" layoutX="24.0" layoutY="10.0" mnemonicParsing="false" onAction="#redirectToDashboard" style="-fx-background-color: transparent;" text="Dashboard">
-               <font>
-                  <Font name="Paris2024-Variable Regular" size="24.0" />
-               </font>
-            </Button>
-            <Button fx:id="athletesButton" layoutX="24.0" layoutY="70.0" mnemonicParsing="false" onAction="#redirectToAthletes" style="-fx-background-color: transparent;" text="Athlètes">
-               <font>
-                  <Font name="Paris2024-Variable Regular" size="24.0" />
-               </font>
-            </Button>
-            <Button fx:id="disciplinesButton" layoutX="24.0" layoutY="130.0" mnemonicParsing="false" onAction="#redirectToDisciplines" style="-fx-background-color: transparent;" text="Disciplines">
-               <font>
-                  <Font name="Paris2024-Variable Regular" size="24.0" />
-               </font>
-            </Button>
-            <Button fx:id="eventsButton" layoutX="24.0" layoutY="190.0" mnemonicParsing="false" onAction="#redirectToEvents" style="-fx-background-color: transparent;" text="Évènements">
-               <font>
-                  <Font name="Paris2024-Variable Regular" size="24.0" />
-               </font>
-            </Button>
-            <Button fx:id="resultsButton" layoutX="24.0" layoutY="250.0" mnemonicParsing="false" onAction="#redirectToResults" style="-fx-background-color: transparent;" text="Résultats">
-               <font>
-                  <Font name="Paris2024-Variable Regular" size="24.0" />
-               </font>
-            </Button>
-            <Button fx:id="analyseButton" layoutX="24.0" layoutY="310.0" mnemonicParsing="false" onAction="#redirectToAnalyses" style="-fx-background-color: transparent;" text="Analyses">
-               <font>
-                  <Font name="Paris2024-Variable Regular" size="24.0" />
-               </font>
-            </Button>
-            <Button fx:id="calendarButton" layoutX="24.0" layoutY="370.0" mnemonicParsing="false" onAction="#redirectToCalendar" style="-fx-background-color: transparent;" text="Calendrier">
-               <font>
-                  <Font name="Paris2024-Variable Regular" size="24.0" />
-               </font>
-            </Button>
-             <Button fx:id="graphButton" layoutX="24.0" layoutY="430.0" mnemonicParsing="false" onAction="#redirectToGraph" style="-fx-background-color: transparent;" text="Graphiques">
-                 <font>
-                     <Font name="Paris2024-Variable Regular" size="24.0" />
-                 </font>
-             </Button>
-         </children>
-      </AnchorPane>
-      <ImageView fitHeight="94.0" fitWidth="87.0" layoutX="56.0" layoutY="597.0">
-         <image>
-            <Image url="@../img/logo_paris_2024.png" />
-         </image>
-      </ImageView>
-      <AnchorPane layoutX="241.0" layoutY="85.0" prefHeight="634.0" prefWidth="1014.0">
-         <children>
-             <LineChart fx:id="medalEvolutionChart" layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0">
-                 <xAxis>
-                     <CategoryAxis label="Date" />
-                 </xAxis>
-                 <yAxis>
-                     <NumberAxis label="Nombre de Médailles" />
-                 </yAxis>
-             </LineChart>
-         </children>
-      </AnchorPane>
+
+        <Line endX="-108.33334350585938" endY="643.0" layoutX="323.0" layoutY="77.0" startX="-108.33334350585938" startY="-77.00000762939453" />
+
+        <AnchorPane layoutX="15.0" layoutY="96.0" prefHeight="441.0" prefWidth="186.0">
+            <children>
+                <Button fx:id="dashboardButton" layoutX="24.0" layoutY="10.0" mnemonicParsing="false" onAction="#redirectToDashboard" style="-fx-background-color: transparent;" text="Dashboard">
+                    <font>
+                        <Font name="Paris2024-Variable Regular" size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="athletesButton" layoutX="24.0" layoutY="70.0" mnemonicParsing="false" onAction="#redirectToAthletes" style="-fx-background-color: transparent;" text="Athlètes">
+                    <font>
+                        <Font name="Paris2024-Variable Regular" size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="disciplinesButton" layoutX="24.0" layoutY="130.0" mnemonicParsing="false" onAction="#redirectToDisciplines" style="-fx-background-color: transparent;" text="Disciplines">
+                    <font>
+                        <Font name="Paris2024-Variable Regular" size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="eventsButton" layoutX="24.0" layoutY="190.0" mnemonicParsing="false" onAction="#redirectToEvents" style="-fx-background-color: transparent;" text="Évènements">
+                    <font>
+                        <Font name="Paris2024-Variable Regular" size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="resultsButton" layoutX="24.0" layoutY="250.0" mnemonicParsing="false" onAction="#redirectToResults" style="-fx-background-color: transparent;" text="Résultats">
+                    <font>
+                        <Font name="Paris2024-Variable Regular" size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="analyseButton" layoutX="24.0" layoutY="310.0" mnemonicParsing="false" onAction="#redirectToAnalyses" style="-fx-background-color: transparent;" text="Analyses">
+                    <font>
+                        <Font name="Paris2024-Variable Regular" size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="calendarButton" layoutX="24.0" layoutY="370.0" mnemonicParsing="false" onAction="#redirectToCalendar" style="-fx-background-color: transparent;" text="Calendrier">
+                    <font>
+                        <Font name="Paris2024-Variable Regular" size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="graphButton" layoutX="24.0" layoutY="430.0" mnemonicParsing="false" onAction="#redirectToGraph" style="-fx-background-color: transparent;" text="Graphiques">
+                    <font>
+                        <Font name="Paris2024-Variable Regular" size="24.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+
+        <ImageView fitHeight="94.0" fitWidth="87.0" layoutX="56.0" layoutY="597.0">
+            <image>
+                <Image url="@../img/logo_paris_2024.png" />
+            </image>
+        </ImageView>
+
+        <AnchorPane layoutX="241.0" layoutY="85.0" prefHeight="634.0" prefWidth="1014.0">
+            <children>
+                <LineChart fx:id="medalEvolutionChart" layoutX="8.0" layoutY="63.0" prefHeight="291.0" prefWidth="486.0">
+                    <xAxis>
+                        <CategoryAxis label="Date" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Nombre de médailles" />
+                    </yAxis>
+                    <title>
+                        Evolution des médailles
+                    </title>
+                </LineChart>
+                <LineChart fx:id="medalCountryChart" layoutX="521.0" layoutY="63.0" prefHeight="291.0" prefWidth="486.0">
+                    <xAxis>
+                        <CategoryAxis label="Date" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Nombre de médailles" />
+                    </yAxis>
+                    <title>
+                        Médailles par pays
+                    </title>
+                </LineChart>
+            </children>
+        </AnchorPane>
     </children>
 </AnchorPane>
