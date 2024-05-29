@@ -40,8 +40,6 @@ java/
     │   ├── Athlete.java
     │   ├── Event.java
     │   └── ...
-    ├── service/
-    │   └── PDFService.java
     └── util/
         └── SessionManager.java
 resources/
