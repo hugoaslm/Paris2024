@@ -80,8 +80,14 @@ public abstract class navigationController {
         redirectToPage("/fr/isep/algo/projetjo/view/calendar.fxml", event);
     }
 
+    @FXML
     protected void redirectToHome(ActionEvent event) {
         redirectToPage("/fr/isep/algo/projetjo/view/homeStart.fxml", event);
+    }
+
+    @FXML
+    protected void redirectToGraph(ActionEvent event) {
+        redirectToPage("/fr/isep/algo/projetjo/view/charts.fxml", event);
     }
 
     public void setSelectedCategory(String category) {

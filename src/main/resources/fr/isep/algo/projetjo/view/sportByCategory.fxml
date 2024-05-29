@@ -64,6 +64,11 @@
                         <Font name="Paris2024-Variable Regular" size="24.0" />
                     </font>
                 </Button>
+                <Button fx:id="graphButton" layoutX="24.0" layoutY="430.0" mnemonicParsing="false" onAction="#redirectToGraph" style="-fx-background-color: transparent;" text="Graphiques">
+                    <font>
+                        <Font name="Paris2024-Variable Regular" size="24.0" />
+                    </font>
+                </Button>
             </children>
         </AnchorPane>
         <ImageView fitHeight="94.0" fitWidth="87.0" layoutX="56.0" layoutY="597.0">

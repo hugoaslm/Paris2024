@@ -183,15 +183,17 @@ public class resultController extends navigationController {
 
         String medal = (String) medalBox.getValue();
 
+        Event selectedEvent = eventListView2.getSelectionModel().getSelectedItem();
+
         if (selectedAthlete != null) {
             if (medal == null) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Aucune sélection");
                 alert.setHeaderText("Aucune médaille sélectionnée");
-                alert.setContentText("Veuillez sélectionner une médaille dans la liste.");
+                alert.setContentText("Veuillez sélectionner une médaille dans la liste et un évènement.");
                 alert.showAndWait();
             } else {
-                medalDAO.addMedal(selectedAthlete.getId(), medal);
+                medalDAO.addMedal(selectedAthlete.getId(), medal, selectedEvent.getId());
                 refreshTable();
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Médaille attribuée");
