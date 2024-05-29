@@ -25,35 +25,35 @@ Ce projet Java est conçu pour gérer les événements et les athlètes des Jeux
 
 ## Structure du projet
 
+```plaintext
 java/
-|-- fr/isep/algo/projetjo/
-| |-- controller/
-| | |-- addAthleteController.java
-| | |-- allAthletesController.java
-| | |-- ...
-| |-- dao/
-| | |-- athleteDAO.java
-| | |-- eventDAO.java
-| | |-- ...
-| |-- model/
-| | |-- Athlete.java
-| | |-- Event.java
-| | |-- ...
-| |-- service/
-| | |-- PDFService.java
-| |-- util/
-| |-- SessionManager.java
+└── fr/isep/algo/projetjo/
+    ├── controller/
+    │   ├── addAthleteController.java
+    │   ├── allAthletesController.java
+    │   └── ...
+    ├── dao/
+    │   ├── athleteDAO.java
+    │   ├── eventDAO.java
+    │   └── ...
+    ├── model/
+    │   ├── Athlete.java
+    │   ├── Event.java
+    │   └── ...
+    └── util/
+        └── SessionManager.java
 resources/
-|-- fr/isep/algo/projetjo/
-| |-- img/
-| | |-- Basketball.png
-| | |-- cover_ath.png
-| | |-- logo_gold_paris2024.png
-| |-- view/
-| |-- addAthlete.fxml
-| |-- allAthletes.fxml
-| |-- ...
- 
+└── fr/isep/algo/projetjo/
+    ├── img/
+    │   ├── Basketball.png
+    │   ├── cover_ath.png
+    │   └── logo_gold_paris2024.png
+    └── view/
+        ├── addAthlete.fxml
+        ├── allAthletes.fxml
+        └── ...
+```
+
 ## Utilisation
 
 1. **Clonez le dépôt :**
