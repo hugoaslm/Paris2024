@@ -29,11 +29,9 @@ public class chartsController extends navigationController {
         // Charger et traiter les données
         Map<LocalDate, Map<String, Integer>> medalDataByDate = loadMedalDataByDate();
         populateChart(medalDataByDate);
-        System.out.println(medalDataByDate);
 
         Map<LocalDate, Map<String, Integer>> medalDataByCountry = loadMedalDataByCountry();
         populateChartByCountry(medalDataByCountry);
-        System.out.println(medalDataByCountry);
     }
 
     private Map<LocalDate, Map<String, Integer>> loadMedalDataByDate() {
@@ -101,10 +99,24 @@ public class chartsController extends navigationController {
                 LocalDate date = dateSql.toLocalDate();
                 String countryName = athlete.getPays();
 
+                // Initialize the map for this date if it doesn't exist
                 countryMedalMap.putIfAbsent(date, new HashMap<>());
+
+                // Get the map of medal counts for this date
                 Map<String, Integer> dailyMedalCount = countryMedalMap.get(date);
 
-                dailyMedalCount.put(countryName, dailyMedalCount.getOrDefault(countryName, 0) + 1);
+                // Get the current total medal count for this country
+                int currentCount = dailyMedalCount.getOrDefault(countryName, 0);
+
+                // Increment the medal count for this country by 1
+                dailyMedalCount.put(countryName, currentCount + 1);
+
+                // Update the total medal count for this country for subsequent dates
+                countryMedalMap.forEach((d, map) -> {
+                    if (!d.equals(date)) {
+                        map.put(countryName, map.getOrDefault(countryName, 0) + currentCount);
+                    }
+                });
             }
         }
 
@@ -112,84 +124,33 @@ public class chartsController extends navigationController {
     }
 
 
+
+
     private void populateChartByCountry(Map<LocalDate, Map<String, Integer>> countryMedalMap) {
-        // Map to hold series for each country
-        Map<String, XYChart.Series<String, Number>> countrySeriesMap = new HashMap<>();
+        for (LocalDate date : countryMedalMap.keySet()) {
+            Map<String, Integer> dailyMedalCount = countryMedalMap.get(date);
 
-        // Aggregate medal counts by date and country
-        Map<String, Map<LocalDate, Integer>> medalsByCountryAndDate = new TreeMap<>();
+            for (String countryName : dailyMedalCount.keySet()) {
+                int medalCount = dailyMedalCount.get(countryName);
 
-        // Iterate over each entry in the countryMedalMap
-        for (Map.Entry<LocalDate, Map<String, Integer>> entry : countryMedalMap.entrySet()) {
-            LocalDate date = entry.getKey();
-            Map<String, Integer> dailyMedalCounts = entry.getValue();
-
-            // Iterate over each country and its daily medal counts
-            for (Map.Entry<String, Integer> countryEntry : dailyMedalCounts.entrySet()) {
-                String country = countryEntry.getKey();
-                int count = countryEntry.getValue();
-
-                medalsByCountryAndDate.putIfAbsent(country, new TreeMap<>()); // TreeMap to keep dates sorted
-                Map<LocalDate, Integer> dateMedals = medalsByCountryAndDate.get(country);
-                dateMedals.put(date, dateMedals.getOrDefault(date, 0) + count);
+                XYChart.Series<String, Number> series = getOrCreateSeries(countryName, medalCountryChart);
+                series.getData().add(new XYChart.Data<>(date.toString(), medalCount));
             }
         }
-
-        for (Map.Entry<String, Map<LocalDate, Integer>> entry : medalsByCountryAndDate.entrySet()) {
-            String country = entry.getKey();
-            Map<LocalDate, Integer> dateMedals = entry.getValue();
-            System.out.println("Country: " + country);
-            for (Map.Entry<LocalDate, Integer> dateEntry : dateMedals.entrySet()) {
-                LocalDate date = dateEntry.getKey();
-                int totalMedals = dateEntry.getValue();
-                System.out.println("Date: " + date + ", Total Medals: " + totalMedals);
-            }
-        }
-
-        // Create series for each country
-        for (Map.Entry<String, Map<LocalDate, Integer>> countryEntry : medalsByCountryAndDate.entrySet()) {
-            String country = countryEntry.getKey();
-            Map<LocalDate, Integer> dateMedals = countryEntry.getValue();
-
-            // Create a new series for each country
-            XYChart.Series<String, Number> series = new XYChart.Series<>();
-            series.setName(country);
-
-            // Sort the data by date
-            List<Map.Entry<LocalDate, Integer>> sortedEntries = new ArrayList<>(dateMedals.entrySet());
-            sortedEntries.sort(Map.Entry.comparingByKey());
-
-            // Output for debugging
-            System.out.println("Sorted Entries for " + country + ":");
-            for (Map.Entry<LocalDate, Integer> dateEntry : sortedEntries) {
-                LocalDate date = dateEntry.getKey();
-                int totalMedals = dateEntry.getValue();
-                System.out.println("Date: " + date + ", Total Medals: " + totalMedals);
-            }
-
-            // Add data points to the series for each date and its corresponding total medals
-            System.out.println("Adding data points to series for country: " + country);
-            for (Map.Entry<LocalDate, Integer> dateEntry : sortedEntries) {
-                LocalDate date = dateEntry.getKey();
-                int totalMedals = dateEntry.getValue();
-                System.out.println("Date: " + date + ", Total Medals: " + totalMedals);
-                series.getData().add(new XYChart.Data<>(date.toString(), totalMedals));
-            }
-
-            // Output for debugging
-            System.out.println("Added series for country: " + country);
-            // Add the series to the countrySeriesMap
-            countrySeriesMap.put(country, series);
-
-        }
-
-        // Clear any existing data and add the new series to the chart
-        medalCountryChart.getData().clear();
-        medalCountryChart.getData().addAll(countrySeriesMap.values());
     }
 
+    private XYChart.Series<String, Number> getOrCreateSeries(String seriesName, LineChart<String, Number> chart) {
+        for (XYChart.Series<String, Number> series : chart.getData()) {
+            if (series.getName().equals(seriesName)) {
+                return series;
+            }
+        }
 
-
+        XYChart.Series<String, Number> newSeries = new XYChart.Series<>();
+        newSeries.setName(seriesName);
+        chart.getData().add(newSeries);
+        return newSeries;
+    }
 
 
 
