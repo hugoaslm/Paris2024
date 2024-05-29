@@ -54,7 +54,8 @@ resources/
         ├── addAthlete.fxml
         ├── allAthletes.fxml
         └── ...
- 
+```
+
 ## Utilisation
 
 1. **Clonez le dépôt :**
