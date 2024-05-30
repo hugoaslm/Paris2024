@@ -139,13 +139,14 @@ public class sportDAO {
         return nom_sport;
     }
 
-    public static void addDiscipline(String disciplineName) {
-        String query = "INSERT INTO sports (nom_sport, categorie) VALUES (?, ?)";
+    public static void addDiscipline(String disciplineName, String categorie, String type_resultat) {
+        String query = "INSERT INTO sports (nom_sport, categorie, type_resultat) VALUES (?, ?, ?)";
         try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, disciplineName);
 
-            statement.setString(2, "Sports ajoutés");
+            statement.setString(2, categorie);
+            statement.setString(3, type_resultat);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

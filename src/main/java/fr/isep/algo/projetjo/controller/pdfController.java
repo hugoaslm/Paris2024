@@ -304,8 +304,6 @@ public class pdfController extends navigationController {
             document.add(subtitle);
             document.add(Chunk.NEWLINE);
             Font eventInfoFont = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL, BaseColor.BLACK);
-            //document.add(createParagraph("Lieu : " + evt.getLocation(), eventInfoFont));
-            //document.add(createParagraph("Date : " + evt.getDate().toString(), eventInfoFont));
             document.add(Chunk.NEWLINE);
 
             try {

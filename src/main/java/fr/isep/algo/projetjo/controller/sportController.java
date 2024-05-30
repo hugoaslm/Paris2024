@@ -1,7 +1,6 @@
 package fr.isep.algo.projetjo.controller;
 
 import fr.isep.algo.projetjo.dao.sportDAO;
-import fr.isep.algo.projetjo.model.DatabaseManager;
 import fr.isep.algo.projetjo.util.SessionManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -61,7 +60,7 @@ public class sportController extends navigationController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/addDiscipline.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(loader.load()));
-            AddDisciplineController controller = loader.getController();
+            addDisciplineController controller = loader.getController();
             controller.setParentController(this);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
@@ -70,12 +69,11 @@ public class sportController extends navigationController {
         }
     }
 
-    public void AddDiscipline(String disciplineName) {
+    public void addDiscipline(String disciplineName, String categorie, String type_result) {
         Button newDisciplineButton = new Button(disciplineName);
         newDisciplineButton.setStyle("-fx-background-color: #d7c378; -fx-font-family: 'Paris2024-Variable Regular'; -fx-font-size: 18px;");
         sportButtonsContainer.getChildren().add(newDisciplineButton);
-        // Ajoutez ici le code pour enregistrer la nouvelle discipline dans la base de données si nécessaire
-        sportDAO.addDiscipline(disciplineName);
+        sportDAO.addDiscipline(disciplineName, categorie, type_result);
     }
 
     @FXML
