@@ -27,7 +27,7 @@ public class sportController extends navigationController {
     public void initialize() {
         // Vérifier le rôle de l'utilisateur
         int role = (int) SessionManager.getInstance().getAttribute("role");
-        if (role != 1) { // Supposons que le rôle 1 est l'administrateur
+        if (role != 1) {
             addDisciplineButton.setVisible(false);
         }
 

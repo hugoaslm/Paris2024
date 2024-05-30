@@ -24,7 +24,7 @@ public class addDisciplineController {
 
     @FXML
     private void initialize() {
-        type_resultChoiceBox.getItems().addAll("temps", "Distance", "score", "combat", "poids");
+        type_resultChoiceBox.getItems().addAll("temps", "distance", "score", "combat", "poids");
     }
 
     @FXML
