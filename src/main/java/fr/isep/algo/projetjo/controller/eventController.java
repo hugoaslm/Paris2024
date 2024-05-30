@@ -21,7 +21,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.time.LocalDate;
 import java.util.List;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Date;
@@ -79,10 +78,8 @@ public class eventController extends dashboardController {
     @FXML
     private Button deleteEvent;
 
-
     @FXML
     public void initialize() {
-
         int role = (int) SessionManager.getInstance().getAttribute("role");
         // cas ou l'utilisateur n'est pas admin
         if (role != 1) {
@@ -129,17 +126,13 @@ public class eventController extends dashboardController {
     private void loadEvents() throws SQLException {
         List<Event> events = eventDAO.getAllEvents();
         for (Event event : events) {
-
             String sportName = eventDAO.getSportNameById(event.getSport());
             event.setSportName(sportName);
-
 
             List<Athlete> athletes = event_athletesDAO.getAthletesByEventId(event.getId());
             event.setAthletes(athletes);
         }
         eventList = FXCollections.observableArrayList(events);
-
-
         eventTableView.setItems(eventList);
     }
 
@@ -150,13 +143,10 @@ public class eventController extends dashboardController {
             athleteNames.add(athlete.getNom());
         }
         athleteListView.setItems(athleteNames);
-
-
         athleteListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     private void loadSportNames() {
-
         List<String> sportNames = sportDAO.getAllSport();
         ObservableList<String> observableSportNames = FXCollections.observableArrayList(sportNames);
         sportNameChoiceBox.setItems(observableSportNames);
@@ -172,9 +162,7 @@ public class eventController extends dashboardController {
                 eventDAO.addEvent(sportId, nameField.getText(), locationField.getText(), Date.valueOf(dateString));
                 int eventId = eventDAO.getEventIdBySportName(sportId, nameField.getText());
 
-
                 ObservableList<String> selectedAthletes = athleteListView.getSelectionModel().getSelectedItems();
-                System.out.println(selectedAthletes);
                 for (String selectedAthlete : selectedAthletes) {
                     int athleteId = athleteDAO.getAthleteIdByName(selectedAthlete);
                     event_athletesDAO.addAthleteToEvent(eventId, athleteId);
@@ -209,15 +197,17 @@ public class eventController extends dashboardController {
                         selectedEvent.setDate(Date.valueOf(dateString));
                         eventDAO.updateEvent(selectedEvent);
                         loadEvents();
-                        showAlert("Evènement ajouté avec succès", "Evènement ajouté avec succès !");
+                        showAlert("Event Updated", "Event updated successfully!");
                     } else {
                         showAlert("Invalid Sport Name", "Please enter a valid sport name.");
                     }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                showAlert("Erreur BDD", "Unable to update the event in the database.");
+                showAlert("Database Error", "Unable to update the event in the database.");
             }
+        } else {
+            showAlert("Invalid Date Format", "Please enter the date in the format yyyy-MM-dd.");
         }
     }
 
@@ -258,19 +248,13 @@ public class eventController extends dashboardController {
 
     @FXML
     private void goBack(ActionEvent event) {
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/athleteWindow.fxml"));
             Parent root = loader.load();
-
             Scene currentScene = ((Node) event.getSource()).getScene();
-
             currentScene.setRoot(root);
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

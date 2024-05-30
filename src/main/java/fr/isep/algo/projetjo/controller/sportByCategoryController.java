@@ -39,7 +39,7 @@ public class sportByCategoryController extends navigationController {
 
         for (String sportByCategory : sports) {
             Button button = new Button(sportByCategory);
-            button.setStyle("-fx-background-color: #d7c378; -fx-font-family: 'Paris2024-Variable Regular'; -fx-font-size: 18px;"); // Appliquer le style
+            button.setStyle("-fx-background-color: #d7c378; -fx-font-family: 'Paris2024-Variable Regular'; -fx-font-size: 18px;");
             button.setOnAction(e -> {
                 try {
                     openSportDetailPage(sportByCategory, e);

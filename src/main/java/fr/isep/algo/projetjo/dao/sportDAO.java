@@ -1,3 +1,4 @@
+
 package fr.isep.algo.projetjo.dao;
 
 import fr.isep.algo.projetjo.model.Sport;
@@ -11,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class sportDAO {
-
 
     public static List<String> getAllCategories() {
         List<String> categories = new ArrayList<>();
@@ -38,7 +38,6 @@ public class sportDAO {
         return categories;
     }
 
-
     public static List<String> getSportsByCategory(String category) {
         List<String> sports = new ArrayList<>();
         Connection connection = null;
@@ -58,6 +57,8 @@ public class sportDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            DatabaseManager.closeConnection(connection);
         }
 
         return sports;
@@ -138,4 +139,16 @@ public class sportDAO {
         return nom_sport;
     }
 
+    public static void addDiscipline(String disciplineName) {
+        String query = "INSERT INTO sports (nom_sport, categorie) VALUES (?, ?)";
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, disciplineName);
+            // Assuming the category is generic for now. You might want to modify this based on your requirements.
+            statement.setString(2, "General");
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
