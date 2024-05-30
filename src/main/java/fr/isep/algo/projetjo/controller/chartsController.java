@@ -18,23 +18,22 @@ import fr.isep.algo.projetjo.dao.medalDAO;
 public class chartsController extends navigationController {
 
     @FXML
-    private LineChart<String, Number> medalEvolutionChart;
+    private LineChart<String, Integer> medalEvolutionChart;
     @FXML
-    private LineChart<String, Number> medalCountryChart;
+    private LineChart<String, Integer> medalCountryChart;
 
     @FXML
     public void initialize() {
 
+        Map<LocalDate, Map<String, Integer>> medalDataByDate = loadMedalByDate();
+        plotMedals(medalDataByDate);
 
-        Map<LocalDate, Map<String, Integer>> medalDataByDate = loadMedalDataByDate();
-        populateChart(medalDataByDate);
-
-        Map<LocalDate, Map<String, Integer>> medalDataByCountry = loadMedalDataByCountry();
-        updateCumulativeMedalCount(medalDataByCountry);
-        populateChartByCountry(medalDataByCountry);
+        Map<LocalDate, Map<String, Integer>> medalDataByCountry = loadMedalByCountry();
+        updateCumulMedal(medalDataByCountry);
+        plotByCountry(medalDataByCountry);
     }
 
-    private Map<LocalDate, Map<String, Integer>> loadMedalDataByDate() {
+    private Map<LocalDate, Map<String, Integer>> loadMedalByDate() {
         List<Medal> medals = medalDAO.getAllMedals();
 
         Map<LocalDate, Map<String, Integer>> medalDataByDate = new HashMap<>();
@@ -53,12 +52,12 @@ public class chartsController extends navigationController {
         return medalDataByDate;
     }
 
-    private void populateChart(Map<LocalDate, Map<String, Integer>> medalDataByDate) {
-        XYChart.Series<String, Number> goldSeries = new XYChart.Series<>();
+    private void plotMedals(Map<LocalDate, Map<String, Integer>> medalDataByDate) {
+        XYChart.Series<String, Integer> goldSeries = new XYChart.Series<>();
         goldSeries.setName("Or");
-        XYChart.Series<String, Number> silverSeries = new XYChart.Series<>();
+        XYChart.Series<String, Integer> silverSeries = new XYChart.Series<>();
         silverSeries.setName("Argent");
-        XYChart.Series<String, Number> bronzeSeries = new XYChart.Series<>();
+        XYChart.Series<String, Integer> bronzeSeries = new XYChart.Series<>();
         bronzeSeries.setName("Bronze");
 
         Map<String, Integer> cumulativeMedals = new HashMap<>();
@@ -82,7 +81,7 @@ public class chartsController extends navigationController {
         medalEvolutionChart.getData().addAll(goldSeries, silverSeries, bronzeSeries);
     }
 
-    private Map<LocalDate, Map<String, Integer>> loadMedalDataByCountry() {
+    private Map<LocalDate, Map<String, Integer>> loadMedalByCountry() {
         List<Medal> medals = medalDAO.getAllMedals();
         List<Athlete> athletes = athleteDAO.getAllAthletes();
         Map<LocalDate, Map<String, Integer>> countryMedalMap = new TreeMap<>();
@@ -117,7 +116,7 @@ public class chartsController extends navigationController {
         return countryMedalMap;
     }
 
-    private void updateCumulativeMedalCount(Map<LocalDate, Map<String, Integer>> CountryMedalMap) {
+    private void updateCumulMedal(Map<LocalDate, Map<String, Integer>> CountryMedalMap) {
 
         Map<String, Integer> cumulativeTotals = new HashMap<>();
 
@@ -147,27 +146,27 @@ public class chartsController extends navigationController {
         }
     }
 
-    private void populateChartByCountry(Map<LocalDate, Map<String, Integer>> countryMedalMap) {
+    private void plotByCountry(Map<LocalDate, Map<String, Integer>> countryMedalMap) {
         for (LocalDate date : countryMedalMap.keySet()) {
             Map<String, Integer> dailyMedalCount = countryMedalMap.get(date);
 
             for (String countryName : dailyMedalCount.keySet()) {
                 int medalCount = dailyMedalCount.get(countryName);
 
-                XYChart.Series<String, Number> series = getOrCreateSeries(countryName, medalCountryChart);
+                XYChart.Series<String, Integer> series = getOrCreateSeries(countryName, medalCountryChart);
                 series.getData().add(new XYChart.Data<>(date.toString(), medalCount));
             }
         }
     }
 
-    private XYChart.Series<String, Number> getOrCreateSeries(String seriesName, LineChart<String, Number> chart) {
-        for (XYChart.Series<String, Number> series : chart.getData()) {
+    private XYChart.Series<String, Integer> getOrCreateSeries(String seriesName, LineChart<String, Integer> chart) {
+        for (XYChart.Series<String, Integer> series : chart.getData()) {
             if (series.getName().equals(seriesName)) {
                 return series;
             }
         }
 
-        XYChart.Series<String, Number> newSeries = new XYChart.Series<>();
+        XYChart.Series<String, Integer> newSeries = new XYChart.Series<>();
         newSeries.setName(seriesName);
         chart.getData().add(newSeries);
         return newSeries;
