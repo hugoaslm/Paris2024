@@ -45,42 +45,40 @@ public class pdfController extends navigationController {
     public void generatePDFAllEvents(ActionEvent actionEvent) {
         String pdfFilePath = "Resultats_toutes_epreuves_paris2024.pdf";
 
-        // Créer un document PDF
+
         Document document = new Document();
 
         try {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdfFilePath));
 
-            // Ouvrir le document
-            document.open();
 
-            // Ajouter un pied de page
+            document.open();
             PdfContentByte canvas = writer.getDirectContent();
             ColumnText.showTextAligned(canvas, Element.ALIGN_CENTER, new Phrase("Page " + writer.getPageNumber()), (document.right() + document.left()) / 2, document.bottom() - 20, 0);
 
             document.add(Chunk.NEWLINE);
 
-            // Titre du document avec couleur #d7c378 et police en gras
+
             Font titleFont = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD, new BaseColor(0xD7, 0xC3, 0x78));
             Paragraph title = new Paragraph("Rapport sur les résultats des Jeux Olympiques 2024 de Paris", titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
             document.add(title);
             document.add(Chunk.NEWLINE);
 
-            // Parcourir tous les événements récupérés
+
             List<Event> eventResults = eventDAO.getEventsFromResults();
             for (Event evt : eventResults) {
 
                 Font eventFont = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL, BaseColor.BLACK);
 
-                // Titre de l'événement
+
                 Font eventTitleFont = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD, BaseColor.DARK_GRAY);
                 Paragraph eventTitle = new Paragraph(evt.getName(), eventTitleFont);
                 eventTitle.setAlignment(Element.ALIGN_CENTER);
                 document.add(eventTitle);
                 document.add(Chunk.NEWLINE);
 
-                // Informations sur l'événement
+
                 Font subtitleFont = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD, BaseColor.BLACK);
                 Paragraph subtitle = new Paragraph("Sport : " + evt.getSportName(), subtitleFont);
                 document.add(subtitle);
@@ -100,20 +98,20 @@ public class pdfController extends navigationController {
                 }
                 document.add(Chunk.NEWLINE);
 
-                // Texte après le titre de l'événement
+
                 String eventDescription = "Les résultats de la " + evt.getName() + " de " + evt.getSportName() + " sont les suivants :";
                 document.add(createParagraph(eventDescription, eventInfoFont));
                 document.add(Chunk.NEWLINE);
 
                 List<Result> results = evt.getResults();
 
-                // Créer un tableau pour les résultats
-                PdfPTable table = new PdfPTable(2); // 2 colonnes : Données de résultat et Vainqueur
-                table.setWidthPercentage(80); // La largeur du tableau est définie sur 100% de la largeur de la page
+
+                PdfPTable table = new PdfPTable(2);
+                table.setWidthPercentage(80);
                 table.setSpacingBefore(10f);
                 table.setSpacingAfter(10f);
 
-                // Ajouter des cellules pour les titres
+
                 PdfPCell cellTitle1 = new PdfPCell(new Phrase("Résultat", eventFont));
                 cellTitle1.setBackgroundColor(new BaseColor(0xD7, 0xC3, 0x78));
                 PdfPCell cellTitle2 = new PdfPCell(new Phrase("Vainqueur", eventFont));
@@ -122,7 +120,7 @@ public class pdfController extends navigationController {
                 table.addCell(cellTitle1);
                 table.addCell(cellTitle2);
 
-                // Ajouter les données de résultat dans le tableau
+
                 for (Result result : results) {
                     PdfPCell cellData = new PdfPCell(new Phrase(result.getResultData(), eventFont));
                     PdfPCell cellWinner = new PdfPCell(new Phrase(result.getVainqueur(), eventFont));
@@ -130,16 +128,16 @@ public class pdfController extends navigationController {
                     table.addCell(cellWinner);
                 }
 
-                // Ajouter le tableau au document
+
                 document.add(table);
 
-                // Ajouter une nouvelle page pour chaque événement
+
                 document.newPage();
             }
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
         } finally {
-            // Fermer le document
+
             document.close();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -156,22 +154,22 @@ public class pdfController extends navigationController {
         Event evt = eventChoiceBox.getValue();
         String pdfFilePath = "Resultats_" + evt.getName() + "_paris2024.pdf";
 
-        // Créer un document PDF
+
         Document document = new Document();
 
         try {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdfFilePath));
 
-            // Ouvrir le document
+
             document.open();
 
-            // Ajouter un pied de page
+
             PdfContentByte canvas = writer.getDirectContent();
             ColumnText.showTextAligned(canvas, Element.ALIGN_CENTER, new Phrase("Page " + writer.getPageNumber()), (document.right() + document.left()) / 2, document.bottom() - 20, 0);
 
             document.add(Chunk.NEWLINE);
 
-            // Titre du document avec couleur #d7c378 et police en gras
+
             Font titleFont = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD, new BaseColor(0xD7, 0xC3, 0x78));
             Paragraph title = new Paragraph("Rapport sur les résultats des Jeux Olympiques 2024 de Paris", titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
@@ -180,14 +178,14 @@ public class pdfController extends navigationController {
 
             Font eventFont = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL, BaseColor.BLACK);
 
-            // Titre de l'événement
+
             Font eventTitleFont = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD, BaseColor.DARK_GRAY);
             Paragraph eventTitle = new Paragraph(evt.getName(), eventTitleFont);
             eventTitle.setAlignment(Element.ALIGN_CENTER);
             document.add(eventTitle);
             document.add(Chunk.NEWLINE);
 
-            // Informations sur l'événement
+
             Font subtitleFont = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD, BaseColor.BLACK);
             Paragraph subtitle = new Paragraph("Sport : " + evt.getSportName(), subtitleFont);
             document.add(subtitle);
@@ -207,20 +205,20 @@ public class pdfController extends navigationController {
             }
             document.add(Chunk.NEWLINE);
 
-            // Texte après le titre de l'événement
+
             String eventDescription = "Le résultat de la " + evt.getName() + " de " + evt.getSportName() + " est le suivant :";
             document.add(createParagraph(eventDescription, eventInfoFont));
             document.add(Chunk.NEWLINE);
 
             List<Result> results = resultsDAO.getResultsByEventId(evt.getId());
 
-            // Créer un tableau pour les résultats
-            PdfPTable table = new PdfPTable(2); // 2 colonnes : Données de résultat et Vainqueur
-            table.setWidthPercentage(80); // La largeur du tableau est définie sur 100% de la largeur de la page
+
+            PdfPTable table = new PdfPTable(2);
+            table.setWidthPercentage(80);
             table.setSpacingBefore(10f);
             table.setSpacingAfter(10f);
 
-            // Ajouter des cellules pour les titres
+
             PdfPCell cellTitle1 = new PdfPCell(new Phrase("Résultat", eventFont));
             cellTitle1.setBackgroundColor(new BaseColor(0xD7, 0xC3, 0x78));
             PdfPCell cellTitle2 = new PdfPCell(new Phrase("Vainqueur", eventFont));
@@ -229,7 +227,7 @@ public class pdfController extends navigationController {
             table.addCell(cellTitle1);
             table.addCell(cellTitle2);
 
-            // Ajouter les données de résultat dans le tableau
+
             for (Result result : results) {
                 PdfPCell cellData = new PdfPCell(new Phrase(result.getResultData(), eventFont));
                 PdfPCell cellWinner = new PdfPCell(new Phrase(result.getVainqueur(), eventFont));
@@ -237,16 +235,16 @@ public class pdfController extends navigationController {
                 table.addCell(cellWinner);
             }
 
-            // Ajouter le tableau au document
+
             document.add(table);
 
-            // Ajouter une nouvelle page pour chaque événement
+
             document.newPage();
 
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
         } finally {
-            // Fermer le document
+
             document.close();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -263,22 +261,22 @@ public class pdfController extends navigationController {
         Athlete athlete = athleteChoiceBox.getValue();
         String pdfFilePath = "Resultats_" + athlete.getNom() + "_paris2024.pdf";
 
-        // Créer un document PDF
+
         Document document = new Document();
 
         try {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdfFilePath));
 
-            // Ouvrir le document
+
             document.open();
 
-            // Ajouter un pied de page
+
             PdfContentByte canvas = writer.getDirectContent();
             ColumnText.showTextAligned(canvas, Element.ALIGN_CENTER, new Phrase("Page " + writer.getPageNumber()), (document.right() + document.left()) / 2, document.bottom() - 20, 0);
 
             document.add(Chunk.NEWLINE);
 
-            // Titre du document avec couleur #d7c378 et police en gras
+
             Font titleFont = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD, new BaseColor(0xD7, 0xC3, 0x78));
             Paragraph title = new Paragraph("Rapport sur les résultats des Jeux Olympiques 2024 de Paris", titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
@@ -287,7 +285,7 @@ public class pdfController extends navigationController {
 
             Font eventFont = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL, BaseColor.BLACK);
 
-            // Titre de l'événement
+
             Font eventTitleFont = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD, BaseColor.DARK_GRAY);
             String nom = athlete.getPrenom() + " " + athlete.getNom();
             Paragraph eventTitle = new Paragraph(nom, eventTitleFont);
@@ -295,7 +293,6 @@ public class pdfController extends navigationController {
             document.add(eventTitle);
             document.add(Chunk.NEWLINE);
 
-            // Informations sur l'événement
 
             String sportName = sportDAO.getSportNameFromId(athlete.getSport());
 
@@ -316,20 +313,20 @@ public class pdfController extends navigationController {
             }
             document.add(Chunk.NEWLINE);
 
-            // Texte après le titre de l'événement
+
             String eventDescription = "Les résultats pour " + athlete.getNom() + " " + athlete.getPrenom() + " sont les suivants :";
             document.add(createParagraph(eventDescription, eventInfoFont));
             document.add(Chunk.NEWLINE);
 
             List<Result> results = resultsDAO.getAllResultsAthlete(athlete.getId());
 
-            // Créer un tableau pour les résultats
-            PdfPTable table = new PdfPTable(3); // 2 colonnes : Données de résultat et Vainqueur
-            table.setWidthPercentage(80); // La largeur du tableau est définie sur 100% de la largeur de la page
+
+            PdfPTable table = new PdfPTable(3);
+            table.setWidthPercentage(80);
             table.setSpacingBefore(10f);
             table.setSpacingAfter(10f);
 
-            // Ajouter des cellules pour les titres
+
             PdfPCell cellTitle1 = new PdfPCell(new Phrase("Nom de l'épreuve", eventFont));
             cellTitle1.setBackgroundColor(new BaseColor(0xD7, 0xC3, 0x78));
             PdfPCell cellTitle2 = new PdfPCell(new Phrase("Résultat", eventFont));
@@ -342,8 +339,6 @@ public class pdfController extends navigationController {
             table.addCell(cellTitle3);
 
 
-
-            // Ajouter les données de résultat dans le tableau
             for (Result result : results) {
                 String eventName = eventDAO.getEventById(result.getEventId());
                 PdfPCell cellName = new PdfPCell(new Phrase(eventName, eventFont));
@@ -354,16 +349,14 @@ public class pdfController extends navigationController {
                 table.addCell(cellWinner);
             }
 
-            // Ajouter le tableau au document
-            document.add(table);
 
-            // Ajouter une nouvelle page pour chaque événement
+            document.add(table);
             document.newPage();
 
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
         } finally {
-            // Fermer le document
+
             document.close();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -390,23 +383,19 @@ public class pdfController extends navigationController {
     public void generatePDFMedalByCountry(ActionEvent actionEvent) {
 
         String pdfFilePath = "Tableau_medaille_par_pays_paris2024.pdf";
-
-        // Créer un document PDF
         Document document = new Document();
 
         try {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdfFilePath));
-
-            // Ouvrir le document
             document.open();
 
-            // Ajouter un pied de page
+
             PdfContentByte canvas = writer.getDirectContent();
             ColumnText.showTextAligned(canvas, Element.ALIGN_CENTER, new Phrase("Page " + writer.getPageNumber()), (document.right() + document.left()) / 2, document.bottom() - 20, 0);
 
             document.add(Chunk.NEWLINE);
 
-            // Titre du document avec couleur #d7c378 et police en gras
+
             Font titleFont = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD, new BaseColor(0xD7, 0xC3, 0x78));
             Paragraph title = new Paragraph("Rapport sur les résultats des Jeux Olympiques 2024 de Paris", titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
@@ -415,7 +404,7 @@ public class pdfController extends navigationController {
 
             Font eventFont = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL, BaseColor.BLACK);
 
-            // Titre de l'événement
+
             Font eventTitleFont = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD, BaseColor.DARK_GRAY);
             Paragraph eventTitle = new Paragraph("Tableau des médailles par pays", eventTitleFont);
             eventTitle.setAlignment(Element.ALIGN_CENTER);
@@ -432,7 +421,7 @@ public class pdfController extends navigationController {
             }
             document.add(Chunk.NEWLINE);
 
-            // Obtenir les médailles par pays
+
             List<Athlete> athletes = athleteDAO.getAllAthletes();
             Map<String, Country> countryMedalMap = new HashMap<>();
 
@@ -468,13 +457,13 @@ public class pdfController extends navigationController {
 
             ObservableList<Country> countryList = FXCollections.observableArrayList(countryMedalMap.values());
 
-            // Créer un tableau pour les médailles par pays
-            PdfPTable table = new PdfPTable(5); // 5 colonnes : Pays, Or, Argent, Bronze, Total
-            table.setWidthPercentage(80); // La largeur du tableau est définie sur 100% de la largeur de la page
+
+            PdfPTable table = new PdfPTable(5);
+            table.setWidthPercentage(80);
             table.setSpacingBefore(10f);
             table.setSpacingAfter(10f);
 
-            // Ajouter des cellules pour les titres
+
             PdfPCell cellTitle1 = new PdfPCell(new Phrase("Pays", eventFont));
             cellTitle1.setBackgroundColor(new BaseColor(0xD7, 0xC3, 0x78));
             PdfPCell cellTitle2 = new PdfPCell(new Phrase("Or", eventFont));
@@ -492,7 +481,7 @@ public class pdfController extends navigationController {
             table.addCell(cellTitle4);
             table.addCell(cellTitle5);
 
-            // Ajouter les données de médailles par pays dans le tableau
+
             for (Country country : countryList) {
                 PdfPCell cellCountry = new PdfPCell(new Phrase(country.getName(), eventFont));
                 PdfPCell cellGold = new PdfPCell(new Phrase(String.valueOf(country.getGoldMedals()), eventFont));
@@ -508,13 +497,13 @@ public class pdfController extends navigationController {
                 table.addCell(cellTotal);
             }
 
-            // Ajouter le tableau au document
+
             document.add(table);
 
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
         } finally {
-            // Fermer le document
+
             document.close();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -531,22 +520,22 @@ public class pdfController extends navigationController {
 
         String pdfFilePath = "Tableau_medaille_par_athlète_paris2024.pdf";
 
-        // Créer un document PDF
+
         Document document = new Document();
 
         try {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdfFilePath));
 
-            // Ouvrir le document
+
             document.open();
 
-            // Ajouter un pied de page
+
             PdfContentByte canvas = writer.getDirectContent();
             ColumnText.showTextAligned(canvas, Element.ALIGN_CENTER, new Phrase("Page " + writer.getPageNumber()), (document.right() + document.left()) / 2, document.bottom() - 20, 0);
 
             document.add(Chunk.NEWLINE);
 
-            // Titre du document avec couleur #d7c378 et police en gras
+
             Font titleFont = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD, new BaseColor(0xD7, 0xC3, 0x78));
             Paragraph title = new Paragraph("Rapport sur les résultats des Jeux Olympiques 2024 de Paris", titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
@@ -555,7 +544,7 @@ public class pdfController extends navigationController {
 
             Font eventFont = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL, BaseColor.BLACK);
 
-            // Titre de l'événement
+
             Font eventTitleFont = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD, BaseColor.DARK_GRAY);
             Paragraph eventTitle = new Paragraph("Tableau des médailles par pays", eventTitleFont);
             eventTitle.setAlignment(Element.ALIGN_CENTER);
@@ -599,13 +588,13 @@ public class pdfController extends navigationController {
                 athleteList.add(athlete);
             }
 
-            // Créer un tableau pour les médailles par pays
-            PdfPTable table = new PdfPTable(5); // 5 colonnes : Pays, Or, Argent, Bronze, Total
-            table.setWidthPercentage(80); // La largeur du tableau est définie sur 100% de la largeur de la page
+
+            PdfPTable table = new PdfPTable(5);
+            table.setWidthPercentage(80);
             table.setSpacingBefore(10f);
             table.setSpacingAfter(10f);
 
-            // Ajouter des cellules pour les titres
+
             PdfPCell cellTitle1 = new PdfPCell(new Phrase("Athlète", eventFont));
             cellTitle1.setBackgroundColor(new BaseColor(0xD7, 0xC3, 0x78));
             PdfPCell cellTitle2 = new PdfPCell(new Phrase("Or", eventFont));
@@ -623,7 +612,7 @@ public class pdfController extends navigationController {
             table.addCell(cellTitle4);
             table.addCell(cellTitle5);
 
-            // Ajouter les données de médailles par pays dans le tableau
+
             for (Athlete athlete : athleteList) {
                 PdfPCell cellCountry = new PdfPCell(new Phrase(athlete.getNom(), eventFont));
                 PdfPCell cellGold = new PdfPCell(new Phrase(String.valueOf(athlete.getGoldMedals()), eventFont));
@@ -639,7 +628,7 @@ public class pdfController extends navigationController {
                 table.addCell(cellTotal);
             }
 
-            // Ajouter le tableau au document
+
             document.add(table);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -651,7 +640,7 @@ public class pdfController extends navigationController {
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
         } finally {
-            // Fermer le document
+
             document.close();
         }
     }
