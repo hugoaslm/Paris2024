@@ -47,7 +47,7 @@ public class addAthleteController {
         String sex = sexField.getValue();
         int sportId = getSportId();
 
-        // Appel à partir de DAO
+
         athleteDAO.addAthlete(nom, prenom, pays, age, sex, sportId);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

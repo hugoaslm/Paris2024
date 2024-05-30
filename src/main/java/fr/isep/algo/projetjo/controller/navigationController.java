@@ -35,10 +35,10 @@ public abstract class navigationController {
             FXMLLoader loader = new FXMLLoader(destinationFXML);
             Parent root = loader.load();
 
-            // Obtenez le contrôleur de la nouvelle vue chargée
+
             Object controller = loader.getController();
 
-            // Remplacez le contenu de la scène actuelle par la nouvelle racine chargée à partir du FXML
+
             currentScene.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();

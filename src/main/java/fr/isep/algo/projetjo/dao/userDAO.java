@@ -78,7 +78,7 @@ public class userDAO {
             String query = "INSERT INTO users (pseudo, MotDePasse) VALUES (?, ?)";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
-            preparedStatement.setString(2, hashPassword(password)); // Hash du mot de passe avant insertion
+            preparedStatement.setString(2, hashPassword(password));
             int rowsAffected = preparedStatement.executeUpdate();
             success = rowsAffected > 0;
         } catch (SQLException e) {

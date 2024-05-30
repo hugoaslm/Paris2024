@@ -24,7 +24,7 @@ public class Athlete {
         this.sport = sport;
     }
 
-    // Getters et setters
+
     public int getId() {
         return id;
     }

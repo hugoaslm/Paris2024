@@ -6,7 +6,7 @@ public class User {
     private String mdp;
     private int admin;
 
-    // Constructeur
+
     public User(int id, String pseudo, String mdp, int admin) {
         this.id = id;
         this.pseudo = pseudo;

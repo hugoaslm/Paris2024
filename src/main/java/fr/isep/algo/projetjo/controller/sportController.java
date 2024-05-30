@@ -1,6 +1,7 @@
 package fr.isep.algo.projetjo.controller;
 
 import fr.isep.algo.projetjo.dao.sportDAO;
+import fr.isep.algo.projetjo.model.DatabaseManager;
 import fr.isep.algo.projetjo.util.SessionManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +26,7 @@ public class sportController extends navigationController {
     private Button addDisciplineButton;
 
     public void initialize() {
-        // Vérifier le rôle de l'utilisateur
+
         int role = (int) SessionManager.getInstance().getAttribute("role");
         if (role != 1) {
             addDisciplineButton.setVisible(false);

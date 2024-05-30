@@ -8,7 +8,7 @@ public class DatabaseManager {
 
     private static final String URL = "jdbc:mysql://localhost:3306/joparis2024";
     private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "";
 
     // Connexion à la bdd
     public static Connection getConnection() throws SQLException {

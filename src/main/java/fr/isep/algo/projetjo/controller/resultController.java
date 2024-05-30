@@ -149,7 +149,7 @@ public class resultController extends navigationController {
             String eventName = eventDAO.getEventById(result.getEventId());
             result.setEventName(eventName);
 
-            // Récupérer les athlètes associés
+
             List<Athlete> athletesName = event_athletesDAO.getAthletesByEventId(result.getEventId());
             result.setAthletesName(athletesName);
         }

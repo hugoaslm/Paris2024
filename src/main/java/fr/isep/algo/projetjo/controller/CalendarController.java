@@ -67,12 +67,11 @@ public class CalendarController extends navigationController {
 
 
         LocalDate firstOfMonth = currentMonth.atDay(1);
-        int dayOfWeek = firstOfMonth.getDayOfWeek().getValue(); // 1=Monday, ..., 7=Sunday
-
+        int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
         for (int day = 1; day <= currentMonth.lengthOfMonth(); day++) {
             Label dayLabel = new Label(String.valueOf(day));
             dayLabel.setStyle("-fx-font-size: 18px; -fx-border-color: #d7c378; -fx-border-width: 1px; -fx-alignment: center; -fx-padding: 10px;");
-            dayLabel.setMinSize(80, 80); // Set minimum size for the labels to create a grid effect
+            dayLabel.setMinSize(80, 80);
             int row = (day + dayOfWeek - 2) / 7 + 1;
             int col = (day + dayOfWeek - 2) % 7;
             calendarGrid.add(dayLabel, col, row);

@@ -14,7 +14,7 @@ public class Event {
     private String sportName;
     private List<Result> results;
 
-    // Constructor
+
     public Event(int id, int sport, String name, String location, Date date) {
         this.id = id;
         this.name = name;
@@ -24,7 +24,7 @@ public class Event {
         this.athletes = new ArrayList<>();
     }
 
-    // Getters and setters
+
     public int getId() {
         return id;
     }

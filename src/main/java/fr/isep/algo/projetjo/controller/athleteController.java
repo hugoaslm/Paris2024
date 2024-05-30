@@ -168,7 +168,7 @@ public class athleteController extends navigationController {
 
 
 
-                        // Position
+
                         HBox managebtn = new HBox(editIcon, deleteIcon);
                         managebtn.setStyle("-fx-alignment:center");
                         HBox.setMargin(deleteIcon, new javafx.geometry.Insets(2, 2, 0, 3));

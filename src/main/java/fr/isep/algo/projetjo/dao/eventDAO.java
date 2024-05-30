@@ -121,7 +121,7 @@ public class eventDAO {
                 sportName = resultSet.getString("nom_sport");
             }
         } finally {
-            // Fermez les ressources (ResultSet, PreparedStatement, Connection)
+
             if (resultSet != null) {
                 resultSet.close();
             }
@@ -138,7 +138,7 @@ public class eventDAO {
 
 
     public static int getSportIdByName(String sportName) {
-        int sportId = -1; // Par défaut, si aucun ID n'est trouvé, retournez -1
+        int sportId = -1;
         try {
             Connection connection = DatabaseManager.getConnection();
             String query = "SELECT sport_id FROM sports WHERE nom_sport = ?";
