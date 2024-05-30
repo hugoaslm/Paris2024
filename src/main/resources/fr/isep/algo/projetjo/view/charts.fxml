@@ -93,7 +93,7 @@
                         <NumberAxis label="Nombre de médailles" />
                     </yAxis>
                     <title>
-                        Evolution des médailles
+                        Évolution des médailles
                     </title>
                 </LineChart>
                 <LineChart fx:id="medalCountryChart" layoutX="521.0" layoutY="63.0" prefHeight="291.0" prefWidth="486.0">

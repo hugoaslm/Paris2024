@@ -2,7 +2,6 @@ package fr.isep.algo.projetjo.controller;
 
 import fr.isep.algo.projetjo.dao.athleteDAO;
 import fr.isep.algo.projetjo.model.Athlete;
-import fr.isep.algo.projetjo.model.Country;
 import fr.isep.algo.projetjo.model.Medal;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,6 +30,7 @@ public class chartsController extends navigationController {
         populateChart(medalDataByDate);
 
         Map<LocalDate, Map<String, Integer>> medalDataByCountry = loadMedalDataByCountry();
+        updateCumulativeMedalCount(medalDataByCountry);
         populateChartByCountry(medalDataByCountry);
     }
 
@@ -106,25 +106,46 @@ public class chartsController extends navigationController {
                 Map<String, Integer> dailyMedalCount = countryMedalMap.get(date);
 
                 // Get the current total medal count for this country
-                int currentCount = dailyMedalCount.getOrDefault(countryName, 0);
+                dailyMedalCount.putIfAbsent(countryName, 0);
+                int currentCount = dailyMedalCount.get(countryName) + 1;
 
                 // Increment the medal count for this country by 1
-                dailyMedalCount.put(countryName, currentCount + 1);
-
-                // Update the total medal count for this country for subsequent dates
-                countryMedalMap.forEach((d, map) -> {
-                    if (!d.equals(date)) {
-                        map.put(countryName, map.getOrDefault(countryName, 0) + currentCount);
-                    }
-                });
+                dailyMedalCount.put(countryName, currentCount);
             }
         }
 
         return countryMedalMap;
     }
 
+    private void updateCumulativeMedalCount(Map<LocalDate, Map<String, Integer>> CountryMedalMap) {
+        // Initialisation du dictionnaire pour les totaux cumulés
+        Map<String, Integer> cumulativeTotals = new HashMap<>();
 
+        // Récupération et tri des dates
+        List<LocalDate> dates = new ArrayList<>(CountryMedalMap.keySet());
+        Collections.sort(dates);
 
+        // Parcourir les dates dans l'ordre croissant
+        for (LocalDate date : dates) {
+            Map<String, Integer> medalsOnDate = CountryMedalMap.get(date);
+
+            // Mettre à jour les totaux cumulés pour chaque pays
+            for (Map.Entry<String, Integer> entry : medalsOnDate.entrySet()) {
+                String country = entry.getKey();
+                int medals = entry.getValue();
+
+                // Ajouter les médailles au total cumulatif pour le pays
+                cumulativeTotals.put(country, cumulativeTotals.getOrDefault(country, 0) + medals);
+            }
+
+            // Mettre à jour les valeurs cumulées dans la carte principale
+            for (Map.Entry<String, Integer> entry : cumulativeTotals.entrySet()) {
+                String country = entry.getKey();
+                int cumulativeMedals = entry.getValue();
+                CountryMedalMap.get(date).put(country, cumulativeMedals);
+            }
+        }
+    }
 
     private void populateChartByCountry(Map<LocalDate, Map<String, Integer>> countryMedalMap) {
         for (LocalDate date : countryMedalMap.keySet()) {
