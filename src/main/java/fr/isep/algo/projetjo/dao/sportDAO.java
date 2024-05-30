@@ -144,8 +144,8 @@ public class sportDAO {
         try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, disciplineName);
-            // Assuming the category is generic for now. You might want to modify this based on your requirements.
-            statement.setString(2, "General");
+
+            statement.setString(2, "Sports ajoutés");
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
