@@ -225,7 +225,8 @@ public class athleteDAO {
 
     public static String getCountryFromAthleteId(int athleteId) {
         String pays = "";
-        String query = "SELECT pays FROM athletes WHERE id = ?";
+        System.out.println(athleteId);
+        String query = "SELECT pays FROM athletes WHERE athlete_id = ?";
 
         try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
