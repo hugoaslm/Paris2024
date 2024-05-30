@@ -75,17 +75,17 @@ public class athleteController extends navigationController {
     @FXML
     public void initialize() {
 
-        // Récupérer les informations de l'utilisateur depuis la session
+
         int role = (int) SessionManager.getInstance().getAttribute("role");
 
-        // Si l'utilisateur n'est pas admin, il ne peut pas ajouter d'athlètes ou modifier/supprimer
+
         if (role != 1) {
             addButton.setVisible(false);
             editColumn.setVisible(false);
             iconAdd.setVisible(false);
         }
 
-        // Configurer les colonnes de la table
+
         nomColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenomColumn.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         paysColumn.setCellValueFactory(new PropertyValueFactory<>("pays"));
@@ -99,13 +99,13 @@ public class athleteController extends navigationController {
             return new SimpleStringProperty(sportName);
         });
 
-        // Charger les délégations disponibles depuis la bdd
+
         List<String> delegations = athleteDAO.getAllDelegations();
         delegationComboBox.getItems().addAll(delegations);
 
-        // Modifier/supprimer
+
         Callback<TableColumn<Athlete, String>, TableCell<Athlete, String>> cellFactory = (TableColumn<Athlete, String> param) -> {
-            // Création d'une cellule personnalisée contenant des boutons
+
             final TableCell<Athlete, String> cell = new TableCell<Athlete, String>() {
                 @Override
                 public void updateItem(String item, boolean empty) {
@@ -121,6 +121,8 @@ public class athleteController extends navigationController {
                         editIcon.setFill(javafx.scene.paint.Color.GREEN);
                         deleteIcon.setGlyphSize(18);
                         editIcon.setGlyphSize(18);
+
+
 
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
                             try {
@@ -148,7 +150,7 @@ public class athleteController extends navigationController {
                         editIcon.setOnMouseClicked((MouseEvent event) -> {
                             athlete = getTableView().getItems().get(getIndex());
 
-                            // Nouvelle fenêtre
+
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/editAthlete.fxml"));
                             try {
                                 Parent root = loader.load();
@@ -163,6 +165,8 @@ public class athleteController extends navigationController {
                                 e.printStackTrace();
                             }
                         });
+
+
 
                         // Position
                         HBox managebtn = new HBox(editIcon, deleteIcon);

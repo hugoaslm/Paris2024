@@ -97,7 +97,7 @@
                             </Button>
                         </HBox>
                         <GridPane fx:id="calendarGrid" alignment="CENTER" hgap="10" style="-fx-border-color: #d7c378; -fx-border-width: 1px;" vgap="10">
-                            <!-- Add the headers for the days of the week -->
+
                             <Label style="-fx-font-size: 16px; -fx-border-color: #d7c378; -fx-border-width: 1px; -fx-alignment: center; -fx-padding: 10px;" text="Lundi" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                             <Label style="-fx-font-size: 16px; -fx-border-color: #d7c378; -fx-border-width: 1px; -fx-alignment: center; -fx-padding: 10px;" text="Mardi" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                             <Label style="-fx-font-size: 16px; -fx-border-color: #d7c378; -fx-border-width: 1px; -fx-alignment: center; -fx-padding: 10px;" text="Mercredi" GridPane.columnIndex="2" GridPane.rowIndex="0" />
@@ -117,7 +117,7 @@
                      <rowConstraints>
                         <RowConstraints />
                      </rowConstraints>
-                            <!-- Calendar cells will be added here dynamically -->
+
                         </GridPane>
                     </children>
                 </VBox>

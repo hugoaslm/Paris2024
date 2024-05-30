@@ -78,10 +78,9 @@
         </ImageView>
         <AnchorPane layoutX="241.0" prefHeight="719.0" prefWidth="1014.0">
             <children>
-                <!-- Vos autres boutons ici -->
-                <!-- Boutons pour chaque sport -->
+
                 <FlowPane fx:id="spContainer" prefHeight="608.0" prefWidth="972.0" alignment="CENTER" hgap="10" vgap="10" layoutX="24.0" layoutY="96.0">
-                    <!-- Ici seront ajoutés dynamiquement les boutons -->
+
                 </FlowPane>
                 <ImageView fx:id="sportImageView" layoutX="600.0" layoutY="96.0" fitWidth="300.0" fitHeight="300.0" />
             </children>
