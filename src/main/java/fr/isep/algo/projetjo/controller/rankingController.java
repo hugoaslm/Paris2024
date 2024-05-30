@@ -96,7 +96,7 @@ public class rankingController extends navigationController {
 
         ObservableList<Country> countryList = FXCollections.observableArrayList(countryMedalMap.values());
 
-        // Sort the list of countries based on the total medals
+
         countryList.sort((c1, c2) -> {
             int totalMedals1 = c1.getGoldMedals() + c1.getSilverMedals() + c1.getBronzeMedals();
             int totalMedals2 = c2.getGoldMedals() + c2.getSilverMedals() + c2.getBronzeMedals();
@@ -141,7 +141,7 @@ public class rankingController extends navigationController {
             athleteList.add(athlete);
         }
 
-        // Tri de la liste des athlètes en fonction du total des médailles
+
         athleteList.sort((a1, a2) -> {
             int totalMedals1 = a1.getGoldMedals() + a1.getSilverMedals() + a1.getBronzeMedals();
             int totalMedals2 = a2.getGoldMedals() + a2.getSilverMedals() + a2.getBronzeMedals();

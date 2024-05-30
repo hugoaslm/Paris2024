@@ -17,13 +17,13 @@ public abstract class navigationController {
 
     public static void redirectToPage(String fxmlFilePath, ActionEvent event) {
         try {
-            // Chemin du fichier FXML de destination
+
             URL destinationFXML = navigationController.class.getResource(fxmlFilePath);
 
-            // Fichier FXML de la page actuelle
+
             Scene currentScene = ((Node) event.getSource()).getScene();
 
-            // Récupérer l'URL du fichier FXML de la scène actuelle
+
             URL currentFXML = null;
             if (currentScene.getWindow() instanceof Stage) {
                 FXMLLoader loader = (FXMLLoader) ((Stage) currentScene.getWindow()).getProperties().get("FXMLLoader");

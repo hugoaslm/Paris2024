@@ -12,7 +12,7 @@ import java.util.List;
 
 public class sportDAO {
 
-    // Requête qui récupère toutes les catégories uniques dans la table sport
+
     public static List<String> getAllCategories() {
         List<String> categories = new ArrayList<>();
         Connection connection = null;
@@ -38,7 +38,7 @@ public class sportDAO {
         return categories;
     }
 
-    // Requête qui récupère tous les sports pour une catégorie donnée
+
     public static List<String> getSportsByCategory(String category) {
         List<String> sports = new ArrayList<>();
         Connection connection = null;

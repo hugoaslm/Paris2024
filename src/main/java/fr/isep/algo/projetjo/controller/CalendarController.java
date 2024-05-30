@@ -57,7 +57,7 @@ public class CalendarController extends navigationController {
         monthYearLabel.setText(currentMonth.getMonth().toString() + " " + currentMonth.getYear());
         calendarGrid.getChildren().clear();
 
-        // Add headers for days of the week
+
         String[] daysOfWeek = {"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};
         for (int i = 0; i < daysOfWeek.length; i++) {
             Label dayLabel = new Label(daysOfWeek[i]);
@@ -65,7 +65,7 @@ public class CalendarController extends navigationController {
             calendarGrid.add(dayLabel, i, 0);
         }
 
-        // Add the days of the current month to the grid
+
         LocalDate firstOfMonth = currentMonth.atDay(1);
         int dayOfWeek = firstOfMonth.getDayOfWeek().getValue(); // 1=Monday, ..., 7=Sunday
 
@@ -78,7 +78,7 @@ public class CalendarController extends navigationController {
             calendarGrid.add(dayLabel, col, row);
         }
 
-        // Load and display events
+
         loadEvents();
     }
 

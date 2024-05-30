@@ -84,7 +84,7 @@ public class eventController extends dashboardController {
     public void initialize() {
 
         int role = (int) SessionManager.getInstance().getAttribute("role");
-        // Si l'utilisateur n'est pas admin, il ne peut pas ajouter de résultats ou modifier/supprimer
+        // cas ou l'utilisateur n'est pas admin
         if (role != 1) {
             nameField.setVisible(false);
             locationField.setVisible(false);
@@ -129,17 +129,17 @@ public class eventController extends dashboardController {
     private void loadEvents() throws SQLException {
         List<Event> events = eventDAO.getAllEvents();
         for (Event event : events) {
-            // Récupérer le nom du sport à partir de son ID
+
             String sportName = eventDAO.getSportNameById(event.getSport());
             event.setSportName(sportName);
 
-            // Récupérer les athlètes associés
+
             List<Athlete> athletes = event_athletesDAO.getAthletesByEventId(event.getId());
-            event.setAthletes(athletes); // Assurez-vous d'avoir un attribut `athletes` dans votre classe Event
+            event.setAthletes(athletes);
         }
         eventList = FXCollections.observableArrayList(events);
 
-        // Remplacez eventListView par un TableView
+
         eventTableView.setItems(eventList);
     }
 
@@ -151,12 +151,12 @@ public class eventController extends dashboardController {
         }
         athleteListView.setItems(athleteNames);
 
-        // Configurez la sélection multiple
+
         athleteListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     private void loadSportNames() {
-        // Récupère la liste des noms de sports depuis le DAO
+
         List<String> sportNames = sportDAO.getAllSport();
         ObservableList<String> observableSportNames = FXCollections.observableArrayList(sportNames);
         sportNameChoiceBox.setItems(observableSportNames);
@@ -169,15 +169,15 @@ public class eventController extends dashboardController {
         if (isValidDate(dateString)) {
             try {
                 int sportId = eventDAO.getSportIdByName(sportName);
-                eventDAO.addEvent(sportId, nameField.getText(), locationField.getText(), Date.valueOf(dateString)); // Ajouter l'événement à la base de données
-                int eventId = eventDAO.getEventIdBySportName(sportId, nameField.getText()); // Récupérer l'ID de l'événement ajouté
+                eventDAO.addEvent(sportId, nameField.getText(), locationField.getText(), Date.valueOf(dateString));
+                int eventId = eventDAO.getEventIdBySportName(sportId, nameField.getText());
 
-                // Ajouter les athlètes sélectionnés à cet événement
+
                 ObservableList<String> selectedAthletes = athleteListView.getSelectionModel().getSelectedItems();
                 System.out.println(selectedAthletes);
                 for (String selectedAthlete : selectedAthletes) {
-                    int athleteId = athleteDAO.getAthleteIdByName(selectedAthlete); // Récupérer l'ID de l'athlète
-                    event_athletesDAO.addAthleteToEvent(eventId, athleteId); // Ajouter l'athlète à l'événement
+                    int athleteId = athleteDAO.getAthleteIdByName(selectedAthlete);
+                    event_athletesDAO.addAthleteToEvent(eventId, athleteId);
                 }
 
                 loadEvents();

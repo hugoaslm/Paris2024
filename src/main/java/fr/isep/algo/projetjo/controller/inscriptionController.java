@@ -31,16 +31,16 @@ public class inscriptionController {
         String pseudoInsc = pseudoInscField.getText();
         String mdpInsc = mdpInscField.getText();
 
-        // Inscription de l'utilisateur
+
         if (userDAO.inscription(pseudoInsc, mdpInsc)) {
-            // Alerte pour signaler la réussite de l'inscription
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Inscription réussie.");
             alert.setHeaderText(null);
             alert.setContentText("Votre inscription a été effectuée avec succès.");
             alert.showAndWait();
         } else {
-            // Alerte pour signaler l'échec de l'inscription
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Inscription échouée.");
             alert.setHeaderText(null);

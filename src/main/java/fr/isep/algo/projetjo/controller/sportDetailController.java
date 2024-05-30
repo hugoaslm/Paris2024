@@ -28,7 +28,7 @@ public class sportDetailController extends navigationController {
     private Scene scene;
     private Parent root;
 
-    // Map des descriptions pour chaque sport
+
     private static final Map<String, String> sportDescriptions = new HashMap<>();
     static {
         sportDescriptions.put("natation", " La natation est un sport aquatique pratiqué individuellement ou en équipe, qui consiste à parcourir une certaine distance à la nage le plus rapidement possible.");
@@ -42,7 +42,7 @@ public class sportDetailController extends navigationController {
         Image sportImage = new Image(getClass().getResourceAsStream(imagePath));
         sportImageView.setImage(sportImage);
 
-        // Définir la description du sport à partir de la map
+
         String description = sportDescriptions.getOrDefault(sport.toLowerCase(), "Description non disponible.");
         sportDescription.setText(description);
     }

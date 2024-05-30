@@ -15,17 +15,17 @@ import java.util.List;
 public class sportController extends navigationController {
 
     @FXML
-    private FlowPane sportButtonsContainer; // Container où seront ajoutés les boutons
+    private FlowPane sportButtonsContainer;
 
     public void initialize() {
-        // Récupérer la liste des sports depuis la bdd
+
         List<String> categories = sportDAO.getAllCategories();
 
-        // Créer un bouton pour chaque sport et les ajouter au conteneur
+
         for (String categorie : categories) {
             Button button = new Button(categorie);
-            button.setStyle("-fx-background-color: #d7c378; -fx-font-family: 'Paris2024-Variable Regular'; -fx-font-size: 18px;"); // Appliquer le style
-            button.setOnAction(e -> openSportByCategory(categorie, e)); // Définir un gestionnaire d'événements pour le clic sur le bouton
+            button.setStyle("-fx-background-color: #d7c378; -fx-font-family: 'Paris2024-Variable Regular'; -fx-font-size: 18px;");
+            button.setOnAction(e -> openSportByCategory(categorie, e));
             sportButtonsContainer.getChildren().add(button);
         }
     }
@@ -33,20 +33,12 @@ public class sportController extends navigationController {
     @FXML
     private void openSportByCategory(String category, ActionEvent event) {
         try {
-            // Charger le fichier FXML
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/sportByCategory.fxml"));
             Parent root = loader.load();
-
-            // Obtenir une référence au contrôleur
             sportByCategoryController controller = loader.getController();
-
-            // Sélectionner la catégorie
             controller.setSelectedCategory(category);
-
-            // Obtenir la scène actuelle
             Scene scene = ((Node) event.getSource()).getScene();
-
-            // Remplacer la racine de la scène par le nouveau contenu chargé
             scene.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();

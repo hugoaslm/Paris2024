@@ -208,7 +208,7 @@ public class athleteController extends navigationController {
         List<Athlete> athletesByDelegation = athleteDAO.getAthletesByDelegation(selectedDelegation);
         athleteTable.setItems(FXCollections.observableArrayList(athletesByDelegation));
 
-        // Mettre à jour ComboBox
+
         delegationComboBox.getItems().clear();
         List<String> delegations = athleteDAO.getAllDelegations();
         delegationComboBox.getItems().addAll(delegations);
@@ -222,10 +222,10 @@ public class athleteController extends navigationController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/allAthletes.fxml"));
             Parent root = loader.load();
 
-            // Obtenir la scène actuelle
+
             Scene currentScene = ((Node) event.getSource()).getScene();
 
-            // Remplacez le contenu
+
             currentScene.setRoot(root);
 
         } catch (IOException e) {

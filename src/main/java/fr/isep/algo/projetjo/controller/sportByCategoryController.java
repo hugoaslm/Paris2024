@@ -30,13 +30,13 @@ public class sportByCategoryController extends navigationController {
     }
 
     public void loadingPage() {
-        // Récupérer la liste des sports pour la catégorie sélectionnée depuis la base de données
+
         List<String> sports = sportDAO.getSportsByCategory(selectedCategory);
 
-        // Afficher la catégorie sélectionnée en titre de la page
+
         categoryForSports.setText(selectedCategory);
 
-        // Créer un bouton pour chaque sport et les ajouter au conteneur
+
         for (String sportByCategory : sports) {
             Button button = new Button(sportByCategory);
             button.setStyle("-fx-background-color: #d7c378; -fx-font-family: 'Paris2024-Variable Regular'; -fx-font-size: 18px;"); // Appliquer le style

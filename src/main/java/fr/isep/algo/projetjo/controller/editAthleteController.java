@@ -49,7 +49,7 @@ public class editAthleteController {
         String sex = sexField.getValue();
         int editSportId = getEditSportId();
 
-        // Appel à partir de DAO
+
         athleteDAO.modifierAthlete(athleteId, nom, prenom, pays, age, sex, editSportId);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

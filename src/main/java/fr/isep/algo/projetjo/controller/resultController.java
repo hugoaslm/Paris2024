@@ -76,7 +76,7 @@ public class resultController extends navigationController {
     public void initialize() throws SQLException {
 
         int role = (int) SessionManager.getInstance().getAttribute("role");
-        // Si l'utilisateur n'est pas admin, il ne peut pas ajouter de résultats ou modifier/supprimer
+
         if (role != 1) {
             resultLabel.setVisible(false);
             eventLabel.setVisible(false);
@@ -272,7 +272,7 @@ public class resultController extends navigationController {
                 String eventName = eventDAO.getEventById(result.getEventId());
                 result.setEventName(eventName);
 
-                // Récupérer les athlètes associés
+
                 List<Athlete> athletesName = event_athletesDAO.getAthletesByEventId(result.getEventId());
                 result.setAthletesName(athletesName);
             }
@@ -290,7 +290,7 @@ public class resultController extends navigationController {
         Athlete selectedAthlete = athleteListView2.getSelectionModel().getSelectedItem();
 
         if (selectedAthlete != null) {
-            // Supprimer la médaille de l'athlète sélectionné
+
             medalDAO.deleteMedal(selectedAthlete.getId());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Médaille retirée");

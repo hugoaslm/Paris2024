@@ -26,38 +26,38 @@ public class connexionController {
     @FXML
     private void seConnecter(ActionEvent event) throws IOException {
 
-        // Définition des champs de texte
+
         String pseudo = pseudoField.getText();
         String mdp = mdpField.getText();
 
         if (userDAO.checkLogin(pseudo, mdp)) {
 
-            // Accès aux infos sur l'utilisateur
+
             User user = userDAO.getUserInfo(pseudo);
 
-            // Ajout de la session
+
             SessionManager.getInstance().setAttribute("pseudo", pseudo);
             SessionManager.getInstance().setAttribute("role", user.getRole());
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/algo/projetjo/view/dashboard.fxml"));
             Parent root = loader.load();
 
-            // Obtenir la scène actuelle à partir de n'importe quel nœud de la scène actuelle
+
             Scene currentScene = ((Node) event.getSource()).getScene();
 
-            // Remplacer le contenu de la scène actuelle par la nouvelle racine chargée à partir du FXML
+
             currentScene.setRoot(root);
 
         } else {
 
-            // Alerte pour signaler l'échec de la connexion
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Tentative de connexion échouée.");
             alert.setHeaderText(null);
             alert.setContentText("Le nom d'utilisateur ou le mot de passe est incorrect.");
             alert.showAndWait();
 
-            // Effacer les champs de texte
+
             pseudoField.setText("");
             mdpField.setText("");
         }

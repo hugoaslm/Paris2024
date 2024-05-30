@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class userDAO {
 
-    // Méthode pour vérifier les informations de connexion de l'utilisateur
+
     public static boolean checkLogin(String username, String password) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -24,9 +24,9 @@ public class userDAO {
             String query = "SELECT * FROM users WHERE pseudo = ? AND MotDePasse = ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
-            preparedStatement.setString(2, hashPassword(password)); // Hash du mot de passe avant vérification
+            preparedStatement.setString(2, hashPassword(password));
             resultSet = preparedStatement.executeQuery();
-            success = resultSet.next(); // Vérifie s'il y a un résultat
+            success = resultSet.next();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -36,7 +36,7 @@ public class userDAO {
         return success;
     }
 
-    // Méthode pour récupérer toutes les informations de l'utilisateur
+
     public static User getUserInfo(String username) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -51,7 +51,7 @@ public class userDAO {
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                // Création d'un objet User avec les informations récupérées de la base de données
+
                 user = new User(
                         resultSet.getInt("id_user"),
                         resultSet.getString("pseudo"),
@@ -67,7 +67,7 @@ public class userDAO {
         return user;
     }
 
-    // Méthode pour inscrire un utilisateur
+
     public static boolean inscription(String username, String password) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -90,7 +90,7 @@ public class userDAO {
         return success;
     }
 
-    // Méthode pour hacher le mot de passe
+
     private static String hashPassword(String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
